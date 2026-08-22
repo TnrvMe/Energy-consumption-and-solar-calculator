@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F4F1EC">
+
+<title>حاسبة الطاقة الشمسية في العراق | احسب حجم منظومتك وتوفيرك</title>
+<meta name="description" content="احسب حجم المنظومة الشمسية المناسبة لبيتك في العراق: عدد الألواح والبطاريات والإنفرتر حسب مدينتك وساعات الشمس وحرارة الصيف، مع مقارنة تكلفتك الحالية (كهرباء الدولة والمولّدة) بتوفيرك بعد التحول.">
+<meta name="keywords" content="حاسبة الطاقة الشمسية, الطاقة الشمسية العراق, منظومة شمسية, ألواح شمسية بغداد, بطاريات ليثيوم, إنفرتر هايبرد, توفير الكهرباء">
+
+<!-- ═══ ضع رابط موقعك هنا بعد الرفع ═══ -->
+<link rel="canonical" href="https://YOUR-DOMAIN.com/solar">
+
+<!-- Open Graph — معاينة رابط مستقلة عن صفحة الفاتورة -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_IQ">
+<meta property="og:site_name" content="طاقة العراق">
+<meta property="og:url" content="https://YOUR-DOMAIN.com/solar">
+<meta property="og:title" content="حاسبة الطاقة الشمسية في العراق">
+<meta property="og:description" content="كم لوح وبطارية تحتاج؟ وكم توفّر شهرياً؟ حاسبة مجانية تعتمد على شمس مدينتك وحرارة صيفها وأسعار المولّدة الحقيقية.">
+<meta property="og:image" content="https://YOUR-DOMAIN.com/og-solar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="حاسبة الطاقة الشمسية في العراق">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="حاسبة الطاقة الشمسية في العراق">
+<meta name="twitter:description" content="احسب حجم منظومتك الشمسية وتوفيرك الحقيقي مقارنةً بالمولّدة وفاتورة الدولة.">
+<meta name="twitter:image" content="https://YOUR-DOMAIN.com/og-solar.png">
+
+<!-- أيقونة الصفحة — شمس على نفس خلفية هوية الموقع -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23B07D1A'/><circle cx='50' cy='50' r='18' fill='%23F4F1EC'/><g stroke='%23F4F1EC' stroke-width='7' stroke-linecap='round'><path d='M50 14v-6M50 92v-6M14 50h-6M92 50h-6M24 24l-4-4M80 80l-4-4M76 24l4-4M20 80l4-4'/></g></svg>">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="حاسبة الشمسية">
+
+<!-- الوضع الليلي يُطبَّق قبل الرسم لتفادي وميض الصفحة -->
+<script>try{var d=localStorage.getItem('irq_dk');if(d==null?matchMedia('(prefers-color-scheme:dark)').matches:d==='1'){document.documentElement.classList.add('dk');document.querySelector('meta[name=theme-color]').content='#14110B'}}catch(e){}</script>
+
+<!-- الشرائح الرسمية — نفس المصدر الذي تستعمله صفحة الفاتورة -->
+<script src="/tariff.js"></script>
+<script src="/site.js"></script>
+<link rel="stylesheet" href="/site.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "حاسبة الطاقة الشمسية في العراق",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "inLanguage": "ar-IQ",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IQD" }
+}
+</script>
+<style>
+/* الألوان تأتي من site.css — هذه أسماء محلية تشير إليها،
+   فتتبع الصفحة نفس هوية الموقع في الوضعين النهاري والليلي */
+:root{
+  --bg:var(--page);--bg2:var(--panel);--card:var(--panel);--card2:var(--panel-2);
+  --bo:var(--hair);--bo2:var(--hair-2);
+  --sun:var(--brand);--sunl:var(--brand-soft);--sunm:var(--brand-line);
+  --acc:var(--info);--accl:var(--info-soft);--accm:var(--info-line);
+  --grn:var(--good);--grnl:var(--good-soft);--grnm:var(--good-line);
+  --red:var(--bad);--redl:var(--bad-soft);--redm:var(--bad-line);
+  --ora:var(--warn);--oral:var(--warn-soft);
+  --tx:var(--ink);--tx2:var(--ink-2);--tx3:var(--ink-3);--tx4:var(--ink-4);
+  --r:14px;--rs:10px;
+  --sh:var(--shadow-sm);
+  --sh2:var(--shadow-2);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--tx);font-family:'Cairo',sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.6;transition:background .3s,color .3s}
+/* bilingual */
+.es{display:inline;font-size:.77em;color:var(--tx4);font-weight:400;margin-left:3px}
+html[dir=rtl] .es{margin-left:0;margin-right:3px}
+.esb{display:block;font-size:.74em;color:var(--tx4);font-weight:400;margin-top:1px}
+/* landing */
+#land{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;align-items:center;justify-content:center;padding:34px 20px 40px;text-align:center;position:relative}
+#land::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:min(700px,100%);height:380px;background:radial-gradient(ellipse,var(--brand-glow) 0%,transparent 70%);pointer-events:none}
+.lsun{width:76px;height:76px;background:radial-gradient(circle,#FDE68A,#F59E0B);border-radius:50%;margin:0 auto 22px;box-shadow:0 0 0 12px rgba(245,158,11,.1),0 0 0 24px rgba(245,158,11,.05);display:flex;align-items:center;justify-content:center;font-size:34px;animation:fl 4s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.ltag{display:inline-block;background:var(--sunl);color:var(--sun);border:1px solid var(--sunm);border-radius:50px;padding:5px 16px;font-size:12px;font-weight:700;margin-bottom:14px}
+.lh1{font-size:clamp(22px,6vw,44px);font-weight:900;line-height:1.2;margin-bottom:12px}
+.lh1 em{color:var(--sun);font-style:normal}
+.lsub{font-size:clamp(13px,3vw,15px);color:var(--tx3);max-width:520px;margin:0 auto 28px}
+.lcards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:30px;max-width:600px;width:100%}
+@media(max-width:500px){.lcards{grid-template-columns:1fr}}
+.lcard{background:var(--card);border:1px solid var(--bo);border-radius:var(--r);padding:14px;box-shadow:var(--sh);text-align:right}
+.lcard .li{font-size:24px;margin-bottom:6px}
+.lcard .lt{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:2px}
+.lcard .ld{font-size:11px;color:var(--tx3);line-height:1.4}
+.stbtn{display:inline-flex;align-items:center;gap:10px;background:var(--sun);color:var(--on-solid);border:none;border-radius:50px;padding:14px 30px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 20px var(--brand-ring);font-family:'Cairo',sans-serif;touch-action:manipulation}
+.stbtn:active{transform:scale(.97)}
+/* app shell */
+#app{display:none;min-height:calc(100vh - var(--nav-h));padding-bottom:100px}
+.pbar{position:sticky;top:var(--nav-h);z-index:100;background:var(--bg2);border-bottom:1px solid var(--bo);padding:9px 12px;display:flex;align-items:center;gap:8px}
+.psteps{display:flex;gap:4px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.psteps::-webkit-scrollbar{display:none}
+.ps{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--tx4);padding:5px 9px;border-radius:50px;background:var(--bg);border:1px solid var(--bo);transition:all .3s;white-space:nowrap;flex-shrink:1}
+.ps .pn{width:17px;height:17px;border-radius:50%;background:currentColor;color:var(--on-solid);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.ps.act{background:var(--sunl);color:var(--sun);border-color:var(--sunm)}
+.ps.dn{background:var(--grnl);color:var(--grn);border-color:var(--grnm)}
+.bbtn{background:var(--card2);border:1px solid var(--bo);border-radius:50px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;color:var(--tx3);font-family:'Cairo',sans-serif;white-space:nowrap;flex-shrink:0}
+/* sections */
+.sec{display:none;max-width:740px;margin:0 auto;padding:22px 14px 0}
+.sec.act{display:block;animation:fup .3s ease}
+@keyframes fup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.sh{margin-bottom:18px}
+.sl{font-size:11px;font-weight:700;color:var(--acc);letter-spacing:.4px;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.sl::before{content:'';width:14px;height:2px;background:var(--acc);border-radius:1px}
+.stl{font-size:clamp(17px,4vw,22px);font-weight:900;color:var(--tx);margin-bottom:5px}
+.sd{font-size:13px;color:var(--tx3);line-height:1.5}
+/* cards */
+.card{background:var(--card);border:1px solid var(--bo);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
+.ct{font-size:13px;font-weight:700;color:var(--tx);margin-bottom:12px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.ico{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.is{background:var(--sunl)}.ia{background:var(--accl)}.ig{background:var(--grnl)}.ir{background:var(--redl)}.io{background:var(--oral)}.in{background:var(--card2)}
+/* forms */
+.fg{margin-bottom:12px}
+label{display:block;font-size:12px;font-weight:600;color:var(--tx2);margin-bottom:5px;line-height:1.4}
+input[type=number],input[type=text],select,textarea{width:100%;padding:10px 12px;background:var(--bg);border:1.5px solid var(--bo2);border-radius:var(--rs);color:var(--tx);font-size:15px;font-family:'Cairo',sans-serif;outline:none;-webkit-appearance:none;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--info-soft)}
+select option{background:var(--bg2);color:var(--tx)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:480px){.g2,.g3{grid-template-columns:1fr}}
+.hint{font-size:11px;color:var(--tx4);margin-top:3px;line-height:1.4}
+/* loc tabs */
+.ltabs{display:flex;background:var(--card2);border-radius:var(--rs);padding:3px;margin-bottom:12px;overflow-x:auto}
+.ltb{flex:1;min-width:75px;padding:7px 5px;border:none;border-radius:7px;cursor:pointer;font-size:11px;font-weight:700;font-family:'Cairo',sans-serif;background:transparent;color:var(--tx3);transition:all .2s;white-space:nowrap;touch-action:manipulation}
+.ltb.on{background:var(--acc);color:var(--on-solid);box-shadow:0 2px 6px rgba(37,99,235,.25)}
+.lpnl{display:none}.lpnl.on{display:block;animation:fup .2s ease}
+.gpsbtn{width:100%;padding:13px;background:var(--accl);border:1.5px solid var(--accm);border-radius:var(--rs);color:var(--acc);font-size:13px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;touch-action:manipulation}
+.gpsbtn:active{background:var(--accm)}
+/* src cards */
+.sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+@media(min-width:480px){.sgrid{grid-template-columns:repeat(4,1fr)}}
+.sc{background:var(--card);border:2px solid var(--bo);border-radius:var(--r);padding:12px 8px;cursor:pointer;transition:all .2s;text-align:center;user-select:none;position:relative;touch-action:manipulation}
+.sc:active{transform:scale(.97)}
+.sc.sel{border-color:var(--acc);background:var(--accl)}
+.sc .ck{position:absolute;top:6px;right:6px;width:16px;height:16px;border-radius:50%;background:var(--acc);color:var(--on-solid);display:none;align-items:center;justify-content:center;font-size:9px;font-weight:700}
+.sc.sel .ck{display:flex}
+.sc .si{font-size:26px;margin-bottom:5px}
+.sc .sn{font-size:11px;font-weight:700;color:var(--tx);line-height:1.3}
+.sdet{background:var(--card2);border:1px solid var(--bo);border-radius:var(--r);padding:14px;margin-top:8px;display:none}
+.sdet.op{display:block;animation:fup .2s ease}
+/* roles */
+.roles{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.rb{display:inline-flex;align-items:center;gap:4px;border-radius:50px;padding:4px 11px;font-size:11px;font-weight:700;cursor:pointer;border:1.5px solid transparent;transition:all .2s;touch-action:manipulation}
+.rp{background:var(--sunl);color:var(--sun);border-color:var(--sunm)}
+.rk{background:var(--card2);color:var(--tx3);border-color:var(--bo2)}
+/* mode cards */
+.mgrid{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:12px}
+@media(min-width:440px){.mgrid{grid-template-columns:repeat(3,1fr)}}
+.mc{background:var(--card);border:2px solid var(--bo);border-radius:var(--r);padding:12px;cursor:pointer;transition:all .2s;position:relative;touch-action:manipulation}
+.mc:active{transform:scale(.98)}
+.mc.sel{border-color:var(--acc);background:var(--accl)}
+.mc .mck{position:absolute;top:7px;right:7px;width:16px;height:16px;border-radius:50%;background:var(--acc);color:var(--on-solid);display:none;align-items:center;justify-content:center;font-size:9px}
+.mc.sel .mck{display:flex}
+.mc .mi{font-size:22px;margin-bottom:5px}
+.mc .mt{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:2px}
+.mc .md{font-size:10px;color:var(--tx3);line-height:1.4}
+/* season toggle */
+.segtog{display:flex;background:var(--card2);border-radius:var(--rs);padding:3px;margin-bottom:12px}
+.segb{flex:1;padding:7px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Cairo',sans-serif;background:transparent;color:var(--tx3);transition:all .2s}
+.segb.on{background:var(--sun);color:var(--on-solid)}
+/* slider */
+input[type=range]{-webkit-appearance:auto;padding:0;cursor:pointer;accent-color:var(--sun);height:5px;margin-top:6px;width:100%}
+.svp{display:inline-block;background:var(--sunl);color:var(--sun);border:1px solid var(--sunm);border-radius:50px;padding:2px 9px;font-weight:700;font-size:12px}
+/* info boxes */
+.ib{border-radius:var(--rs);padding:10px 12px;font-size:12px;line-height:1.6;margin-bottom:10px}
+.ibl{background:var(--accl);border:1px solid var(--accm);color:var(--acc)}
+.iba{background:var(--sunl);border:1px solid var(--sunm);color:var(--sun)}
+.ibg{background:var(--grnl);border:1px solid var(--grnm);color:var(--grn)}
+.ibr{background:var(--redl);border:1px solid var(--redm);color:var(--red)}
+.ib strong{font-weight:700}
+.wbox{background:var(--oral);border:1px solid var(--warn-line);border-radius:var(--rs);padding:10px;font-size:11px;color:var(--ora);display:flex;gap:6px;align-items:flex-start;margin-top:8px}
+/* adv */
+.advtog{display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--acc);font-size:12px;font-weight:600;margin-top:4px;user-select:none}
+.advbody{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--bo)}
+/* nav */
+.navrow{display:flex;gap:8px;margin-top:18px;padding-bottom:12px}
+.bnext{flex:1;padding:14px 16px;border:none;border-radius:50px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;transition:all .3s;touch-action:manipulation}
+.bnext.rdy{background:var(--sun);color:var(--on-solid);box-shadow:0 4px 14px var(--brand-ring)}
+.bnext.rdy:active{transform:scale(.98)}
+.bnext.wt{background:var(--bo2);color:var(--tx4);cursor:not-allowed}
+.bcalc{flex:1;padding:14px 16px;background:var(--acc);color:var(--on-solid);border:none;border-radius:50px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;box-shadow:0 4px 14px rgba(37,99,235,.28);transition:all .3s;touch-action:manipulation}
+.bcalc:active{transform:scale(.98)}
+.bprev{padding:14px 14px;background:var(--card);color:var(--tx3);border:1.5px solid var(--bo2);border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;transition:all .2s;touch-action:manipulation}
+.bprev:active{background:var(--card2)}
+/* axis tabs */
+.atabs{display:flex;border:1.5px solid var(--bo2);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.atab{flex:1;padding:11px 4px;border:none;background:transparent;cursor:pointer;font-size:11px;font-weight:700;color:var(--tx3);font-family:'Cairo',sans-serif;transition:all .2s;text-align:center;touch-action:manipulation;line-height:1.3}
+.atab+.atab{border-right:1px solid var(--bo2)}
+html[dir=rtl] .atab+.atab{border-right:none;border-left:1px solid var(--bo2)}
+.atab.on{background:var(--acc);color:var(--on-solid)}
+.apnl{display:none}.apnl.on{display:block;animation:fup .3s ease}
+/* results */
+.rhero{background:linear-gradient(135deg,var(--sunl),var(--accl));border:1.5px solid var(--sunm);border-radius:var(--r);padding:20px;text-align:center;margin-bottom:12px;box-shadow:var(--sh2)}
+.rbig{font-size:clamp(42px,10vw,64px);font-weight:900;color:var(--sun);line-height:1}
+.runit{font-size:13px;color:var(--tx3);margin-top:3px}
+.rpills{display:flex;justify-content:center;gap:7px;margin-top:12px;flex-wrap:wrap}
+.rpill{background:var(--bg2);border:1px solid var(--bo);border-radius:50px;padding:6px 11px;text-align:center}
+.rpill .rv{font-size:13px;font-weight:800;color:var(--acc)}
+.rpill .rl{font-size:10px;color:var(--tx4);margin-top:1px}
+.mrow{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+@media(min-width:460px){.mrow{grid-template-columns:repeat(4,1fr)}}
+.met{background:var(--card);border:1px solid var(--bo);border-radius:var(--r);padding:13px;text-align:center;box-shadow:var(--sh)}
+.met .mi{font-size:20px;margin-bottom:4px}
+.met .mv{font-size:17px;font-weight:800;color:var(--acc)}
+.met .mu{font-size:10px;color:var(--tx4)}
+.met .ml{font-size:11px;color:var(--tx3);margin-top:2px;line-height:1.3}
+.srow{display:flex;justify-content:space-between;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--bo);gap:8px}
+.srow:last-child{border-bottom:none}
+.sk{font-size:12px;color:var(--tx3);flex:1;line-height:1.4}
+.sv{font-size:12px;font-weight:700;color:var(--tx);text-align:left;flex-shrink:0;max-width:55%;line-height:1.4}
+html[dir=rtl] .sv{text-align:right}
+.shl{background:var(--sunl);border-radius:var(--rs);padding:9px 11px;margin:3px 0}
+.shg{background:var(--grnl);border-radius:var(--rs);padding:9px 11px;margin:3px 0}
+.sbanner{background:linear-gradient(135deg,var(--grnl),var(--accl));border:1.5px solid var(--grnm);border-radius:var(--r);padding:18px;text-align:center;margin-bottom:12px;box-shadow:var(--sh2)}
+.sbig{font-size:clamp(28px,8vw,44px);font-weight:900;color:var(--grn);line-height:1;margin:5px 0}
+.ssub{font-size:11px;color:var(--tx3)}
+.ssplit{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap;justify-content:center}
+.ssp{flex:1;min-width:90px;background:var(--bg2);border:1px solid var(--bo);border-radius:10px;padding:9px;text-align:center}
+.ssp .ssv{font-size:13px;font-weight:800;color:var(--acc)}
+.ssp .ssl{font-size:10px;color:var(--tx4);margin-top:2px;line-height:1.3}
+.gcost{background:var(--redl);border:1.5px solid var(--redm);border-radius:var(--r);padding:18px;text-align:center;margin-bottom:12px}
+.gbig{font-size:clamp(26px,7vw,40px);font-weight:900;color:var(--red);margin:4px 0}
+.cbar{margin:8px 0}
+.cbh{display:flex;justify-content:space-between;font-size:11px;color:var(--tx3);margin-bottom:3px;font-weight:600;flex-wrap:wrap;gap:3px}
+.cbt{height:8px;background:var(--card2);border-radius:4px;overflow:hidden;border:1px solid var(--bo)}
+.cbf{height:100%;border-radius:4px;transition:width 1.2s ease}
+/* chart */
+.bwrap{display:flex;gap:3px;height:85px;align-items:flex-end;margin-bottom:4px}
+.bw{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end}
+.bb{width:100%;border-radius:3px 3px 0 0;transition:height .8s ease;min-height:2px;position:relative;cursor:pointer}
+.bb:active::after,.bb:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100%+4px);left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg2);padding:3px 6px;border-radius:5px;font-size:10px;white-space:nowrap;font-weight:600;z-index:10;pointer-events:none}
+.bl{font-size:9px;color:var(--tx4);margin-top:2px;text-align:center}
+/* tier table */
+.tt{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
+.tt th{background:var(--accl);color:var(--acc);padding:6px 8px;text-align:right;font-weight:700;border:1px solid var(--accm)}
+html[dir=ltr] .tt th{text-align:left}
+.tt td{padding:6px 8px;border:1px solid var(--bo);color:var(--tx2)}
+.tt tr:nth-child(even) td{background:var(--card2)}
+.thl{background:var(--sunl)!important;font-weight:700;color:var(--sun)!important}
+/* brands */
+.bgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+@media(min-width:460px){.bgrid{grid-template-columns:repeat(3,1fr)}}
+.bcard{background:var(--card2);border:1px solid var(--bo);border-radius:var(--rs);padding:10px 12px;text-align:center}
+.bcard .bi{font-size:18px;margin-bottom:4px}
+.bcard .bn{font-size:12px;font-weight:700;color:var(--tx)}
+.bcard .bt{font-size:10px;color:var(--tx4);margin-top:2px}
+.bcard .bb2{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:50px;margin-top:4px}
+.bg{background:var(--grnl);color:var(--grn)}.ba{background:var(--accl);color:var(--acc)}.bam{background:var(--sunl);color:var(--sun)}
+/* share */
+.shrow{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.shbtn{flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 14px;border:none;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;transition:all .2s;touch-action:manipulation}
+.bwa{background:#25D366;color:#fff;box-shadow:0 3px 10px rgba(37,211,102,.3)}
+.bwa:active{transform:scale(.97)}
+.bpr{background:var(--accl);color:var(--acc);border:1.5px solid var(--accm)}
+.bpr:active{transform:scale(.97)}
+/* disclaimer */
+.disc{background:var(--card2);border:1.5px solid var(--bo2);border-radius:var(--r);padding:14px;margin-top:10px}
+.disc .dt{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:6px}
+.disc p{font-size:11px;color:var(--tx3);line-height:1.6;margin-bottom:4px}
+/* before/after */
+.bawrap{margin:10px 0}
+.bac{position:relative;height:110px;border-radius:var(--r);overflow:hidden;cursor:col-resize;user-select:none;touch-action:pan-y;box-shadow:var(--sh2);border:1.5px solid var(--bo)}
+.bab,.baa{position:absolute;top:0;bottom:0;left:0;right:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.bab{background:linear-gradient(135deg,var(--redl),var(--panel));z-index:1}
+.baa{background:linear-gradient(135deg,var(--grnl),var(--panel));z-index:2;clip-path:inset(0 50% 0 0)}
+html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
+.bal{font-size:11px;font-weight:700}
+.bav{font-size:clamp(18px,5vw,26px);font-weight:900;line-height:1}
+.bau{font-size:10px;opacity:.7}
+.bab .bav{color:var(--red)}.bab .bal{color:var(--red)}
+.baa .bav{color:var(--grn)}.baa .bal{color:var(--grn)}
+.bah{position:absolute;top:0;bottom:0;width:3px;background:#fff;z-index:10;cursor:col-resize;box-shadow:0 0 8px rgba(0,0,0,.3)}
+.bahc{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font-size:13px;pointer-events:none}
+/* ac check */
+.acc2{background:linear-gradient(135deg,var(--redl),var(--oral));border:1.5px solid var(--redm);border-radius:var(--r);padding:12px;margin-top:8px}
+.acct{font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px}
+.acr{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid var(--hair-2);color:var(--tx2)}
+.acr:last-child{border:none}
+.aco{color:var(--grn);font-weight:700}.acn{color:var(--red);font-weight:700}
+/* load cards */
+.lgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+@media(min-width:480px){.lgrid{grid-template-columns:repeat(4,1fr)}}
+.lc2{background:var(--card);border:2px solid var(--bo);border-radius:var(--r);padding:12px 8px;cursor:pointer;transition:all .2s;text-align:center;position:relative}
+.lc2.sel{border-color:var(--grn);background:var(--grnl)}
+.lc2 .lck{position:absolute;top:6px;right:6px;width:16px;height:16px;border-radius:50%;background:var(--grn);color:var(--on-solid);display:none;align-items:center;justify-content:center;font-size:9px;font-weight:700}
+.lc2.sel .lck{display:flex}
+.lc2 .lci{font-size:22px;margin-bottom:4px}
+.lc2 .lcn{font-size:11px;font-weight:700;color:var(--tx);line-height:1.3}
+.lc2 .lcw{font-size:10px;color:var(--tx3);margin-top:2px}
+/* ═══ APPLIANCE CALCULATOR MODAL ═══ */
+#lcfab{position:fixed;bottom:20px;left:20px;z-index:8000;background:var(--grn);color:var(--on-solid);border:none;border-radius:50px;padding:11px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;box-shadow:0 4px 18px rgba(5,150,105,.4);display:flex;align-items:center;gap:7px;touch-action:manipulation;transition:all .25s}
+html[dir=ltr] #lcfab{left:auto;right:20px}
+#lcfab:active{transform:scale(.96)}
+#lcfab .fbb{background:rgba(255,255,255,.25);border-radius:50px;padding:1px 7px;font-size:11px}
+#lcmod{position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px)}
+@media(min-width:600px){#lcmod{align-items:center}}
+#lcmod.op{display:flex;animation:fi .25s ease}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+#lcsh{background:var(--bg2);border-radius:20px 20px 0 0;width:100%;max-width:720px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;animation:su .3s cubic-bezier(.34,1.56,.64,1)}
+@media(min-width:600px){#lcsh{border-radius:20px;max-height:88vh}}
+@keyframes su{from{transform:translateY(60px);opacity:.5}to{transform:translateY(0);opacity:1}}
+.lchdr{padding:14px 16px 10px;border-bottom:1px solid var(--bo);display:flex;align-items:center;gap:9px;flex-shrink:0}
+.lchdr h3{font-size:14px;font-weight:900;color:var(--tx);flex:1}
+.lcx{background:var(--card2);border:none;border-radius:50%;width:28px;height:28px;font-size:13px;cursor:pointer;color:var(--tx3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lcbody{flex:1;overflow-y:auto;padding:12px 14px;-webkit-overflow-scrolling:touch}
+.lcsum{background:var(--grnl);border:1.5px solid var(--grnm);border-radius:var(--r);padding:10px 12px;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+.lsmi{text-align:center;flex:1;min-width:60px}
+.lsmi .lv{font-size:16px;font-weight:900;color:var(--grn)}
+.lsmi .ll{font-size:10px;color:var(--tx3);margin-top:1px}
+.lccats{display:flex;gap:5px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.lccats::-webkit-scrollbar{display:none}
+.lccat{flex-shrink:0;padding:5px 12px;border:1.5px solid var(--bo);border-radius:50px;background:var(--card);font-size:11px;font-weight:700;cursor:pointer;color:var(--tx3);font-family:'Cairo',sans-serif;transition:all .2s;white-space:nowrap;touch-action:manipulation}
+.lccat.on{background:var(--acc);color:var(--on-solid);border-color:var(--acc)}
+.aprow{background:var(--card);border:1px solid var(--bo);border-radius:var(--rs);padding:9px 11px;margin-bottom:7px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.apico{font-size:22px;flex-shrink:0;width:30px;text-align:center}
+.apinfo{flex:1;min-width:90px}
+.apname{font-size:13px;font-weight:700;color:var(--tx);line-height:1.3}
+.apw{font-size:11px;color:var(--tx4);margin-top:1px}
+.apctrls{display:flex;align-items:center;gap:6px;flex-shrink:0;flex-wrap:wrap}
+.apfw{display:flex;flex-direction:column;align-items:center;gap:2px}
+.aflbl{font-size:9px;color:var(--tx4);font-weight:600;white-space:nowrap}
+.apn{width:50px;padding:6px 4px;text-align:center;font-size:13px;font-weight:700;background:var(--bg);border:1.5px solid var(--bo2);border-radius:var(--rsm,7px);color:var(--tx);font-family:'Cairo',sans-serif}
+.apn:focus{border-color:var(--acc);outline:none}
+.apkwh{font-size:11px;font-weight:700;color:var(--acc);min-width:52px;text-align:center}
+.apdel{background:var(--redl);border:none;border-radius:50%;width:24px;height:24px;color:var(--red);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;touch-action:manipulation}
+.addap-btn{background:var(--accl);border:1.5px solid var(--accm);color:var(--acc);border-radius:50px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;white-space:nowrap;touch-action:manipulation}
+.cfm{background:var(--card2);border:1.5px dashed var(--bo2);border-radius:var(--r);padding:11px;margin-bottom:10px}
+.lcapply{width:100%;padding:13px;background:var(--grn);color:var(--on-solid);border:none;border-radius:50px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;box-shadow:0 4px 12px rgba(5,150,105,.3);margin-top:12px;touch-action:manipulation}
+.lcapply:active{transform:scale(.98)}
+.addedbar{margin-bottom:12px}
+.adbar-hd{font-size:12px;font-weight:700;color:var(--tx3);margin-bottom:7px;display:flex;justify-content:space-between;align-items:center}
+.clrall{background:none;border:none;color:var(--red);font-size:11px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif}
+/* print */
+@media print{
+  .site-nav,#land,#app>.pbar,#sec1,#sec2,#sec3,.navrow,.shrow,.atabs,.bbtn,#lcfab,.handoff,.from-tool,.site-foot{display:none!important}
+  html,body{background:#fff!important;color:#000!important;font-size:12px}
+  #app{display:block!important;padding:0}
+  #sec4{display:block!important;padding:8px 14px!important;max-width:100%!important}
+  .apnl{display:block!important;margin-bottom:16px}
+  #sec4 .sh::before{content:"حاسبة الطاقة الشمسية — العراق";display:block;font-size:15px;font-weight:900;color:#000;border-bottom:2px solid #D97706;padding-bottom:6px;margin-bottom:8px}
+  .card{box-shadow:none!important;border:1px solid #ccc!important;break-inside:avoid;margin-bottom:8px!important;padding:10px!important}
+  .rhero,.sbanner,.gcost{background:#f8f8f8!important;border:1px solid #ccc!important;box-shadow:none!important;break-inside:avoid}
+  .advtog,.advbody,.disc,.acc2{display:none!important}
+  #axsolar{page-break-before:always}
+  #axsav{page-break-before:always}
+  .bb{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .tt{width:100%;border-collapse:collapse}
+  .tt td,.tt th{border:1px solid #ccc!important;padding:4px 6px}
+}
+</style>
+</head>
+<body>
+<!-- شريط التنقّل المشترك بين الأداتين -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 14h6l-1.5 8L20 10h-6.5z"/></svg></span>
+      <span class="brand-name" id="navBrand">طاقة العراق</span>
+    </a>
+    <div class="nav-tabs">
+      <a class="nav-tab" href="/" id="navBill">الفاتورة</a>
+      <a class="nav-tab" href="/solar" id="navSolar" aria-current="page">الطاقة الشمسية</a>
+    </div>
+    <div class="nav-tools">
+      <div class="nav-seg">
+        <button id="bar" class="on" onclick="setL('ar')">ع</button>
+        <button id="ben" onclick="setL('en')">EN</button>
+      </div>
+      <button class="nav-btn icon" data-dk-toggle onclick="toggleDk()" aria-label="التبديل إلى الوضع الليلي">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- LANDING -->
+<div id="land">
+  <div class="lsun">☀️</div>
+  <div class="ltag">🇮🇶 <span id="ltag">مصنوع للعراق</span></div>
+  <h1 class="lh1" id="lh1">احسب <em>نظامك الشمسي</em><br>المناسب لحياتك</h1>
+  <p class="lsub" id="lsub">أداة مجانية للعراق — أسعار متدرجة حقيقية، مولدات أهلية، حرارة الصيف القاسية</p>
+  <div class="lcards">
+    <div class="lcard"><div class="li">🔍</div><div class="lt" id="lc1t">وضعك الحالي</div><div class="ld" id="lc1d">نفهم كل مصادر الطاقة التي تعتمد عليها</div></div>
+    <div class="lcard"><div class="li">☀️</div><div class="lt" id="lc2t">التحول الشمسي</div><div class="ld" id="lc2d">نحسب الحجم المناسب وكامل المكونات</div></div>
+    <div class="lcard"><div class="li">💰</div><div class="lt" id="lc3t">توفيرك الحقيقي</div><div class="ld" id="lc3d">كم ستوفر شهرياً مقارنةً بما تدفعه الآن</div></div>
+  </div>
+  <button class="stbtn" onclick="startApp()"><span id="lstart">ابدأ الحساب</span> ←</button>
+</div>
+
+<!-- APP -->
+<div id="app">
+<div class="pbar">
+  <div class="psteps">
+    <div class="ps act" id="ps1"><span class="pn">1</span><span id="psl1">الموقع</span></div>
+    <div class="ps" id="ps2"><span class="pn">2</span><span id="psl2">طاقتك الحالية</span></div>
+    <div class="ps" id="ps3"><span class="pn">3</span><span id="psl3">الشمسي</span></div>
+    <div class="ps" id="ps4"><span class="pn">4</span><span id="psl4">النتائج</span></div>
+  </div>
+  <button class="bbtn" onclick="goLand()" id="bkhome">← الرئيسية</button>
+</div>
+
+<div style="max-width:740px;margin:0 auto;padding:12px 14px 0">
+  <div class="from-tool" id="fromBill" style="display:none">
+    <span>⚡</span><span id="fromBillTxt"></span>
+  </div>
+</div>
+
+<!-- STEP 1 -->
+<div class="sec act" id="sec1">
+  <div class="sh"><div class="sl" id="s1step">الخطوة الأولى</div><h2 class="stl" id="s1title">أين تسكن؟</h2><p class="sd" id="s1desc">الموقع يحدد قوة الشمس ودرجات الحرارة في منطقتك</p></div>
+  <div class="card">
+    <div class="ct"><div class="ico ia">📍</div>تحديد الموقع <span class="es">Location</span></div>
+    <div class="ltabs">
+      <button class="ltb on" id="tgps" onclick="stab('gps',this)">📡 <span id="ltgps">موقعي تلقائياً</span></button>
+      <button class="ltb" id="tcity" onclick="stab('city',this)">🏙️ <span id="ltcity">اختر مدينتك</span></button>
+      <button class="ltb" id="tman" onclick="stab('man',this)">🗺️ <span id="ltman">إحداثيات</span></button>
+    </div>
+    <div class="lpnl on" id="pgps">
+      <button class="gpsbtn" onclick="doGPS()">🛰️ <span id="gpstxt">اضغط هنا لتحديد موقعك</span></button>
+      <div id="gst" style="margin-top:8px;font-size:12px;color:var(--tx4);text-align:center;min-height:18px"></div>
+    </div>
+    <div class="lpnl" id="pcity">
+      <div class="g2">
+        <div class="fg"><label>المحافظة <span class="es">Province</span></label><select id="selprov" onchange="fillCities()"></select></div>
+        <div class="fg" id="cityrow" style="display:none"><label>المدينة <span class="es">City</span></label><select id="selcity" onchange="pickCity()"></select></div>
+      </div>
+    </div>
+    <div class="lpnl" id="pman">
+      <div class="g2">
+        <div class="fg"><label>Latitude <span class="es">خط العرض</span></label><input type="number" id="mlat" placeholder="33.3152" step="0.001" min="29" max="38" oninput="chk1()"></div>
+        <div class="fg"><label>Longitude <span class="es">خط الطول</span></label><input type="number" id="mlng" placeholder="44.3661" step="0.001" min="38" max="49" oninput="chk1()"></div>
+      </div>
+      <p class="hint" id="manhint">💡 من Google Maps: اضغط مطولاً على موقعك</p>
+    </div>
+  </div>
+  <div class="navrow"><button class="bnext wt" id="next1" onclick="goStep(2)"><span id="n1txt">التالي: طاقتك الحالية ←</span></button></div>
+</div>
+
+<!-- STEP 2 -->
+<div class="sec" id="sec2">
+  <div class="sh"><div class="sl" id="s2step">الخطوة الثانية</div><h2 class="stl" id="s2title">ما مصادر الكهرباء عندك الآن؟</h2><p class="sd" id="s2desc">اختر كل ما ينطبق عليك</p></div>
+  <div class="sgrid">
+    <div class="sc" id="srcgovt" onclick="togSrc('govt')"><div class="ck">✓</div><div class="si">🏛️</div><div class="sn">كهرباء الدولة<span class="esb">Govt. Power</span></div></div>
+    <div class="sc" id="srcgen" onclick="togSrc('gen')"><div class="ck">✓</div><div class="si">⚡</div><div class="sn">مولدة أهلية<span class="esb">Neighborhood Gen.</span></div></div>
+    <div class="sc" id="srchome" onclick="togSrc('home')"><div class="ck">✓</div><div class="si">🛢️</div><div class="sn">مولدة منزلية<span class="esb">Home Generator</span></div></div>
+    <div class="sc" id="srcinv" onclick="togSrc('inv')"><div class="ck">✓</div><div class="si">🔋</div><div class="sn">عاكسة<span class="esb">Inverter/UPS</span></div></div>
+  </div>
+  <!-- GOVT -->
+  <div class="sdet" id="detgovt">
+    <div class="ct"><div class="ico ia">🏛️</div>كهرباء الدولة <span class="es">Government Power</span></div>
+    <div class="ib ibl" id="tariffLine">💡 <strong>التسعير المتدرج الرسمي:</strong> <span id="tariffLineVals"></span></div>
+    <div class="g2">
+      <div class="fg"><label>ساعات يومياً <span class="es">Hours/day</span></label>
+        <select id="govthrs"><option value="2">1–2 ساعة</option><option value="4" selected>3–4 ساعات</option><option value="6">5–6 ساعات</option><option value="8">7–8 ساعات</option><option value="12">10–12 ساعة</option><option value="20">20+ ساعة</option></select></div>
+      <div class="fg"><label>الفاتورة الشهرية (دينار) <span class="es">Monthly bill</span></label><input type="number" id="govtbill" placeholder="اتركه فارغاً للحساب التلقائي"></div>
+    </div>
+    <div class="fg"><label>دور المصدر <span class="es">Role</span></label><div class="roles"><span class="rb rp" id="rgovtp" onclick="setRole('govt','p')">⭐ أساسي</span><span class="rb rk" id="rgovtk" onclick="setRole('govt','k')">🔒 احتياطي</span></div></div>
+  </div>
+  <!-- GEN -->
+  <div class="sdet" id="detgen">
+    <div class="ct"><div class="ico io">⚡</div>المولدة الأهلية <span class="es">Private Generator</span></div>
+    <div class="g2">
+      <div class="fg"><label>نوع الاشتراك <span class="es">Hours/day</span></label>
+        <select id="gentype" onchange="updGenHrs()"><option value="24">24 ساعة — يومي كامل</option><option value="20">20 ساعة</option><option value="18">18 ساعة</option><option value="16">16 ساعة</option><option value="12" selected>12 ساعة — الأكثر شيوعاً</option><option value="8">8 ساعات</option><option value="6">6 ساعات</option><option value="custom">مخصص</option></select></div>
+      <div class="fg" id="gencustr" style="display:none"><label>ساعات مخصصة</label><input type="number" id="gencusth" placeholder="10" min="1" max="24"></div>
+      <div class="fg"><label>الأمبيرات المشترك بها <span class="es">Amps</span></label><input type="number" id="genamps" placeholder="5" value="5" min="1" oninput="calcGenTot()"></div>
+      <div class="fg"><label>سعر الأمبير/شهر (دينار)</label><input type="number" id="genap" placeholder="15000" value="15000" oninput="calcGenTot()"></div>
+      <div class="fg"><label>رسوم ثابتة أخرى (دينار)</label><input type="number" id="genex" placeholder="0" value="0" oninput="calcGenTot()"></div>
+      <div class="fg"><label>عداد إضافي/شهر (دينار)</label><input type="number" id="genmt" placeholder="0" value="0" oninput="calcGenTot()"></div>
+    </div>
+    <div class="ib iba">💸 دفعتك الشهرية للمولدة: <strong id="gentotd">—</strong> دينار</div>
+    <div class="fg"><label>دور المولدة <span class="es">Role</span></label><div class="roles"><span class="rb rp" id="rgenp" onclick="setRole('gen','p')">⭐ أساسي</span><span class="rb rk" id="rgenk" onclick="setRole('gen','k')">🔒 احتياطي</span></div></div>
+  </div>
+  <!-- HOME -->
+  <div class="sdet" id="dethome">
+    <div class="ct"><div class="ico ir">🛢️</div>المولدة المنزلية <span class="es">Home Generator</span></div>
+    <div class="g2">
+      <div class="fg"><label>نوع الوقود</label><select id="homefuel"><option value="diesel">ديزل Diesel</option><option value="petrol">بنزين Petrol</option></select></div>
+      <div class="fg"><label>القدرة (KVA/KW)</label><input type="number" id="homekva" placeholder="3" min="0.5" step="0.5"></div>
+      <div class="fg"><label>ساعات التشغيل/يوم</label><input type="number" id="homehrs" placeholder="6" min="1" max="24"></div>
+      <div class="fg"><label>التكلفة الشهرية (دينار)</label><input type="number" id="homecost" placeholder="100000"></div>
+    </div>
+    <div class="fg"><label>دور المولدة</label><div class="roles"><span class="rb rp" id="rhomep" onclick="setRole('home','p')">⭐ أساسي</span><span class="rb rk" id="rhomek" onclick="setRole('home','k')">🔒 احتياطي</span></div></div>
+  </div>
+  <!-- INV -->
+  <div class="sdet" id="detinv">
+    <div class="ct"><div class="ico ig">🔋</div>العاكسة <span class="es">Inverter/UPS</span></div>
+    <div class="ib ibl">🔌 يتحول تلقائياً للبطاريات عند انقطاع الكهرباء <span class="es">— Auto switches to batteries on power cut</span></div>
+    <div class="g2">
+      <div class="fg"><label>عدد البطاريات</label><input type="number" id="invbats" placeholder="2" value="2" min="1"></div>
+      <div class="fg"><label>التكلفة الشهرية (دينار)</label><input type="number" id="invcost" placeholder="20000"></div>
+    </div>
+    <div class="fg"><label>دور العاكسة</label><div class="roles"><span class="rb rp" id="rinvp" onclick="setRole('inv','p')">⭐ أساسي</span><span class="rb rk" id="rinvk" onclick="setRole('inv','k')">🔒 احتياطي</span></div></div>
+  </div>
+
+  <!-- CONSUMPTION -->
+  <div class="card" style="margin-top:12px">
+    <div class="ct"><div class="ico is">⚡</div>استهلاكك من الكهرباء <span class="es">Electricity Consumption</span></div>
+    <div class="ib ibl">مجموع ما تستهلكه من كل المصادر — الصيف في العراق 3–4× أكثر من الشتاء بسبب المكيفات</div>
+    <!-- Appliance calc shortcut -->
+    <div style="background:var(--grnl);border:1.5px solid var(--grnm);border-radius:var(--rs);padding:10px 12px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <div style="flex:1;min-width:140px"><div style="font-size:12px;font-weight:700;color:var(--grn)">⚡ لا تعرف كم تستهلك؟</div><div style="font-size:11px;color:var(--tx3);margin-top:2px">احسب استهلاكك جهازاً جهازاً</div></div>
+      <button onclick="openLC()" style="background:var(--grn);color:var(--on-solid);border:none;border-radius:50px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;touch-action:manipulation;flex-shrink:0">⚡ حاسبة الأجهزة</button>
+    </div>
+    <div class="segtog"><button class="segb on" id="sbsingle" onclick="setSeason('s')">📊 متوسط واحد</button><button class="segb" id="sbseas" onclick="setSeason('w')">☀️❄️ صيف وشتاء</button></div>
+    <div id="segsingle">
+      <div class="g2">
+        <div class="fg"><label>الاستهلاك الشهري (kWh) <span class="es">Monthly kWh</span></label><input type="number" id="mon" placeholder="500" min="50" oninput="sync('m');chk2()"><p class="hint">متوسط البيت العراقي: 400–800 kWh/شهر</p></div>
+        <div class="fg"><label>أو السنوي (kWh)</label><input type="number" id="ann" placeholder="6000" min="600" oninput="sync('a');chk2()"></div>
+      </div>
+    </div>
+    <div id="segseas" style="display:none">
+      <div class="g2">
+        <div class="fg"><label>☀️ الصيف الشهري (kWh) <span class="es">Summer</span></label><input type="number" id="monsum" placeholder="900" oninput="calcSeasAnn()"><p class="hint">يونيو–سبتمبر (4 أشهر)</p></div>
+        <div class="fg"><label>❄️ الشتاء الشهري (kWh) <span class="es">Winter</span></label><input type="number" id="monwin" placeholder="250" oninput="calcSeasAnn()"><p class="hint">ديسمبر–مارس (4 أشهر)</p></div>
+        <div class="fg"><label>🍂 الربيع/الخريف (kWh)</label><input type="number" id="monmid" placeholder="450" oninput="calcSeasAnn()"><p class="hint">أبريل–مايو + أكتوبر–نوفمبر</p></div>
+        <div class="fg"><label>الإجمالي السنوي المحسوب</label><input type="number" id="annseas" readonly style="background:var(--card2);color:var(--tx3)"></div>
+      </div>
+    </div>
+  </div>
+  <div class="navrow">
+    <button class="bprev" onclick="goStep(1)">→ السابق</button>
+    <button class="bnext wt" id="next2" onclick="goStep(3)"><span id="n2txt">التالي: النظام الشمسي ←</span></button>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="sec" id="sec3">
+  <div class="sh"><div class="sl" id="s3step">الخطوة الثالثة</div><h2 class="stl" id="s3title">كيف تريد الاعتماد على الطاقة الشمسية؟</h2><p class="sd" id="s3desc">اختر النوع الذي يناسب وضعك</p></div>
+  <div class="mgrid">
+    <div class="mc sel" id="mhybrid" onclick="setMode('hybrid')"><div class="mck">✓</div><div class="mi">🔄</div><div class="mt">نظام مزدوج <span class="es">Hybrid</span></div><div class="md">شمس + شبكة الدولة معاً<span class="esb">Solar first, grid fills gap</span></div></div>
+    <div class="mc" id="moffgrid" onclick="setMode('offgrid')"><div class="mck">✓</div><div class="mi">🏝️</div><div class="mt">مستقل كلياً <span class="es">Off-Grid</span></div><div class="md">شمس وبطاريات فقط<span class="esb">No grid needed</span></div></div>
+    <div class="mc" id="mongrid" onclick="setMode('ongrid')"><div class="mck">✓</div><div class="mi">🔌</div><div class="mt">ألواح بدون بطاريات <span class="es">Grid-Tie</span></div><div class="md">لتقليل الفاتورة فقط<span class="esb">Reduce bill only</span></div></div>
+  </div>
+  <div class="disc" id="ogdisc" style="display:none">
+    <div class="dt">⚠️ Grid-Tie — تنبيه مهم</div>
+    <p>في العراق حالياً <strong>لا توجد آلية بيع طاقة زائدة</strong> للشبكة. النظام يقلل فاتورتك لكن لا يدفع لك نقوداً. <span class="es">Iraq has no net metering/feed-in tariff. System reduces bill only.</span></p>
+  </div>
+  <!-- LOAD PROFILE -->
+  <div class="card">
+    <div class="ct"><div class="ico ig">🏠</div>ماذا تريد أن يشغّل النظام؟ <span class="es">Load Profile</span></div>
+    <div class="ib iba">⚠️ المكيفات تستهلك طاقة كبيرة جداً — هذا يساعد في تحديد توقعات واقعية</div>
+    <div class="lgrid">
+      <div class="lc2 sel" id="ldlight" onclick="setLoad('light')"><div class="lck">✓</div><div class="lci">💡</div><div class="lcn">إضاءة + مراوح<span class="esb">Lights + Fans</span></div><div class="lcw">~0.5–1 kW</div></div>
+      <div class="lc2" id="ldbasic" onclick="setLoad('basic')"><div class="lck">✓</div><div class="lci">🧊</div><div class="lcn">ثلاجة + تلفاز<span class="esb">Fridge + TV</span></div><div class="lcw">~1.5–2 kW</div></div>
+      <div class="lc2" id="ldac1" onclick="setLoad('ac1')"><div class="lck">✓</div><div class="lci">❄️</div><div class="lcn">مكيف واحد 1 طن<span class="esb">1 Split AC 1-ton</span></div><div class="lcw">~1.5 kW</div></div>
+      <div class="lc2" id="ldac2" onclick="setLoad('ac2')"><div class="lck">✓</div><div class="lci">🌬️</div><div class="lcn">مكيفان 1.5 طن<span class="esb">2 ACs 1.5-ton</span></div><div class="lcw">~4 kW</div></div>
+      <div class="lc2" id="ldac3" onclick="setLoad('ac3')"><div class="lck">✓</div><div class="lci">🏢</div><div class="lcn">3+ مكيفات<span class="esb">3+ AC units</span></div><div class="lcw">~7+ kW</div></div>
+      <div class="lc2" id="ldfull" onclick="setLoad('full')"><div class="lck">✓</div><div class="lci">⚡</div><div class="lcn">بيت كامل<span class="esb">Full household</span></div><div class="lcw">~10+ kW</div></div>
+    </div>
+    <div class="acc2" id="acreal" style="display:none"><div class="acct">🌡️ تحقق واقعي للمكيفات — AC Reality Check</div><div id="acrows"></div></div>
+  </div>
+  <!-- SYSTEM SETTINGS -->
+  <div class="card">
+    <div class="ct"><div class="ico is">☀️</div>إعدادات النظام <span class="es">System Settings</span></div>
+    <div class="g2">
+      <div class="fg"><label>حجم اللوح الواحد <span class="es">Panel wattage</span></label>
+        <select id="pw"><option value="400">400W — قياسي</option><option value="450">450W</option><option value="500" selected>500W — الأكثر شيوعاً</option><option value="550">550W</option><option value="600">600W</option><option value="700">700W — متطور</option></select></div>
+      <div class="fg"><label>ساعات البطارية ليلاً <span class="es">Night battery hrs</span></label>
+        <select id="shr"><option value="4">4 ساعات</option><option value="6">6 ساعات</option><option value="8" selected>8 ساعات — موصى به</option><option value="12">12 ساعة</option><option value="24">ليلة كاملة</option></select></div>
+      <div class="fg"><label>نوع البطاريات <span class="es">Battery type</span></label>
+        <select id="btype" onchange="showBatWarn()"><option value="lithium">🟢 Lithium LiFePO4 — أفضل</option><option value="agm">🟡 AGM / Gel — أرخص</option></select></div>
+      <div class="fg"><label>نسبة تغطية الفاتورة <span class="es">Coverage %</span></label>
+        <div style="margin-top:5px"><span id="ov" class="svp">100%</span>
+        <input type="range" id="off" min="50" max="120" value="100" oninput="document.getElementById('ov').textContent=this.value+'%'"></div></div>
+    </div>
+    <div id="batwarn" class="wbox" style="display:none">🌡️ <div><strong>تحذير AGM في حرارة العراق:</strong> بطاريات AGM تفقد 30–50% طاقتها عند 50°C وعمرها أقل من سنتين بدون تبريد. LiFePO4 أفضل بكثير للمناخ العراقي.</div></div>
+    <div class="advtog" id="advtog" onclick="togAdv()">▸ إعدادات متقدمة <span class="es">Advanced</span></div>
+    <div class="advbody" id="advbody">
+      <div class="g2">
+        <div class="fg"><label>تكلفة الواط المثبّت (دينار/W)</label><input type="number" id="cpw" value="1200" min="300" max="6000"><p class="hint">المتوسط في العراق: 1,000–1,500 دينار/W</p></div>
+        <div class="fg"><label>زاوية ميلان مخصصة (°)</label><input type="number" id="ctilt" placeholder="auto" min="0" max="90"></div>
+      </div>
+    </div>
+  </div>
+  <div class="navrow">
+    <button class="bprev" onclick="goStep(2)">→ السابق</button>
+    <button class="bcalc" onclick="calc()">🔆 احسب النتائج <span class="es">Calculate</span></button>
+  </div>
+</div>
+
+<!-- STEP 4: RESULTS -->
+<div class="sec" id="sec4">
+  <div class="sh"><div class="sl">النتائج <span class="es">Results</span></div><h2 class="stl">نظامك الشمسي المقترح</h2><p class="sd" id="resloc" style="color:var(--acc);font-weight:600"></p></div>
+  <!-- EDIT/NEW buttons -->
+  <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+    <button onclick="editSystem()" style="flex:1;padding:10px 14px;background:var(--accl);color:var(--acc);border:1.5px solid var(--accm);border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;touch-action:manipulation">✏️ تعديل الإعدادات <span class="es">Edit</span></button>
+    <button onclick="newSystem()" style="flex:1;padding:10px 14px;background:var(--card2);color:var(--tx3);border:1.5px solid var(--bo2);border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;touch-action:manipulation">➕ نظام جديد <span class="es">New System</span></button>
+  </div>
+  <div class="shrow">
+    <button class="shbtn bwa" onclick="shareWA()">📲 واتساب <span class="es">WhatsApp</span></button>
+    <button class="shbtn bpr" onclick="window.print()">🖨️ طباعة <span class="es">Print</span></button>
+  </div>
+  <div class="atabs">
+    <button class="atab on" onclick="showAx('cur')">⚡ وضعك الحالي<br><span style="font-size:9px;opacity:.8">Current</span></button>
+    <button class="atab" onclick="showAx('sol')">☀️ النظام الشمسي<br><span style="font-size:9px;opacity:.8">Solar</span></button>
+    <button class="atab" onclick="showAx('sav')">💰 التوفير<br><span style="font-size:9px;opacity:.8">Savings</span></button>
+  </div>
+  <!-- AX1: CURRENT -->
+  <div class="apnl on" id="axcur">
+    <div class="mrow" id="curmet"></div>
+    <div id="curdet"></div>
+  </div>
+  <!-- AX2: SOLAR -->
+  <div class="apnl" id="axsol">
+    <div class="rhero">
+      <div style="font-size:11px;color:var(--tx3);margin-bottom:5px">حجم النظام المطلوب — System size</div>
+      <div class="rbig" id="rkw">--</div><div class="runit">kW</div>
+      <div class="rpills">
+        <div class="rpill"><div class="rv" id="ragen">--</div><div class="rl">kWh/سنة</div></div>
+        <div class="rpill"><div class="rv" id="rdgen">--</div><div class="rl">kWh/يوم</div></div>
+        <div class="rpill"><div class="rv" id="rco2">--</div><div class="rl">طن CO₂/سنة</div></div>
+      </div>
+    </div>
+    <div class="card"><div class="ct"><div class="ico is">📊</div>التوليد الشهري (kWh)</div><div class="bwrap" id="chart"></div><div style="display:flex;gap:3px;padding:0 2px" id="clbls"></div></div>
+    <div class="card">
+      <div class="ct"><div class="ico is">🔆</div>الألواح الشمسية — Solar Panels</div>
+      <div class="srow shl"><span class="sk">عدد الألواح — Panels needed</span><span class="sv" id="rnp" style="color:var(--sun);font-size:17px;font-weight:900">--</span></div>
+      <div class="srow"><span class="sk">قدرة اللوح — Wattage</span><span class="sv" id="rpw2">--</span></div>
+      <div class="srow"><span class="sk">إجمالي القدرة — Total power</span><span class="sv" id="rtap">--</span></div>
+      <div class="srow" style="background:var(--accl);border-radius:var(--rs);padding:9px 11px;margin:3px 0">
+        <span class="sk" style="color:var(--acc);font-weight:700">⚡ بالأمبير (مصطلح السوق العراقي) — Amps</span>
+        <span class="sv" id="ramps" style="color:var(--acc);font-size:15px;font-weight:900">--</span>
+      </div>
+      <div class="srow"><span class="sk" style="font-size:10px;color:var(--tx4)">الأمبير = القدرة بالواط ÷ 220 فولت</span><span class="sv" id="rampsnote" style="font-size:10px;color:var(--tx4)">--</span></div>
+      <div class="srow"><span class="sk">زاوية الميلان المثلى — Tilt</span><span class="sv" id="rtilt2">--</span></div>
+      <div class="srow"><span class="sk">الاتجاه — Orientation</span><span class="sv">جنوب — South (180°)</span></div>
+      <div class="srow"><span class="sk">مساحة السطح — Roof area</span><span class="sv" id="rarea">--</span></div>
+      <div id="twarn" class="wbox" style="display:none"></div>
+    </div>
+    <div class="card">
+      <div class="ct"><div class="ico ia">🔄</div>جهاز التحويل (الإنفرتر) — Inverter</div>
+      <div class="ib ibl">🔌 يحوّل كهرباء الألواح إلى تيار منزلي — Converts solar DC to usable AC</div>
+      <div class="srow shl"><span class="sk">الحجم المطلوب — Size</span><span class="sv" id="rinv" style="color:var(--grn);font-weight:900">--</span></div>
+      <div class="srow"><span class="sk">النوع الموصى به — Type</span><span class="sv" id="rinvt">--</span></div>
+      <div class="srow"><span class="sk">الكفاءة — Efficiency</span><span class="sv">96%</span></div>
+    </div>
+    <div class="card" id="batcard">
+      <div class="ct"><div class="ico ig">🔋</div>منظومة البطاريات — Battery Bank</div>
+      <div class="srow shl"><span class="sk">عدد البطاريات — Count</span><span class="sv" id="rbn" style="color:var(--grn);font-weight:900">--</span></div>
+      <div class="srow"><span class="sk">السعة الإجمالية — Capacity</span><span class="sv" id="rbcap">--</span></div>
+      <div class="srow"><span class="sk">نوع البطاريات — Type</span><span class="sv" id="rbt">--</span></div>
+      <div class="srow"><span class="sk">جهد المنظومة — Voltage</span><span class="sv" id="rbv">--</span></div>
+      <div class="srow"><span class="sk">نسبة الاستخدام الآمن — DoD</span><span class="sv" id="rdod">--</span></div>
+      <div class="srow"><span class="sk">العمر المتوقع — Lifespan</span><span class="sv" id="rbl">--</span></div>
+      <div id="bathw" class="wbox" style="display:none"></div>
+    </div>
+    <div class="card">
+      <div class="ct"><div class="ico ia">🎛️</div>منظم الشحن MPPT</div>
+      <div class="ib ibl">⚙️ يشحن البطاريات من الألواح بأعلى كفاءة — Maximizes panel-to-battery charging</div>
+      <div class="srow"><span class="sk">التيار المطلوب — Current</span><span class="sv" id="rma">--</span></div>
+      <div class="srow"><span class="sk">عدد وحدات MPPT (60A/وحدة)</span><span class="sv" id="rmc">--</span></div>
+    </div>
+    <!-- BRANDS -->
+    <div class="card">
+      <div class="ct"><div class="ico is">🏷️</div>ماركات موصى بها في العراق <span class="es">Recommended Brands</span></div>
+      <div class="ib ibg">💡 اشتر من وكلاء معتمدين وطالب بضمان خطي — Buy from authorized dealers, get written warranty</div>
+      <div style="font-size:12px;font-weight:700;color:var(--tx3);margin-bottom:6px">☀️ الألواح</div>
+      <div class="bgrid">
+        <div class="bcard"><div class="bi">🇨🇳</div><div class="bn">Jinko Solar</div><div class="bt">Mono PERC/TOPCon</div><div class="bb2 bg">✅ الأكثر انتشاراً</div></div>
+        <div class="bcard"><div class="bi">🇨🇳</div><div class="bn">LONGi Solar</div><div class="bt">Mono PERC/TOPCon</div><div class="bb2 bg">✅ موثوق</div></div>
+        <div class="bcard"><div class="bi">🇨🇳</div><div class="bn">Canadian Solar</div><div class="bt">HiKu PERC</div><div class="bb2 ba">جيد للحرارة</div></div>
+      </div>
+      <div style="font-size:12px;font-weight:700;color:var(--tx3);margin:10px 0 6px">🔄 الإنفرترات</div>
+      <div class="bgrid">
+        <div class="bcard"><div class="bi">🇨🇳</div><div class="bn">Deye / Sunsynk</div><div class="bt">Hybrid</div><div class="bb2 bg">✅ الأكثر انتشاراً</div></div>
+        <div class="bcard"><div class="bi">🇨🇳</div><div class="bn">Growatt</div><div class="bt">Hybrid/Off-Grid</div><div class="bb2 bg">✅ شائع في العراق</div></div>
+        <div class="bcard"><div class="bi">🇩🇪</div><div class="bn">SMA / Fronius</div><div class="bt">Grid-Tie</div><div class="bb2 ba">جودة عالية</div></div>
+      </div>
+      <div style="font-size:12px;font-weight:700;color:var(--tx3);margin:10px 0 6px">🔋 البطاريات</div>
+      <div class="bgrid">
+        <div class="bcard"><div class="bi">🇨🇳</div><div class="bn">Pylontech</div><div class="bt">LiFePO4</div><div class="bb2 bg">✅ الأفضل للعراق</div></div>
+        <div class="bcard"><div class="bi">🇨🇳</div><div class="bn">BYD Battery-Box</div><div class="bt">LiFePO4</div><div class="bb2 bg">✅ موثوق</div></div>
+        <div class="bcard"><div class="bi">⚠️</div><div class="bn">AGM محلي</div><div class="bt">Lead-Acid</div><div class="bb2 bam">⚠️ تحتاج تبريد</div></div>
+      </div>
+      <div class="ib ibr" style="margin-top:8px">🚨 <strong>كيف تكتشف اللوح المغشوش:</strong> تحقق من السيريال على الموقع الرسمي — سعر أقل 25%+ من السوق = تحقق من المصدر — اطلب ضمان مختوم</div>
+    </div>
+  </div>
+  <!-- AX3: SAVINGS -->
+  <div class="apnl" id="axsav">
+    <div class="gcost"><div style="font-size:11px;color:var(--red);margin-bottom:4px">ما تدفعه الآن سنوياً — Annual spend</div><div class="gbig" id="rcurtot">--</div><div style="font-size:10px;color:var(--tx3)">دينار/سنة — IQD/year</div><div class="ssplit" id="cursplit" style="margin-top:10px"></div></div>
+    <!-- Tiered breakdown -->
+    <div class="card">
+      <div class="ct"><div class="ico ia">📊</div>كيف تُحسب فاتورة الدولة — Tiered Billing</div>
+      <table class="tt" id="ttbl"></table>
+      <div class="ib ibl" style="margin-top:8px" id="tnote"></div>
+      <a class="handoff" id="toBill" href="/">
+        <div class="handoff-top">
+          <span class="handoff-ico">🧾</span>
+          <span class="handoff-title">راجع فاتورتك بالتفصيل</span>
+        </div>
+        <div class="handoff-body" id="toBillBody"></div>
+        <span class="handoff-go">افتح حاسبة الفاتورة <span class="arw">←</span></span>
+      </a>
+    </div>
+    <!-- Coverage bars -->
+    <div class="card" id="covcard" style="display:none"><div class="ct"><div class="ico is">📊</div>ماذا يغطي النظام الشمسي؟</div><div id="covbars"></div></div>
+    <!-- Before/After slider -->
+    <div class="card" id="bacard" style="display:none">
+      <div class="ct"><div class="ico ig">📊</div>قبل وبعد الطاقة الشمسية <span class="es">Before vs After</span></div>
+      <div class="bawrap">
+        <div class="bac" id="bac" onmousedown="baStart(event)" ontouchstart="baStart(event)">
+          <div class="bab"><div class="bal">⚡ قبل — Before</div><div class="bav" id="babv">--</div><div class="bau">دينار/شهر</div></div>
+          <div class="baa" id="baa"><div class="bal">☀️ بعد — After</div><div class="bav" id="baav">--</div><div class="bau">دينار/شهر</div></div>
+          <div class="bah" id="bah" style="right:50%"><div class="bahc">⟺</div></div>
+        </div>
+        <div style="text-align:center;margin-top:7px;font-size:12px;color:var(--tx3)">اسحب للمقارنة — <strong id="bapct" style="color:var(--grn)">--</strong> توفير شهري</div>
+      </div>
+    </div>
+    <!-- Total savings -->
+    <div class="sbanner"><div style="font-size:11px;color:var(--tx3);margin-bottom:4px">💰 إجمالي توفيرك السنوي — Total annual savings</div><div class="sbig" id="rtotsav">--</div><div class="ssub">دينار عراقي/سنة — IQD/year</div><div class="ssplit" id="savsplit"></div></div>
+    <!-- Payback -->
+    <div class="card">
+      <div class="ct"><div class="ico ig">📅</div>حساب الاسترداد والعائد — Payback & ROI</div>
+      <div class="srow shg"><span class="sk">فترة استرداد رأس المال — Payback</span><span class="sv" id="rpb" style="color:var(--grn);font-weight:900">--</span></div>
+      <div class="srow"><span class="sk">تكلفة النظام التقريبية — System cost</span><span class="sv" id="rsc">--</span></div>
+      <div class="srow"><span class="sk">التوفير الشهري المتوقع — Monthly savings</span><span class="sv" id="rms">--</span></div>
+      <div class="srow"><span class="sk">العائد على الاستثمار — 10-yr ROI</span><span class="sv" id="rroi">--</span></div>
+      <div class="srow"><span class="sk">مجموع التوفير — 25-yr savings</span><span class="sv" id="r25yr">--</span></div>
+    </div>
+    <div class="disc" id="ogfinal" style="display:none">
+      <div class="dt">📋 ملاحظة Grid-Tie</div>
+      <p>في العراق <strong>لا توجد آلية تسعير عكسي</strong> — الطاقة الزائدة تذهب للشبكة مجاناً. التوفير هو تخفيض في الفاتورة فقط. <span class="es">No net metering in Iraq — savings are bill reductions only.</span></p>
+    </div>
+    <div class="ib ibl">📌 الحسابات تستخدم التسعير المتدرج الرسمي · بيانات الشمس من NASA SSE وPVGIS · الأرقام تقديرية — استشر مهندساً كهربائياً قبل التنفيذ</div>
+  </div>
+  <div class="navrow"><button class="bprev" onclick="editSystem()">✏️ تعديل الإعدادات</button></div>
+</div>
+</div><!-- /app -->
+
+<!-- APPLIANCE LOAD CALCULATOR FAB -->
+<button id="lcfab" onclick="openLC()">⚡ <span id="fabtxt">حاسبة الأجهزة</span><span class="fbb" id="fabbdg" style="display:none">0</span></button>
+
+<!-- MODAL -->
+<div id="lcmod" onclick="lcBg(event)">
+<div id="lcsh">
+  <div class="lchdr"><div style="font-size:20px">⚡</div><h3>حاسبة أجهزة المنزل — Appliance Load Calculator</h3><button class="lcx" onclick="closeLC()">✕</button></div>
+  <div class="lcbody">
+    <div class="lcsum">
+      <div class="lsmi"><div class="lv" id="ltKw">0.0</div><div class="ll">kW ذروة</div></div>
+      <div class="lsmi"><div class="lv" id="ltKwh">0</div><div class="ll">kWh/يوم</div></div>
+      <div class="lsmi"><div class="lv" id="ltAmp">0</div><div class="ll">أمبير (220V)</div></div>
+      <div class="lsmi"><div class="lv" id="ltMo">0</div><div class="ll">kWh/شهر</div></div>
+    </div>
+    <div class="addedbar" id="addedbar" style="display:none">
+      <div class="adbar-hd"><span>✅ الأجهزة المضافة</span><button class="clrall" onclick="clearAll()">🗑 مسح الكل</button></div>
+      <div id="addedrows"></div>
+    </div>
+    <div class="lccats">
+      <button class="lccat on" onclick="fcat('all',this)">🏠 الكل</button>
+      <button class="lccat" onclick="fcat('cool',this)">❄️ تبريد</button>
+      <button class="lccat" onclick="fcat('kit',this)">🍳 مطبخ</button>
+      <button class="lccat" onclick="fcat('lit',this)">💡 إضاءة</button>
+      <button class="lccat" onclick="fcat('ent',this)">📺 ترفيه</button>
+      <button class="lccat" onclick="fcat('wat',this)">💧 مضخة</button>
+      <button class="lccat" onclick="fcat('oth',this)">🔌 أخرى</button>
+    </div>
+    <div id="apcatalog"></div>
+    <!-- Custom appliance -->
+    <div class="cfm">
+      <div style="font-size:12px;font-weight:700;color:var(--tx);margin-bottom:8px">➕ جهاز مخصص — Custom appliance</div>
+      <div class="g3" style="gap:8px">
+        <div class="fg" style="margin:0"><label style="font-size:11px">الاسم — Name</label><input type="text" id="cname" placeholder="جهاز مخصص" style="font-size:13px;padding:8px 10px"></div>
+        <div class="fg" style="margin:0"><label style="font-size:11px">القدرة — Power</label><div style="display:flex;gap:4px"><input type="number" id="cpower" placeholder="100" min="1" style="font-size:13px;padding:8px 10px"><select id="cunit" style="padding:8px 5px;font-size:12px;width:65px"><option value="W">W</option><option value="A">A</option></select></div></div>
+        <div class="fg" style="margin:0"><label style="font-size:11px">ساعات/يوم</label><input type="number" id="chrs" placeholder="4" min="0.5" max="24" step="0.5" style="font-size:13px;padding:8px 10px"></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+        <input type="number" id="cqty" placeholder="1" min="1" value="1" style="font-size:13px;padding:8px 10px;width:60px">
+        <label style="font-size:11px;color:var(--tx3)">عدد / Qty</label>
+        <button onclick="addCustom()" style="flex:1;padding:8px 14px;background:var(--acc);color:var(--on-solid);border:none;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif">➕ إضافة</button>
+      </div>
+    </div>
+    <div class="ib iba">💡 1 طن تبريد ≈ 1.4 kW | مكيف 1.5 طن ≈ 2.1 kW | مكيف 2 طن ≈ 2.8 kW<br>السخان والغسالة استهلاكهم عالٍ — ضع ساعات تشغيل واقعية</div>
+    <button class="lcapply" id="lcapply" onclick="applyLC()" style="opacity:.45;pointer-events:none">✅ استخدم هذا الاستهلاك في الحاسبة</button>
+  </div>
+</div>
+</div>
+
+<footer class="site-foot">
+  <span class="disclaimer">
+    نتائج استرشادية للتخطيط فقط — الأحجام والأسعار تقديرية وتتغيّر حسب المعدّات والمجهّز والتركيب.
+    حسابات فاتورة الدولة مبنية على تعرفة الصنف المنزلي نفسها المستعملة في
+    <a href="/">حاسبة الفاتورة</a>.
+  </span>
+  <span class="foot-links">
+    <a href="/">حاسبة فاتورة الكهرباء</a>
+    <a href="/solar">حاسبة الطاقة الشمسية</a>
+  </span>
+</footer>
+
+<script>
+// ═══ DB ═══
+const DB={mosul:[36.33,43.12,"الموصل","Mosul",[2.8,3.5,4.6,5.8,6.8,7.5,7.8,7.4,6.2,4.8,3.2,2.6],45],duhok:[36.87,42.99,"دهوك","Duhok",[2.7,3.4,4.5,5.7,6.6,7.4,7.6,7.2,6.0,4.6,3.1,2.5],43],zakho:[37.14,42.68,"زاخو","Zakho",[2.6,3.3,4.4,5.6,6.5,7.3,7.5,7.1,5.9,4.5,3.0,2.4],42],suly:[35.56,45.44,"السليمانية","Sulaymaniyah",[2.9,3.6,4.7,5.9,6.9,7.6,7.9,7.5,6.3,4.9,3.3,2.7],44],halabja:[35.18,45.99,"حلبجة","Halabja",[3.0,3.7,4.8,6.0,7.0,7.7,8.0,7.6,6.4,5.0,3.4,2.8],43],erbil:[36.19,44.01,"أربيل","Erbil",[3.0,3.8,4.9,6.1,7.1,7.8,8.0,7.6,6.4,5.0,3.4,2.8],45],shaqlawa:[36.41,44.32,"شقلاوة","Shaqlawa",[3.1,3.9,5.0,6.2,7.2,7.9,8.1,7.7,6.5,5.1,3.5,2.9],38],kirkuk:[35.47,44.39,"كركوك","Kirkuk",[3.3,4.1,5.2,6.4,7.3,8.0,8.3,7.9,6.7,5.3,3.7,3.1],47],hawija:[35.36,43.77,"الحويجة","Hawija",[3.3,4.1,5.2,6.4,7.3,8.0,8.3,7.9,6.7,5.3,3.7,3.1],47],tikrit:[34.59,43.69,"تكريت","Tikrit",[3.5,4.3,5.4,6.6,7.5,8.2,8.5,8.1,6.9,5.5,3.9,3.3],48],samarra:[34.20,43.87,"سامراء","Samarra",[3.5,4.3,5.4,6.6,7.5,8.2,8.5,8.1,6.9,5.5,3.9,3.3],48],baiji:[34.93,43.49,"بيجي","Baiji",[3.4,4.2,5.3,6.5,7.4,8.1,8.4,8.0,6.8,5.4,3.8,3.2],48],baqubah:[33.75,44.66,"بعقوبة","Baqubah",[3.6,4.4,5.5,6.7,7.6,8.3,8.6,8.2,7.0,5.6,4.0,3.4],48],miqdad:[33.97,44.93,"المقدادية","Miqdadiyah",[3.6,4.4,5.5,6.7,7.6,8.3,8.6,8.2,7.0,5.6,4.0,3.4],48],khanaqin:[34.34,45.38,"خانقين","Khanaqin",[3.7,4.5,5.6,6.8,7.7,8.4,8.7,8.3,7.1,5.7,4.1,3.5],47],baghdad:[33.32,44.37,"بغداد","Baghdad",[3.7,4.5,5.7,6.9,7.8,8.5,8.8,8.4,7.2,5.8,4.1,3.5],49],abuGhraib:[33.30,44.07,"أبو غريب","Abu Ghraib",[3.7,4.5,5.7,6.9,7.8,8.5,8.8,8.4,7.2,5.8,4.1,3.5],49],mahmud:[33.05,44.35,"المحمودية","Mahmudiyah",[3.8,4.6,5.8,7.0,7.9,8.6,8.9,8.5,7.3,5.9,4.2,3.6],49],ramadi:[33.42,43.30,"الرمادي","Ramadi",[3.9,4.7,5.9,7.1,8.0,8.7,9.0,8.6,7.4,6.0,4.3,3.7],50],fallujah:[33.35,43.78,"الفلوجة","Fallujah",[3.8,4.6,5.8,7.0,7.9,8.6,8.9,8.5,7.3,5.9,4.2,3.6],50],hit:[33.64,42.83,"هيت","Hit",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],haditha:[34.11,42.37,"حديثة","Haditha",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],anah:[34.37,41.99,"عنه","Anah",[4.1,4.9,6.1,7.3,8.2,8.9,9.2,8.8,7.6,6.2,4.5,3.9],50],qaim:[34.36,41.12,"القائم","Al-Qa'im",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],rutba:[33.04,40.29,"روتبا","Rutba",[4.5,5.3,6.5,7.7,8.6,9.3,9.6,9.2,8.0,6.6,4.9,4.3],50],baghdadi:[33.85,42.59,"البغدادي","Baghdadi",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],hilla:[32.47,44.43,"الحلة","Hilla",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],musayyib:[32.78,44.29,"المسيب","Al-Musayyib",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],hashimiya:[32.46,44.64,"الهاشمية","Al-Hashimiyah",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],mahawil:[32.67,44.45,"المحاويل","Al-Mahawil",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],karbala:[32.62,44.02,"كربلاء","Karbala",[4.1,4.9,6.1,7.3,8.2,8.9,9.2,8.8,7.6,6.2,4.5,3.9],50],ainTamur:[32.34,43.30,"عين التمر","Ain Tamur",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],najaf:[31.99,44.33,"النجف","Najaf",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],kufa:[32.04,44.40,"الكوفة","Kufa",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],mishkhab:[31.73,44.58,"المشخاب","Mishkhab",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],diwaniya:[31.99,44.92,"الديوانية","Diwaniyah",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],shamiya:[31.89,45.22,"الشامية","Shamiya",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],kut:[32.49,45.84,"الكوت","Kut",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],numaniya:[32.53,45.30,"النعمانية","Nu'maniyah",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],amara:[31.84,47.15,"العمارة","Amara",[4.1,4.9,6.1,7.3,8.2,8.9,9.2,8.8,7.6,6.2,4.5,3.9],51],qalSalih:[31.52,47.28,"قلعة صالح","Qal'at Salih",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],nasiriya:[31.04,46.26,"الناصرية","Nasiriyah",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],shatrah:[31.41,46.17,"الشطرة","Al-Shatrah",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],suqS:[30.92,46.44,"سوق الشيوخ","Suq Al-Shuyukh",[4.4,5.2,6.4,7.6,8.5,9.2,9.5,9.1,7.9,6.5,4.8,4.2],51],samawa:[31.32,45.28,"السماوة","Samawah",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],rumaitha:[31.51,45.21,"الرميثة","Rumaitha",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],basra:[30.51,47.78,"البصرة","Basra",[4.5,5.3,6.5,7.7,8.6,9.3,9.6,9.2,8.0,6.6,4.9,4.3],52],zubair:[30.39,47.71,"الزبير","Zubair",[4.6,5.4,6.6,7.8,8.7,9.4,9.7,9.3,8.1,6.7,5.0,4.4],52],abuKhasib:[30.43,47.97,"أبو الخصيب","Abu Al-Khasib",[4.6,5.4,6.6,7.8,8.7,9.4,9.7,9.3,8.1,6.7,5.0,4.4],52],qurna:[31.00,47.43,"القرنة","Qurna",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],faw:[29.98,48.47,"الفاو","Al-Faw",[4.7,5.5,6.7,7.9,8.8,9.5,9.8,9.4,8.2,6.8,5.1,4.5],53]};
+const PROVS={"نينوى|Nineveh":["mosul","duhok","zakho"],"دهوك|Duhok":["duhok","zakho"],"أربيل|Erbil":["erbil","shaqlawa"],"السليمانية|Sulaymaniyah":["suly","halabja"],"كركوك|Kirkuk":["kirkuk","hawija"],"صلاح الدين|Saladin":["tikrit","samarra","baiji"],"ديالى|Diyala":["baqubah","miqdad","khanaqin"],"الأنبار|Anbar":["ramadi","fallujah","hit","haditha","anah","qaim","rutba","baghdadi"],"بغداد|Baghdad":["baghdad","abuGhraib","mahmud"],"بابل|Babylon":["hilla","musayyib","hashimiya","mahawil"],"كربلاء|Karbala":["karbala","ainTamur"],"النجف|Najaf":["najaf","kufa","mishkhab"],"القادسية|Qadisiyyah":["diwaniya","shamiya"],"واسط|Wasit":["kut","numaniya"],"ميسان|Maysan":["amara","qalSalih"],"المثنى|Muthanna":["samawa","rumaitha"],"ذي قار|Dhi Qar":["nasiriya","shatrah","suqS"],"البصرة|Basra":["basra","zubair","abuKhasib","qurna","faw"]};
+const MAR=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+const MEN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const LOADS={light:{n:"إضاءة+مراوح",pkw:.8,dkwh:4},basic:{n:"ثلاجة+تلفاز",pkw:1.8,dkwh:8},ac1:{n:"مكيف 1 طن",pkw:2.5,dkwh:14},ac2:{n:"مكيفان 1.5طن",pkw:5,dkwh:28},ac3:{n:"3+ مكيفات",pkw:9,dkwh:50},full:{n:"بيت كامل",pkw:12,dkwh:60}};
+/* الشرائح تأتي من tariff.js — نفس المصدر الذي تستعمله صفحة الفاتورة */
+const T=window.Tariff;
+// appliance catalog [ar,en,watts,hrs,cat,icon,tip]
+const APPDB=[
+["مكيف سبليت 1 طن","Split AC 1-ton",1400,10,"cool","❄️","أكثر جهاز استهلاكاً في الصيف"],
+["مكيف سبليت 1.5 طن","Split AC 1.5-ton",2100,10,"cool","❄️",""],
+["مكيف سبليت 2 طن","Split AC 2-ton",2800,10,"cool","❄️","للغرف الكبيرة"],
+["مكيف نافذة","Window AC",1200,10,"cool","🪟",""],
+["مروحة سقف","Ceiling Fan",80,12,"cool","🌀",""],
+["مروحة عادية","Standing Fan",60,10,"cool","💨",""],
+["كولر صحراوي","Desert Cooler",200,8,"cool","🌬️","فعّال في المناطق الجافة"],
+["ثلاجة عادية","Refrigerator",150,24,"kit","🧊","تعمل 24 ساعة — متقطعة"],
+["ثلاجة كبيرة/فريزر","Large Fridge",250,24,"kit","🧊",""],
+["غسالة ملابس","Washing Machine",1800,1,"kit","🫧","ضع ساعات واقعية"],
+["غسالة صحون","Dishwasher",1500,1,"kit","🍽️",""],
+["كولر ماء","Water Dispenser",100,24,"kit","🚰",""],
+["غلاية كهربائية","Electric Kettle",1800,.5,"kit","☕",""],
+["مايكروويف","Microwave",1200,.5,"kit","📦",""],
+["فرن كهربائي","Electric Oven",2200,1,"kit","🍞",""],
+["خلاط","Blender",500,.3,"kit","🥤",""],
+["لمبة LED","LED Bulb",10,10,"lit","💡","توفير ممتاز"],
+["لمبة فلورسنت","Fluorescent",25,10,"lit","🔦",""],
+["شريط LED","LED Strip",24,10,"lit","✨",""],
+["تلفاز 32\"","TV 32\"",80,6,"ent","📺",""],
+["تلفاز 43–55\"","TV 43–55\"",120,6,"ent","📺",""],
+["رسيفر/ستالايت","Satellite",20,6,"ent","📡",""],
+["راوتر انترنت","Internet Router",15,24,"ent","📶","يعمل 24 ساعة"],
+["كمبيوتر مكتبي","Desktop PC",300,6,"ent","🖥️",""],
+["لابتوب","Laptop",65,6,"ent","💻",""],
+["مشغّل ألعاب","Gaming Console",150,3,"ent","🎮",""],
+["طلمبة ماء 0.5HP","Water Pump 0.5HP",375,2,"wat","💧",""],
+["طلمبة ماء 1HP","Water Pump 1HP",750,2,"wat","💧",""],
+["طلمبة ماء 2HP","Water Pump 2HP",1500,1,"wat","💧",""],
+["سخان ماء 50L","Water Heater 50L",2000,1,"wat","🚿","استخدمه في وقت الشمس"],
+["مكنسة كهربائية","Vacuum Cleaner",1200,.5,"oth","🧹",""],
+["مكواة ملابس","Clothes Iron",1800,.5,"oth","👔",""],
+["شاحن جوال","Phone Charger",10,4,"oth","📱",""],
+["طابعة","Printer",80,.5,"oth","🖨️",""],
+["UPS انتظار","UPS Standby",50,24,"oth","🔋",""]];
+
+// STATE
+let lang='ar',slat=null,slng=null,cityKey=null;
+let srcs={},roles={},solarMode='hybrid',loadPro='light',seasMode='s';
+let lastRes=null;
+// Appliance state
+let lcItems=[],lcCat='all';
+
+// ═══ DARK ═══
+
+// ═══ LANG ═══
+const TT={ar:{tag:'مصنوع للعراق',h1:'احسب <em>نظامك الشمسي</em><br>المناسب لحياتك',sub:'أداة مجانية للعراق — أسعار متدرجة حقيقية، مولدات أهلية، حرارة الصيف القاسية',lc1t:'وضعك الحالي',lc1d:'نفهم كل مصادر الطاقة التي تعتمد عليها',lc2t:'التحول الشمسي',lc2d:'نحسب الحجم المناسب وكامل المكونات',lc3t:'توفيرك الحقيقي',lc3d:'كم ستوفر شهرياً مقارنةً بما تدفعه الآن',start:'ابدأ الحساب',psl:['الموقع','طاقتك الحالية','الشمسي','النتائج'],bk:'← الرئيسية',s1st:'الخطوة الأولى',s1ti:'أين تسكن؟',s1de:'الموقع يحدد قوة الشمس ودرجات الحرارة',lgps:'موقعي تلقائياً',lcit:'اختر مدينتك',lman:'إحداثيات',gpst:'اضغط هنا لتحديد موقعك',n1:'التالي: طاقتك الحالية ←',s2st:'الخطوة الثانية',s2ti:'ما مصادر الكهرباء عندك الآن؟',s2de:'اختر كل ما ينطبق عليك',n2:'التالي: النظام الشمسي ←',s3st:'الخطوة الثالثة',s3ti:'كيف تريد الاعتماد على الطاقة الشمسية؟',s3de:'اختر النوع الذي يناسب وضعك',mh:'💡 من Google Maps: اضغط مطولاً على موقعك',nb:'الفاتورة',ns:'الطاقة الشمسية'},en:{tag:'Made for Iraq',h1:'Find the <em>right solar system</em><br>for your life',sub:'Free tool for Iraq — real tiered pricing, private generators, extreme heat',lc1t:'Current setup',lc1d:'We map all your energy sources',lc2t:'Going solar',lc2d:'We size your system and spec every component',lc3t:'Your real savings',lc3d:'Exactly how much less you spend monthly',start:'Get Started',psl:['Location','Energy Now','Solar','Results'],bk:'← Home',s1st:'Step 1',s1ti:'Where are you?',s1de:'Location determines sun strength and temperatures',lgps:'Auto GPS',lcit:'Choose city',lman:'Coordinates',gpst:'Click to detect my location',n1:'Next: Current Energy →',s2st:'Step 2',s2ti:'What power sources do you use?',s2de:'Select all that apply',n2:'Next: Solar System →',s3st:'Step 3',s3ti:'How do you want to use solar?',s3de:'Choose the setup that fits you',mh:'💡 From Google Maps: long-press your location',nb:'Bill',ns:'Solar'}};
+function setL(l){
+  lang=l;
+  document.getElementById('bar').classList.toggle('on',l==='ar');
+  document.getElementById('ben').classList.toggle('on',l==='en');
+  document.documentElement.setAttribute('dir',l==='ar'?'rtl':'ltr');
+  const t=TT[l];
+  const m={'ltag':'tag','lh1':'h1','lsub':'sub','lc1t':'lc1t','lc1d':'lc1d','lc2t':'lc2t','lc2d':'lc2d','lc3t':'lc3t','lc3d':'lc3d','lstart':'start','bkhome':'bk','s1step':'s1st','s1title':'s1ti','s1desc':'s1de','ltgps':'lgps','ltcity':'lcit','ltman':'lman','gpstxt':'gpst','n1txt':'n1','s2step':'s2st','s2title':'s2ti','s2desc':'s2de','n2txt':'n2','s3step':'s3st','s3title':'s3ti','s3desc':'s3de','manhint':'mh','navBill':'nb','navSolar':'ns'};
+  for(const[id,k] of Object.entries(m)){const e=document.getElementById(id);if(e){if(id==='lh1')e.innerHTML=t[k];else e.textContent=t[k];}}
+  t.psl.forEach((s,i)=>document.getElementById('psl'+(i+1)).textContent=s);
+  fillProvs();
+  try{localStorage.setItem('irq_lang',l)}catch(e){}
+}
+
+// ═══ NAV ═══
+function startApp(){document.getElementById('land').style.display='none';document.getElementById('app').style.display='block';goStep(1)}
+function goLand(){document.getElementById('app').style.display='none';document.getElementById('land').style.display='flex'}
+function goStep(n){
+  if(n===2&&!hasLoc()){alert(lang==='ar'?'⚠️ الرجاء تحديد موقعك':'⚠️ Select your location');return}
+  if(n===3&&!hasKwh()){alert(lang==='ar'?'⚠️ الرجاء إدخال الاستهلاك':'⚠️ Enter consumption');return}
+  [1,2,3,4].forEach(i=>{
+    document.getElementById('sec'+i).classList.toggle('act',i===n);
+    const p=document.getElementById('ps'+i);
+    p.classList.toggle('act',i===n);p.classList.toggle('dn',i<n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  save();
+}
+function editSystem(){goStep(3)}
+function newSystem(){if(confirm(lang==='ar'?'هل تريد البدء من جديد؟ ستُمسح كل البيانات.':'Start fresh? All data will be cleared.')){clearState();goStep(1)}}
+
+// ═══ LOCATION ═══
+function stab(t,btn){
+  document.querySelectorAll('.lpnl').forEach(p=>p.classList.remove('on'));
+  document.getElementById('p'+t).classList.add('on');
+  document.querySelectorAll('.ltb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  chk1();
+}
+function doGPS(){
+  const s=document.getElementById('gst');
+  if(!navigator.geolocation){s.innerHTML='<span style="color:var(--red)">❌ GPS غير متاح</span>';return}
+  s.textContent='🔄 '+(lang==='ar'?'جارٍ التحديد...':'Detecting...');
+  navigator.geolocation.getCurrentPosition(p=>{
+    slat=+p.coords.latitude.toFixed(4);slng=+p.coords.longitude.toFixed(4);cityKey=null;
+    s.innerHTML=`<span style="color:var(--grn);font-weight:700">✅ ${slat}°N, ${slng}°E</span>`;
+    chk1();save();
+  },()=>{s.innerHTML='<span style="color:var(--red)">❌ '+(lang==='ar'?'تعذر — اختر مدينتك':'Failed — choose city')+'</span>'});
+}
+function fillProvs(){
+  const s=document.getElementById('selprov'),cur=s.value;
+  s.innerHTML=`<option value="">${lang==='ar'?'-- اختر المحافظة --':'-- Select Province --'}</option>`;
+  for(const k in PROVS){const[a,e]=k.split('|');const o=document.createElement('option');o.value=k;o.textContent=lang==='ar'?`${a} (${e})`:`${e} / ${a}`;s.appendChild(o)}
+  if(cur){s.value=cur;fillCities()}
+}
+function fillCities(){
+  const pk=document.getElementById('selprov').value;
+  if(!pk){document.getElementById('cityrow').style.display='none';return}
+  document.getElementById('cityrow').style.display='block';
+  const sel=document.getElementById('selcity');sel.innerHTML='';
+  PROVS[pk].forEach(ck=>{const d=DB[ck];const o=document.createElement('option');o.value=ck;o.textContent=`${d[2]} — ${d[3]}`;sel.appendChild(o)});
+  pickCity();chk1();
+}
+function pickCity(){cityKey=document.getElementById('selcity').value;if(cityKey&&DB[cityKey]){slat=DB[cityKey][0];slng=DB[cityKey][1]}chk1();save()}
+
+// ═══ VALIDATION ═══
+function hasLoc(){
+  if(slat&&slng)return true;
+  const la=parseFloat(document.getElementById('mlat').value),lo=parseFloat(document.getElementById('mlng').value);
+  if(!isNaN(la)&&!isNaN(lo)&&la>=29&&la<=38&&lo>=38&&lo<=49){slat=la;slng=lo;return true}
+  return false;
+}
+function hasKwh(){
+  if(seasMode==='w'){const s=parseFloat(document.getElementById('monsum').value),w=parseFloat(document.getElementById('monwin').value);return(!isNaN(s)&&s>0)&&(!isNaN(w)&&w>0)}
+  const a=parseFloat(document.getElementById('ann').value),m=parseFloat(document.getElementById('mon').value);
+  return(!isNaN(a)&&a>=100)||(!isNaN(m)&&m>=50);
+}
+function chk1(){document.getElementById('next1').className='bnext '+(hasLoc()?'rdy':'wt')}
+function chk2(){document.getElementById('next2').className='bnext '+(hasKwh()?'rdy':'wt')}
+function getAnn(){
+  if(seasMode==='w'){const s=parseFloat(document.getElementById('monsum').value)||0,w=parseFloat(document.getElementById('monwin').value)||0,m=parseFloat(document.getElementById('monmid').value)||((s+w)/2);return s*4+w*4+m*4}
+  return parseFloat(document.getElementById('ann').value)||(parseFloat(document.getElementById('mon').value)*12);
+}
+function sync(f){const a=document.getElementById('ann'),m=document.getElementById('mon');if(f==='a'&&a.value)m.value=Math.round(+a.value/12);if(f==='m'&&m.value)a.value=Math.round(+m.value*12)}
+function calcSeasAnn(){const s=parseFloat(document.getElementById('monsum').value)||0,w=parseFloat(document.getElementById('monwin').value)||0,m=parseFloat(document.getElementById('monmid').value)||0;const ann=s*4+w*4+m*4;document.getElementById('annseas').value=ann>0?Math.round(ann):'';chk2()}
+function setSeason(mode){seasMode=mode;document.getElementById('sbsingle').classList.toggle('on',mode==='s');document.getElementById('sbseas').classList.toggle('on',mode==='w');document.getElementById('segsingle').style.display=mode==='s'?'block':'none';document.getElementById('segseas').style.display=mode==='w'?'block':'none'}
+// sources
+function togSrc(id){const c=document.getElementById('src'+id),d=document.getElementById('det'+id);if(c.classList.contains('sel')){c.classList.remove('sel');d.classList.remove('op');d.style.display='none';delete srcs[id];delete roles[id]}else{c.classList.add('sel');d.style.display='block';setTimeout(()=>d.classList.add('op'),10);srcs[id]=1;if(!roles[id])setRole(id,'p')}save()}
+function setRole(id,r){roles[id]=r;['p','k'].forEach(x=>{const e=document.getElementById('r'+id+x);if(e)e.className='rb '+(x===r?'rp':'rk')});save()}
+function updGenHrs(){document.getElementById('gencustr').style.display=document.getElementById('gentype').value==='custom'?'block':'none';calcGenTot()}
+function getGenHrs(){const v=document.getElementById('gentype').value;if(v==='custom'){const c=parseFloat(document.getElementById('gencusth').value);return isNaN(c)?12:c}return parseFloat(v)}
+function calcGenTot(){const a=parseFloat(document.getElementById('genamps').value)||0,p=parseFloat(document.getElementById('genap').value)||0,e=parseFloat(document.getElementById('genex').value)||0,m=parseFloat(document.getElementById('genmt').value)||0,t=Math.round(a*p+e+m);document.getElementById('gentotd').textContent=t>0?t.toLocaleString('ar-IQ'):'—'}
+// mode/load
+function setMode(m){solarMode=m;['hybrid','offgrid','ongrid'].forEach(x=>document.getElementById('m'+x).classList.toggle('sel',x===m));document.getElementById('ogdisc').style.display=m==='ongrid'?'block':'none';document.getElementById('ogfinal').style.display=m==='ongrid'?'block':'none';save()}
+function setLoad(l){loadPro=l;Object.keys(LOADS).forEach(k=>document.getElementById('ld'+k).classList.toggle('sel',k===l));showAcReal();save()}
+function showAcReal(){const has=['ac1','ac2','ac3','full'].includes(loadPro);const b=document.getElementById('acreal');if(!has){b.style.display='none';return}b.style.display='block';const ld=LOADS[loadPro];document.getElementById('acrows').innerHTML=`<div class="acr"><span>حمل ذروة المكيفات</span><span>${ld.pkw} kW</span></div><div class="acr"><span>الاستهلاك اليومي التقديري</span><span>${ld.dkwh} kWh/يوم</span></div>`}
+function showBatWarn(){document.getElementById('batwarn').style.display=document.getElementById('btype').value==='agm'?'flex':'none'}
+function togAdv(){const b=document.getElementById('advbody'),t=document.getElementById('advtog');const op=b.style.display==='block';b.style.display=op?'none':'block';t.innerHTML=(op?'▸ ':'▾ ')+'إعدادات متقدمة <span class="es">Advanced</span>'}
+function showAx(ax){document.querySelectorAll('.atab').forEach((t,i)=>t.classList.toggle('on',['cur','sol','sav'][i]===ax));document.querySelectorAll('.apnl').forEach(p=>p.classList.remove('on'));document.getElementById('ax'+ax).classList.add('on')}
+
+// ═══ TIERED — كل الحساب في tariff.js ═══
+const arNum=n=>n.toLocaleString('ar-IQ');
+document.getElementById('tariffLineVals').textContent=T.inlineSummary();
+const tieredMo=annKwh=>T.monthlyFromAnnual(annKwh);
+const buildTierTbl=ann=>T.annualTableHTML(ann,{format:arNum});
+
+// ═══ INTERPOLATE ═══
+function nearest(la,lo){let b=null,bd=Infinity;for(const k in DB){const d=Math.hypot(la-DB[k][0],lo-DB[k][1]);if(d<bd){bd=d;b=k}}return b}
+function interp(la,lo){const list=Object.entries(DB).map(([k,v])=>({k,d:Math.hypot(la-v[0],lo-v[1]),p:v[4],t:v[5]})).sort((a,b)=>a.d-b.d).slice(0,3);const tw=list.reduce((s,e)=>s+1/Math.max(e.d,.01),0);const psh=Array(12).fill(0);let temp=0;list.forEach(e=>{const w=(1/Math.max(e.d,.01))/tw;e.p.forEach((v,i)=>psh[i]+=v*w);temp+=e.t*w});return{psh,temp:Math.round(temp)}}
+
+// ═══ CALC ═══
+function calc(){
+  if(!hasLoc()){alert(lang==='ar'?'⚠️ حدد موقعك':'⚠️ Select location');return}
+  const annKwh=getAnn();
+  if(!annKwh||annKwh<100){alert(lang==='ar'?'⚠️ أدخل الاستهلاك':'⚠️ Enter consumption');return}
+  let psh,maxT,cname;
+  if(cityKey&&DB[cityKey]){const d=DB[cityKey];psh=d[4];maxT=d[5];cname=`${d[2]} — ${d[3]}`}
+  else{const r=interp(slat,slng);psh=r.psh;maxT=r.temp;const nc=nearest(slat,slng);cname=`قريب من ${DB[nc][2]} (${(+slat).toFixed(3)}°N)`}
+  const avgPSH=psh.reduce((a,b)=>a+b,0)/12;
+  const ct=parseFloat(document.getElementById('ctilt').value);
+  const tilt=(!isNaN(ct)&&ct>0)?ct:Math.round(slat*.87+3.1);
+  const tl=Math.max(0,.0035*Math.max(0,maxT+25-25));
+  const eff=.80*Math.max(.76,1-tl);
+  const offset=parseFloat(document.getElementById('off').value)/100;
+  const panW=parseInt(document.getElementById('pw').value);
+  const batT=document.getElementById('btype').value;
+  const storH=parseInt(document.getElementById('shr').value);
+  const cpw=parseFloat(document.getElementById('cpw').value)||1200;
+  const reqKw=(annKwh*offset)/(avgPSH*365*eff);
+  const reqR=Math.ceil(reqKw*10)/10;
+  const nPan=Math.ceil((reqR*1000)/panW);
+  const totKw=(nPan*panW)/1000;
+  const mGen=psh.map(p=>Math.round(totKw*p*30*eff));
+  const annGen=mGen.reduce((a,b)=>a+b,0);
+  const invKw=Math.ceil(totKw*1.1*10)/10;
+  const dod=batT==='lithium'?.9:.5;
+  const bv=totKw>=5?48:24;
+  const bkwh=(bv*200)/1000;
+  const sn=Math.ceil((annKwh/365)*(storH/24)/(bkwh*dod));
+  const amps=Math.round(totKw*1000/220);
+  const mpptA=Math.ceil((totKw*1000)/bv);
+  const sysCost=Math.round(totKw*1000*cpw);
+  const co2=(annGen*.0005).toFixed(1);
+  // costs
+  const tmo=tieredMo(annKwh);
+  const govtMo=srcs.govt?tmo:0;
+  const genAp=(parseFloat(document.getElementById('genamps').value)||0)*(parseFloat(document.getElementById('genap').value)||0);
+  const genEx=(parseFloat(document.getElementById('genex').value)||0)+(parseFloat(document.getElementById('genmt').value)||0);
+  const genMo=srcs.gen?Math.round(genAp+genEx):0;
+  const homeMo=srcs.home?parseFloat(document.getElementById('homecost').value)||0:0;
+  const invMo=srcs.inv?parseFloat(document.getElementById('invcost').value)||0:0;
+  const totCurrMo=govtMo+genMo+homeMo+invMo;
+  const totCurrAnn=totCurrMo*12;
+  // savings
+  const annESav=Math.round(annGen*tmo/Math.max(annKwh/12,1));
+  const sd=Math.min(avgPSH*1.7,12);
+  const genOv=Math.min(.92,Math.min(getGenHrs(),sd)/24);
+  const homeH=parseFloat(document.getElementById('homehrs').value||6);
+  const homeOv=Math.min(.85,Math.min(homeH,sd)/24);
+  const genSav=srcs.gen?Math.round(genMo*12*genOv):0;
+  const homeSav=srcs.home?Math.round(homeMo*12*homeOv):0;
+  const invSav=srcs.inv?Math.round(invMo*12*.7):0;
+  const totSavAnn=annESav+genSav+homeSav+invSav;
+  const totSavMo=Math.round(totSavAnn/12);
+  const pb=totSavAnn>0?(sysCost/totSavAnn).toFixed(1):'—';
+  const roi10=totSavAnn>0?Math.round(((totSavAnn*10-sysCost)/sysCost)*100):0;
+  lastRes={cname,reqR,nPan,panW,totKw,invKw,sn,bv,bkwh,annGen,tilt,sysCost,totSavAnn,totSavMo,pb,batT,solarMode,amps};
+  const f=n=>n.toLocaleString('ar-IQ');
+  // render loc
+  document.getElementById('resloc').textContent=`📍 ${cname} — ذروة: ${avgPSH.toFixed(1)} kWh/m²/day | حرارة: ${maxT}°C`;
+  // axis1
+  const cm=document.getElementById('curmet');cm.innerHTML='';
+  const am=(i,v,u,l)=>cm.innerHTML+=`<div class="met"><div class="mi">${i}</div><div class="mv">${v}</div><div class="mu">${u}</div><div class="ml">${l}</div></div>`;
+  am('💡',f(totCurrMo),'IQD/شهر','إجمالي التكاليف');am('📅',f(totCurrAnn),'IQD/سنة','سنوياً');am('⚡',Math.round(annKwh/12),'kWh/شهر','استهلاكك');am('💰',f(tmo),'IQD/شهر','فاتورة الدولة المتدرجة');
+  const cd=document.getElementById('curdet');cd.innerHTML='';
+  const SI={govt:{i:'🏛️',n:'كهرباء الدولة',c:f(govtMo)},gen:{i:'⚡',n:'مولدة أهلية',c:f(genMo)},home:{i:'🛢️',n:'مولدة منزلية',c:f(homeMo)},inv:{i:'🔋',n:'عاكسة',c:f(invMo)}};
+  for(const id in srcs){const s=SI[id],r=roles[id]||'p';cd.innerHTML+=`<div class="card" style="margin-bottom:8px"><div class="ct"><div class="ico in">${s.i}</div>${s.n}<span style="flex:1"></span><span style="font-size:10px;padding:2px 8px;border-radius:50px;background:${r==='p'?'var(--sunl)':'var(--card2)'};color:${r==='p'?'var(--sun)':'var(--tx3)'};border:1px solid ${r==='p'?'var(--sunm)':'var(--bo2)'};font-weight:700">${r==='p'?'⭐ أساسي':'🔒 احتياطي'}</span></div><div class="srow"><span class="sk">التكلفة الشهرية</span><span class="sv">${s.c} دينار</span></div></div>`}
+  if(!Object.keys(srcs).length)cd.innerHTML='<div class="ib iba">لم تحدد أي مصدر طاقة</div>';
+  // axis2
+  $('rkw',reqR.toFixed(1));$('ragen',f(annGen)+' kWh');$('rdgen',(annGen/365).toFixed(1)+' kWh');$('rco2',co2+' t');
+  $('rnp',nPan+' لوح');$('rpw2',panW+'W');$('rtap',totKw.toFixed(2)+' kW');
+  $('ramps',amps+' أمبير / Amps');
+  $('rampsnote',`${totKw.toFixed(1)} kW ÷ 220V = ${amps}A (الإنفرتر: ${Math.round(invKw*1000/220)}A)`);
+  $('rtilt2',tilt+'° جنوب / South');$('rarea','~'+Math.round(nPan*2)+' m²');
+  const tw=document.getElementById('twarn');
+  if(maxT>44){tw.innerHTML=`🌡️ حرارة قصوى ${maxT}°C — استخدم Half-cut PERC أو TOPCon مع تهوية خلفية للألواح`;tw.style.display='flex'}else tw.style.display='none';
+  $('rinv',invKw.toFixed(1)+' kW');
+  const it={hybrid:'Hybrid (شمس+شبكة+بطاريات)',offgrid:'Off-Grid (مستقل)',ongrid:'Grid-Tie (شبكة فقط)'};
+  $('rinvt',it[solarMode]);
+  document.getElementById('batcard').style.display=solarMode!=='ongrid'?'block':'none';
+  if(solarMode!=='ongrid'){
+    $('rbn',sn+' × '+bv+'V 200Ah');$('rbcap',(sn*bkwh).toFixed(1)+' kWh');
+    const bl=batT==='lithium'?'LiFePO4 — الأفضل للحرارة':'AGM/Gel ⚠️ يحتاج تبريد';
+    $('rbt',bl);$('rbv',bv+'V DC');$('rdod',(dod*100).toFixed(0)+'%');
+    $('rbl',batT==='lithium'?'10–15 سنة':'2–4 سنوات (في حرارة العراق)');
+    const bh=document.getElementById('bathw');
+    if(batT==='agm'&&maxT>44){bh.innerHTML=`⚠️ AGM في ${maxT}°C تفقد 30–50% طاقتها — فكّر جدياً في LiFePO4`;bh.style.display='flex'}else bh.style.display='none';
+  }
+  $('rma',mpptA+'A');$('rmc',Math.ceil(mpptA/60)+' × 60A MPPT');
+  // axis3
+  $('rcurtot',f(totCurrAnn));
+  const cs=document.getElementById('cursplit');cs.innerHTML='';
+  if(srcs.govt)cs.innerHTML+=sp(f(govtMo*12),'كهرباء الدولة');
+  if(srcs.gen)cs.innerHTML+=sp(f(genMo*12),'مولدة أهلية');
+  if(srcs.home)cs.innerHTML+=sp(f(homeMo*12),'مولدة منزلية');
+  if(srcs.inv)cs.innerHTML+=sp(f(invMo*12),'عاكسة');
+  document.getElementById('ttbl').innerHTML=buildTierTbl(annKwh);
+  document.getElementById('tnote').innerHTML=`فاتورة الدولة المتدرجة: <strong>${f(tmo)} دينار/شهر</strong> (${f(tmo*12)} دينار/سنة)`;
+  const moKwh=Math.round(annKwh/12);
+  const tb=document.getElementById('toBill');
+  tb.href=Site.toBill(moKwh);
+  document.getElementById('toBillBody').innerHTML=
+    `افتح نفس الاستهلاك (<b>${f(moKwh)} kWh/شهر</b>) في حاسبة الفاتورة لترى توزيعه على الشرائح `+
+    `وكم وحدة تفصلك عن الشريحة الأعلى.`;
+  const cc=document.getElementById('covcard'),cb=document.getElementById('covbars');cb.innerHTML='';
+  if(srcs.gen||srcs.home){cc.style.display='block';if(srcs.gen)addCBar(cb,`مولدة أهلية — ${Math.round(genOv*100)}% تغطية`,Math.round(genOv*100),'linear-gradient(90deg,var(--grn),var(--acc))',f(genSav));if(srcs.home)addCBar(cb,`مولدة منزلية — ${Math.round(homeOv*100)}% تغطية`,Math.round(homeOv*100),'linear-gradient(90deg,var(--acc),var(--sun))',f(homeSav));if(srcs.inv)addCBar(cb,'عاكسة — 70% تغطية',70,'linear-gradient(90deg,var(--grn),var(--grnm))',f(invSav))}else cc.style.display='none';
+  $('rtotsav',f(totSavAnn));
+  const ss=document.getElementById('savsplit');ss.innerHTML='';
+  ss.innerHTML+=sp(f(annESav),'كهرباء الدولة');
+  if(genSav>0)ss.innerHTML+=sp(f(genSav),'مولدة أهلية');
+  if(homeSav>0)ss.innerHTML+=sp(f(homeSav),'مولدة منزلية');
+  if(invSav>0)ss.innerHTML+=sp(f(invSav),'عاكسة');
+  $('rsc',f(sysCost)+' IQD');$('rms',f(totSavMo)+' IQD/شهر');$('rpb',pb+' سنة');$('rroi',roi10>0?roi10+'%':'—');$('r25yr',f(totSavAnn*25)+' IQD');
+  // BA slider
+  if(totCurrMo>0){document.getElementById('bacard').style.display='block';initBA(totCurrMo,Math.max(0,totCurrMo-totSavMo))}else document.getElementById('bacard').style.display='none';
+  drawChart(mGen);
+  goStep(4);showAx('cur');
+}
+function $(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
+function sp(v,l){return`<div class="ssp"><div class="ssv">${v}</div><div class="ssl">${l}</div></div>`}
+function addCBar(cont,label,pct,color,save){const id='cb'+Math.random().toString(36).slice(2);cont.innerHTML+=`<div class="cbar"><div class="cbh"><span>${label}</span><span>${save} IQD/سنة</span></div><div class="cbt"><div class="cbf" id="${id}" style="width:0%;background:${color}"></div></div></div>`;setTimeout(()=>{const e=document.getElementById(id);if(e)e.style.width=pct+'%'},250)}
+function drawChart(d){const max=Math.max(...d);const bw=document.getElementById('chart'),lb=document.getElementById('clbls');bw.innerHTML='';lb.innerHTML='';const M=lang==='ar'?MAR:MEN;d.forEach((v,i)=>{const pct=max>0?(v/max)*100:50;const bwrap=document.createElement('div');bwrap.className='bw';const b=document.createElement('div');b.className='bb';b.style.height='0px';b.style.background=v===max?'linear-gradient(to top,#D97706,#F59E0B)':'linear-gradient(to top,#2563EB,#60A5FA)';b.setAttribute('data-tip',v.toLocaleString()+' kWh');bwrap.appendChild(b);bw.appendChild(bwrap);const l=document.createElement('div');l.className='bl';l.style.flex='1';l.textContent=M[i].substring(0,3);lb.appendChild(l);setTimeout(()=>{b.style.height=pct+'%'},80+i*55)})}
+
+// ═══ BEFORE/AFTER ═══
+let baB=0,baA=0,baDrag=false,baRtl=false;
+function initBA(before,after){baB=before;baA=after;const f=n=>n.toLocaleString('ar-IQ');document.getElementById('babv').textContent=f(before);document.getElementById('baav').textContent=f(after);const pct=before>0?Math.round((before-after)/before*100):0;document.getElementById('bapct').textContent=pct+'%';baRtl=document.documentElement.getAttribute('dir')==='rtl';setBAH(50)}
+function setBAH(pct){pct=Math.max(5,Math.min(95,pct));const h=document.getElementById('bah'),ae=document.getElementById('baa');if(baRtl){h.style.right='auto';h.style.left=(100-pct)+'%';ae.style.clipPath=`inset(0 0 0 ${100-pct}%)`}else{h.style.left='auto';h.style.right=(100-pct)+'%';ae.style.clipPath=`inset(0 ${100-pct}% 0 0)`}}
+function baStart(e){baDrag=true;const mv=(e)=>{if(!baDrag)return;const r=document.getElementById('bac').getBoundingClientRect();const cx=e.touches?e.touches[0].clientX:e.clientX;let p=((cx-r.left)/r.width)*100;if(baRtl)p=100-p;setBAH(p)};const up=()=>{baDrag=false;document.removeEventListener('mousemove',mv);document.removeEventListener('touchmove',mv);document.removeEventListener('mouseup',up);document.removeEventListener('touchend',up)};document.addEventListener('mousemove',mv);document.addEventListener('touchmove',mv,{passive:true});document.addEventListener('mouseup',up);document.addEventListener('touchend',up);mv(e)}
+
+// ═══ WHATSAPP ═══
+function shareWA(){if(!lastRes)return;const f=n=>n.toLocaleString('ar-IQ');const r=lastRes;const msg=`🌞 *نتائج حاسبة الطاقة الشمسية — العراق*\n\n📍 ${r.cname}\n⚡ حجم النظام: ${r.reqR} kW\n🔆 الألواح: ${r.nPan} لوح (${r.panW}W)\n📐 زاوية الميلان: ${r.tilt}°\n⚡ بالأمبير: ${r.amps} أمبير\n🔋 البطاريات: ${r.sn} × ${r.bv}V\n🔄 الإنفرتر: ${r.invKw} kW\n💡 التوليد: ${f(r.annGen)} kWh/سنة\n💰 التوفير السنوي: ${f(r.totSavAnn)} دينار\n💵 التوفير الشهري: ${f(r.totSavMo)} دينار\n📅 فترة الاسترداد: ${r.pb} سنة\n💸 تكلفة النظام: ${f(r.sysCost)} دينار`;window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank')}
+
+// ═══ APPLIANCE CALCULATOR ═══
+function openLC(){document.getElementById('lcmod').classList.add('op');document.body.style.overflow='hidden';renderCat(lcCat);renderAdded();updLCSumm()}
+function closeLC(){document.getElementById('lcmod').classList.remove('op');document.body.style.overflow=''}
+function lcBg(e){if(e.target===document.getElementById('lcmod'))closeLC()}
+function fcat(cat,btn){lcCat=cat;document.querySelectorAll('.lccat').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderCat(cat)}
+function renderCat(cat){
+  const wrap=document.getElementById('apcatalog');
+  const list=cat==='all'?APPDB:APPDB.filter(a=>a[4]===cat);
+  if(!list.length){wrap.innerHTML='<div style="text-align:center;padding:20px;color:var(--tx4)">لا توجد أجهزة</div>';return}
+  const added=new Set(lcItems.map(a=>a.nm));
+  wrap.innerHTML=list.map(a=>{
+    const gi=APPDB.indexOf(a),w=a[2],dh=a[3],ic=a[5],isAd=added.has(a[0]);
+    return`<div class="aprow"${isAd?' style="opacity:.5;pointer-events:none"':''}>
+      <div class="apico">${ic}</div>
+      <div class="apinfo"><div class="apname">${a[0]} <span style="font-size:10px;color:var(--tx4)">${a[1]}</span></div>
+        <div class="apw">${w}W · ${(w/220).toFixed(1)}A · ${dh}h/يوم${a[6]?` · ⚡ ${a[6]}`:''}</div></div>
+      <div class="apctrls">
+        <div class="apfw"><div class="aflbl">عدد</div><input type="number" class="apn" id="q${gi}" value="1" min="1" max="30" oninput="prvw(${gi})"></div>
+        <div class="apfw"><div class="aflbl">ساعات</div><input type="number" class="apn" id="h${gi}" value="${dh}" min=".5" max="24" step=".5" oninput="prvw(${gi})"></div>
+        <div class="apkwh" id="k${gi}">${(w*dh/1000).toFixed(1)} kWh</div>
+        <button class="addap-btn" onclick="addAp(${gi})">${isAd?'✅':'➕ إضافة'}</button>
+      </div></div>`;
+  }).join('');
+}
+function prvw(gi){const q=parseFloat(document.getElementById('q'+gi)?.value)||1;const h=parseFloat(document.getElementById('h'+gi)?.value)||APPDB[gi][3];const e=document.getElementById('k'+gi);if(e)e.textContent=(APPDB[gi][2]*h*q/1000).toFixed(2)+' kWh'}
+function addAp(gi){const a=APPDB[gi];const q=parseFloat(document.getElementById('q'+gi)?.value)||1;const h=parseFloat(document.getElementById('h'+gi)?.value)||a[3];lcItems.push({key:'a'+gi+'_'+Date.now(),nm:a[0],w:a[2],h,q,kwh:a[2]*h*q/1000,ic:a[5]});updLCSumm();renderAdded();renderCat(lcCat)}
+function addCustom(){const nm=(document.getElementById('cname').value||'جهاز مخصص').trim();const pr=parseFloat(document.getElementById('cpower').value)||100;const un=document.getElementById('cunit').value;const w=un==='A'?pr*220:pr;const h=parseFloat(document.getElementById('chrs').value)||4;const q=parseInt(document.getElementById('cqty').value)||1;lcItems.push({key:'c'+Date.now(),nm,w,h,q,kwh:w*h*q/1000,ic:'🔌'});['cname','cpower','chrs'].forEach(id=>document.getElementById(id).value='');document.getElementById('cqty').value='1';updLCSumm();renderAdded()}
+function remAp(key){lcItems=lcItems.filter(a=>a.key!==key);updLCSumm();renderAdded();renderCat(lcCat)}
+function clearAll(){lcItems=[];updLCSumm();renderAdded();renderCat(lcCat)}
+function renderAdded(){const wrap=document.getElementById('addedrows'),bar=document.getElementById('addedbar');if(!lcItems.length){bar.style.display='none';return}bar.style.display='block';wrap.innerHTML=lcItems.map(a=>`<div class="aprow" style="background:var(--grnl);border-color:var(--grnm)"><div class="apico">${a.ic}</div><div class="apinfo"><div class="apname">${a.nm}</div><div class="apw">${a.w}W × ${a.q} × ${a.h}h = <strong style="color:var(--grn)">${a.kwh.toFixed(2)} kWh/يوم</strong></div></div><button class="apdel" onclick="remAp('${a.key}')">✕</button></div>`).join('')}
+function updLCSumm(){const totK=lcItems.reduce((s,a)=>s+a.kwh,0);const totW=lcItems.reduce((s,a)=>s+a.w*a.q,0);const mo=Math.round(totK*30);document.getElementById('ltKw').textContent=(totW/1000).toFixed(2);document.getElementById('ltKwh').textContent=totK.toFixed(1);document.getElementById('ltAmp').textContent=(totW/220).toFixed(1);document.getElementById('ltMo').textContent=mo;const btn=document.getElementById('lcapply');if(lcItems.length){btn.style.opacity='1';btn.style.pointerEvents='all';btn.textContent=`✅ استخدم ${mo} kWh/شهر في الحاسبة`}else{btn.style.opacity='.45';btn.style.pointerEvents='none';btn.textContent='✅ استخدم هذا الاستهلاك في الحاسبة'};const bdg=document.getElementById('fabbdg');bdg.style.display=lcItems.length?'inline':'none';bdg.textContent=lcItems.length}
+function applyLC(){const tot=lcItems.reduce((s,a)=>s+a.kwh,0);if(!tot){alert('أضف أجهزة أولاً');return}const mo=Math.round(tot*30),ann=Math.round(tot*365);document.getElementById('mon').value=mo;document.getElementById('ann').value=ann;setSeason('s');chk2();closeLC();toast(lang==='ar'?`✅ تم: ${mo} kWh/شهر`:`✅ Set: ${mo} kWh/month`)}
+function toast(msg){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--grn);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:700;z-index:99999;box-shadow:0 4px 14px rgba(0,0,0,.2);white-space:nowrap;font-family:Cairo,sans-serif;pointer-events:none;transition:opacity .4s';document.body.appendChild(t)}t.textContent=msg;t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',2800)}
+
+// ═══ LOCALSTORAGE ═══
+function save(){try{const s={lang,slat,slng,cityKey,srcs,roles,solarMode,loadPro,seasMode,mon:gv('mon'),ann:gv('ann'),ms:gv('monsum'),mw:gv('monwin'),mm:gv('monmid'),ga:gv('genamps'),gp:gv('genap'),ge:gv('genex'),gm:gv('genmt'),gt:gv('gentype'),gh:gv('govthrs'),gb:gv('govtbill'),btype:gv('btype'),pw:gv('pw'),shr:gv('shr'),off:gv('off'),cpw:gv('cpw'),hc:gv('homecost'),hh:gv('homehrs'),ic:gv('invcost'),lc:lcItems};localStorage.setItem('irqSol3',JSON.stringify(s))}catch(e){}}
+function gv(id){const e=document.getElementById(id);return e?e.value:null}
+function sv(id,v){const e=document.getElementById(id);if(e&&v!=null)e.value=v}
+function clearState(){slat=null;slng=null;cityKey=null;srcs={};roles={};solarMode='hybrid';loadPro='light';seasMode='s';lcItems=[];try{localStorage.removeItem('irqSol3')}catch(e){}}
+function loadS(){
+  try{const raw=localStorage.getItem('irqSol3');if(!raw)return;const s=JSON.parse(raw);
+  lang=s.lang||'ar';slat=s.slat;slng=s.slng;cityKey=s.cityKey;srcs=s.srcs||{};roles=s.roles||{};solarMode=s.solarMode||'hybrid';loadPro=s.loadPro||'light';seasMode=s.seasMode||'s';lcItems=s.lc||[];
+  sv('mon',s.mon);sv('ann',s.ann);sv('monsum',s.ms);sv('monwin',s.mw);sv('monmid',s.mm);sv('genamps',s.ga);sv('genap',s.gp);sv('genex',s.ge);sv('genmt',s.gm);sv('govthrs',s.gh);sv('govtbill',s.gb);sv('btype',s.btype);sv('pw',s.pw);sv('shr',s.shr);sv('off',s.off);sv('cpw',s.cpw);sv('homecost',s.hc);sv('homehrs',s.hh);sv('invcost',s.ic);
+  if(s.gt){sv('gentype',s.gt);updGenHrs()}
+  for(const id in srcs){const c=document.getElementById('src'+id);const d=document.getElementById('det'+id);if(c){c.classList.add('sel');d.style.display='block';d.classList.add('op')}}
+  for(const id in roles)setRole(id,roles[id]);
+  setMode(solarMode);setLoad(loadPro);setSeason(seasMode);
+  if(s.off)document.getElementById('ov').textContent=s.off+'%';
+  chk1();chk2();showBatWarn();calcGenTot();updLCSumm();
+  setL(lang);}catch(e){}
+}
+/* ── قادم من حاسبة الفاتورة: /solar?kwh=2500 ── */
+function handoffIn(){
+  const kwh=Site.param('kwh');
+  if(!kwh)return;
+  document.getElementById('mon').value=kwh;
+  sync('m');
+  setSeason('s');
+  if(!srcs.govt)togSrc('govt');
+  chk2();
+  const bill=T.monthlyFromAnnual(kwh*12);
+  document.getElementById('fromBillTxt').innerHTML=
+    `جِبنا استهلاكك من <a href="${Site.toBill(kwh)}">حاسبة الفاتورة</a>: `+
+    `<strong>${arNum(kwh)} kWh/شهر</strong> ≈ <strong>${arNum(bill)} دينار</strong> لكهرباء الدولة. `+
+    `حدّد موقعك وأضف بقية مصادرك (المولّدة مثلاً) لنحسب التوفير الحقيقي.`;
+  document.getElementById('fromBill').style.display='flex';
+  startApp();
+  save();
+}
+
+window.onload=()=>{
+  fillProvs();
+  document.getElementById('ann').addEventListener('input',()=>{sync('a');chk2()});
+  ['mon','ann','genamps','genap','genex','genmt','homecost','homehrs','invcost','cpw','off'].forEach(id=>{const e=document.getElementById(id);if(e)e.addEventListener('change',save)});
+  loadS();
+  handoffIn();
+};
+</script>
+</body>
+</html>

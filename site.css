@@ -1,0 +1,231 @@
+/* ═══════════════════════════════════════════════════════════
+   site.css — اللغة البصرية المشتركة بين أداتَي الموقع
+   تُستعمل في صفحة الفاتورة (/) وصفحة الطاقة الشمسية (/solar).
+   كل صفحة تُسمّي متغيّراتها الخاصة اعتماداً على هذه الرموز.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── الرموز اللونية ── */
+:root {
+  color-scheme: light;
+
+  --brand:        #B07D1A;
+  --brand-deep:   #8F6410;
+  --brand-soft:   rgba(176,125,26,.10);
+  --brand-line:   rgba(176,125,26,.16);
+  --brand-ring:   rgba(176,125,26,.28);
+  --brand-glow:   rgba(176,125,26,.09);
+
+  --page:    #F4F1EC;
+  --panel:   #FFFFFF;
+  --panel-2: #F0EDE6;
+  --panel-3: #E8E4DC;
+
+  --ink:   #1A1610;
+  --ink-2: #4A4034;
+  --ink-3: #7A6A50;
+  --ink-4: #9C8F79;
+
+  --hair:   rgba(176,125,26,.16);
+  --hair-2: rgba(122,106,80,.22);
+
+  --info:      #1A7AAE;
+  --info-soft: rgba(26,122,174,.10);
+  --info-line: rgba(26,122,174,.28);
+  --good:      #1E8A5A;
+  --good-soft: rgba(30,138,90,.10);
+  --good-line: rgba(30,138,90,.28);
+  --warn:      #C06820;
+  --warn-soft: rgba(192,104,32,.10);
+  --warn-line: rgba(192,104,32,.28);
+  --bad:       #B03030;
+  --bad-soft:  rgba(176,48,48,.08);
+  --bad-line:  rgba(176,48,48,.28);
+
+  /* ألوان الشرائح — قيم احتياطية فقط.
+     المصدر الفعلي هو tariff.js ويعيد ضبطها عند التحميل. */
+  --t1: #1E8A5A;
+  --t2: #1A7AAE;
+  --t3: #C06820;
+  --t4: #B03030;
+
+  /* لون النص فوق الخلفيات الملوّنة الصريحة */
+  --on-solid: #FFF8E8;
+
+  --shadow:   0 4px 26px rgba(0,0,0,.07);
+  --shadow-2: 0 2px 8px rgba(0,0,0,.09), 0 8px 24px rgba(0,0,0,.07);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.07), 0 4px 14px rgba(0,0,0,.05);
+
+  --nav-h: 52px;
+}
+
+/* ── الوضع الليلي — دافئ ليبقى ضمن هوية الموقع الذهبية ── */
+html.dk {
+  color-scheme: dark;
+
+  --brand:      #E0AE45;
+  --brand-deep: #F0C464;
+  --brand-soft: rgba(224,174,69,.14);
+  --brand-line: rgba(224,174,69,.20);
+  --brand-ring: rgba(224,174,69,.38);
+  --brand-glow: rgba(224,174,69,.07);
+
+  --page:    #14110B;
+  --panel:   #1E1A12;
+  --panel-2: #262017;
+  --panel-3: #322A1D;
+
+  --ink:   #F5F0E6;
+  --ink-2: #D8CFBD;
+  --ink-3: #A89C86;
+  --ink-4: #847A67;
+
+  --hair:   rgba(224,174,69,.18);
+  --hair-2: rgba(168,156,134,.22);
+
+  --info:      #5AAEE0;
+  --info-soft: rgba(90,174,224,.14);
+  --info-line: rgba(90,174,224,.30);
+  --good:      #43C48D;
+  --good-soft: rgba(67,196,141,.14);
+  --good-line: rgba(67,196,141,.30);
+  --warn:      #E8974A;
+  --warn-soft: rgba(232,151,74,.14);
+  --warn-line: rgba(232,151,74,.30);
+  --bad:       #E85F5F;
+  --bad-soft:  rgba(232,95,95,.14);
+  --bad-line:  rgba(232,95,95,.30);
+
+  --t1: #43C48D;
+  --t2: #5AAEE0;
+  --t3: #E8974A;
+  --t4: #E85F5F;
+
+  --on-solid: #17120A;
+
+  --shadow:    0 4px 26px rgba(0,0,0,.45);
+  --shadow-2:  0 2px 8px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.4);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.3);
+}
+
+/* ══ شريط التنقّل المشترك ══ */
+.site-nav {
+  position: sticky; top: 0; z-index: 9000;
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  -webkit-backdrop-filter: saturate(1.6) blur(12px);
+  backdrop-filter: saturate(1.6) blur(12px);
+  border-bottom: 1px solid var(--hair);
+}
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .site-nav { background: var(--page); }
+}
+
+.nav-inner {
+  max-width: 740px; margin: 0 auto;
+  min-height: var(--nav-h);
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 14px;
+}
+
+.brand {
+  display: flex; align-items: center; gap: 7px;
+  text-decoration: none; color: var(--ink);
+  font-weight: 900; font-size: 14px; white-space: nowrap;
+  flex-shrink: 0;
+}
+.brand-mark {
+  width: 25px; height: 25px; border-radius: 8px; flex-shrink: 0;
+  background: linear-gradient(150deg, var(--brand), var(--brand-deep));
+  display: grid; place-items: center;
+  box-shadow: 0 2px 7px var(--brand-ring);
+}
+.brand-mark svg { width: 13px; height: 13px; fill: var(--on-solid); display: block; }
+.brand-name { letter-spacing: -.1px; }
+@media (max-width: 520px) { .brand-name { display: none; } }
+
+.nav-tabs {
+  display: flex; gap: 3px; flex: 1; min-width: 0;
+  background: var(--panel-2); border: 1px solid var(--hair);
+  border-radius: 50px; padding: 3px;
+  max-width: 340px; margin: 0 auto;
+}
+.nav-tab {
+  flex: 1; text-align: center; text-decoration: none;
+  font-family: inherit; font-size: 12px; font-weight: 700;
+  color: var(--ink-3); padding: 6px 8px; border-radius: 50px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  transition: background .2s, color .2s;
+}
+.nav-tab:hover { color: var(--brand); }
+.nav-tab[aria-current="page"] {
+  background: var(--panel); color: var(--brand);
+  box-shadow: 0 1px 5px rgba(0,0,0,.08);
+}
+
+.nav-tools { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
+.nav-btn {
+  font-family: inherit; font-size: 12px; font-weight: 700;
+  color: var(--ink-3); background: var(--panel);
+  border: 1px solid var(--hair); border-radius: 50px;
+  cursor: pointer; padding: 6px 10px; line-height: 1;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.nav-btn:hover { background: var(--brand-soft); color: var(--brand); border-color: var(--brand-line); }
+.nav-btn.icon { width: 30px; height: 30px; padding: 0; display: grid; place-items: center; font-size: 14px; }
+
+.nav-seg { display: flex; gap: 2px; background: var(--panel); border: 1px solid var(--hair); border-radius: 50px; padding: 3px; }
+.nav-seg button {
+  font-family: inherit; font-size: 11px; font-weight: 700;
+  border: none; background: transparent; color: var(--ink-3);
+  padding: 4px 9px; border-radius: 50px; cursor: pointer; line-height: 1.3;
+  transition: background .2s, color .2s;
+}
+.nav-seg button.on { background: var(--brand); color: var(--on-solid); }
+
+/* ══ بطاقة العبور بين الأداتين ══ */
+.handoff {
+  display: block; text-decoration: none;
+  background: linear-gradient(135deg, var(--brand-soft), transparent 70%), var(--panel);
+  border: 1px solid var(--brand-line); border-radius: 16px;
+  padding: 15px 17px; margin-top: 14px;
+  transition: border-color .2s, transform .15s, box-shadow .2s;
+}
+.handoff:hover { border-color: var(--brand-ring); box-shadow: var(--shadow-sm); }
+.handoff:active { transform: scale(.995); }
+.handoff-top { display: flex; align-items: center; gap: 9px; margin-bottom: 6px; }
+.handoff-ico {
+  width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0;
+  background: var(--brand-soft); border: 1px solid var(--brand-line);
+  display: grid; place-items: center; font-size: 15px;
+}
+.handoff-title { font-size: 13.5px; font-weight: 800; color: var(--ink); }
+.handoff-body { font-size: 12px; line-height: 1.75; color: var(--ink-3); }
+.handoff-body b { color: var(--brand-deep); font-weight: 800; }
+.handoff-go {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 9px;
+  font-size: 12px; font-weight: 800; color: var(--brand);
+}
+.handoff-go .arw { transition: transform .2s; }
+.handoff:hover .handoff-go .arw { transform: translateX(-3px); }
+
+/* شارة «قادم من الأداة الأخرى» */
+.from-tool {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--good-soft); border: 1px solid var(--good-line);
+  color: var(--good); border-radius: 12px; padding: 10px 13px;
+  font-size: 12px; font-weight: 700; line-height: 1.6;
+}
+.from-tool a { color: inherit; text-decoration: underline; }
+
+/* ══ تذييل مشترك ══ */
+.site-foot {
+  max-width: 740px; margin: 26px auto 0; padding: 0 14px;
+  text-align: center; font-size: 11px; line-height: 1.9; color: var(--ink-4);
+}
+.site-foot .disclaimer { display: block; margin-bottom: 7px; opacity: .9; }
+.site-foot a { color: var(--brand); text-decoration: none; font-weight: 700; }
+.site-foot .foot-links { display: flex; gap: 14px; justify-content: center; margin-top: 8px; flex-wrap: wrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav *, .handoff, .handoff * { transition: none !important; }
+}
