@@ -56,8 +56,14 @@ robots.txt
   (واللغة تحت `irq_lang`).
 - الروابط العميقة: `‎/?u=2500‎` تملأ حاسبة الفاتورة، و`‎/solar?kwh=2500‎` تملأ
   حاسبة الشمسية وتفتحها على الخطوة الأولى مع شارة توضّح مصدر الرقم.
-- قبل الرفع: استبدل `YOUR-DOMAIN.com` في `index.html` و`solar.html`
-  و`sitemap.xml` و`robots.txt` برابط الموقع الفعلي.
+- النطاق الحالي: **https://iraqelec.vercel.app** — مكتوب صراحةً في
+  `index.html` و`solar.html` (canonical و`og:url` و`og:image` و`twitter:image`)
+  وفي `sitemap.xml` و`robots.txt`. صور المعاينة تتطلّب رابطاً مطلقاً، فلا يمكن
+  جعلها نسبية.
+- عند الانتقال إلى نطاق خاص: استبدل `iraqelec.vercel.app` في تلك الملفات
+  الأربعة، ثم أعد فحص الرابطين في
+  [أداة فيسبوك](https://developers.facebook.com/tools/debug/) لأن معاينة
+  الروابط القديمة تبقى مخزّنة عندهم.
 
 ## التشغيل محلياً
 
