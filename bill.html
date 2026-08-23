@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F4F1EC">
+
+<title>حاسبة فاتورة الكهرباء في العراق | احسب استهلاكك الشهري</title>
+<meta name="description" content="احسب فاتورة الكهرباء الشهرية في العراق بدقة حسب نظام الشرائح المعتمد من وزارة الكهرباء. أدخل عدد الوحدات أو قراءة العداد واحصل على التكلفة فوراً مع تفصيل كل شريحة.">
+<meta name="keywords" content="حاسبة الكهرباء, فاتورة الكهرباء العراق, شرائح الكهرباء, وزارة الكهرباء العراقية, حساب استهلاك الكهرباء, تعرفة الكهرباء">
+
+<!-- ═══ ضع رابط موقعك هنا بعد الرفع ═══ -->
+<link rel="canonical" href="https://iraqelec.vercel.app/bill">
+
+<!-- Open Graph — معاينة الرابط في فيسبوك وواتساب -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_IQ">
+<meta property="og:site_name" content="حاسبة فاتورة الكهرباء">
+<meta property="og:url" content="https://iraqelec.vercel.app/bill">
+<meta property="og:title" content="حاسبة فاتورة الكهرباء في العراق">
+<meta property="og:description" content="أدخل عدد الوحدات أو قراءة العداد، واحصل على قيمة فاتورتك فوراً مع تفصيل كل شريحة. مجاني وبدون تسجيل.">
+<meta property="og:image" content="https://iraqelec.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="حاسبة فاتورة الكهرباء في العراق">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="حاسبة فاتورة الكهرباء في العراق">
+<meta name="twitter:description" content="احسب فاتورتك الشهرية فوراً حسب نظام الشرائح.">
+<meta name="twitter:image" content="https://iraqelec.vercel.app/og-image.png">
+
+<!-- أيقونة الموقع -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23B07D1A'/><path d='M56 12 L28 56 h18 l-6 32 l30-46 H52 z' fill='%23F4F1EC'/></svg>">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="حاسبة الكهرباء">
+
+<!-- الوضع الليلي يُطبَّق قبل الرسم لتفادي وميض الصفحة -->
+<script>try{var d=localStorage.getItem('irq_dk');if(d==null?matchMedia('(prefers-color-scheme:dark)').matches:d==='1'){document.documentElement.classList.add('dk');document.querySelector('meta[name=theme-color]').content='#14110B'}}catch(e){}</script>
+
+<!-- الشرائح الرسمية — مصدر واحد مشترك مع صفحة الطاقة الشمسية -->
+<script src="/tariff.js"></script>
+<script src="/site.js"></script>
+<link rel="stylesheet" href="/site.css">
+
+<!-- Vercel Web Analytics -->
+<script defer src="/_vercel/insights/script.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "حاسبة فاتورة الكهرباء في العراق",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "inLanguage": "ar-IQ",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IQD" }
+}
+</script>
+
+<style>
+  /* الألوان تأتي من site.css — هذه أسماء محلية تشير إليها */
+  :root {
+    --gold: var(--brand);
+    --gold-deep: var(--brand-deep);
+    --gold-soft: var(--brand-soft);
+    --bg: var(--page);
+    --surface: var(--panel);
+    --surface-2: var(--panel-2);
+    --surface-3: var(--panel-3);
+    --text: var(--ink);
+    --text-dim: var(--ink-3);
+    --line: var(--hair);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', system-ui, sans-serif;
+    min-height: 100dvh;
+    padding: 20px 14px calc(28px + env(safe-area-inset-bottom));
+    position: relative;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: -50%;
+    background:
+      radial-gradient(ellipse at 28% 12%, var(--brand-glow) 0%, transparent 48%),
+      radial-gradient(ellipse at 74% 86%, var(--brand-glow) 0%, transparent 42%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { width: 100%; max-width: 540px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* ── Header ── */
+  .header { text-align: center; margin-bottom: 26px; animation: fadeDown .5s ease both; }
+
+  .ministry-tag {
+    display: inline-block; font-size: 11px; font-weight: 600; color: var(--gold);
+    letter-spacing: .5px; border: 1px solid var(--line); background: var(--gold-soft);
+    padding: 5px 15px; border-radius: 20px; margin-bottom: 13px;
+  }
+  .header h1 { font-size: clamp(23px, 6.4vw, 30px); font-weight: 900; line-height: 1.22; margin-bottom: 6px; }
+  .header h1 span { color: var(--gold); }
+  .header p { font-size: 13px; color: var(--text-dim); font-weight: 300; }
+
+  /* ── Card ── */
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    box-shadow: var(--shadow); overflow: hidden;
+    animation: fadeUp .5s ease .08s both;
+  }
+  .card-body { padding: 24px 20px; }
+
+  /* ── Mode toggle ── */
+  .mode-toggle {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+    background: var(--surface-2); border-radius: 12px; padding: 4px; margin-bottom: 20px;
+  }
+  .mode-btn {
+    border: none; background: transparent; font-family: inherit; font-size: 13px;
+    font-weight: 600; color: var(--text-dim); padding: 10px 6px; border-radius: 9px;
+    cursor: pointer; transition: all .22s;
+  }
+  .mode-btn.active { background: var(--surface); color: var(--gold); box-shadow: 0 1px 5px rgba(0,0,0,.08); }
+
+  /* ── Inputs ── */
+  .field { margin-bottom: 16px; }
+  .field:last-of-type { margin-bottom: 0; }
+  .field-label { font-size: 12.5px; font-weight: 600; color: var(--text-dim); margin-bottom: 8px; display: block; }
+
+  .input-wrapper {
+    display: flex; align-items: center; background: var(--surface-2);
+    border: 1.5px solid var(--line); border-radius: 13px; transition: border-color .2s, box-shadow .2s;
+  }
+  .input-wrapper:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px var(--brand-soft); }
+  .input-wrapper input {
+    flex: 1; min-width: 0; background: transparent; border: none; outline: none; color: var(--text);
+    font-family: inherit; font-size: 23px; font-weight: 700; padding: 14px 18px;
+    direction: ltr; text-align: left;
+  }
+  .input-wrapper input::placeholder { color: var(--ink-4); opacity: .5; font-weight: 300; }
+  .input-wrapper input::-webkit-outer-spin-button,
+  .input-wrapper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .input-unit { font-size: 12px; color: var(--gold); font-weight: 600; padding: 0 15px 0 4px; white-space: nowrap; }
+
+  .meter-fields { display: none; }
+  .meter-fields.show { display: block; }
+  .units-field.hide { display: none; }
+
+  .meter-result {
+    margin-top: 14px; background: var(--gold-soft); border: 1px dashed var(--line);
+    border-radius: 11px; padding: 11px 14px; font-size: 13px; font-weight: 600;
+    color: var(--gold-deep); text-align: center; display: none;
+  }
+  .meter-result.show { display: block; }
+  .meter-result.error { background: var(--bad-soft); border-color: var(--bad-line); color: var(--bad); }
+
+  /* ── Quick picks ── */
+  .quick { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .quick-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--text-dim);
+    font-family: inherit; font-size: 12px; font-weight: 600; padding: 7px 13px;
+    border-radius: 18px; cursor: pointer; transition: all .18s;
+  }
+  .quick-btn:active, .quick-btn:hover { background: var(--gold-soft); color: var(--gold); border-color: var(--gold); }
+
+  /* ── Progress ── */
+  .progress-wrap { margin: 22px 0 18px; display: none; }
+  .progress-wrap.show { display: block; }
+  .progress-track {
+    height: 9px; background: var(--surface-3); border-radius: 6px; overflow: hidden; display: flex;
+  }
+  .progress-seg { height: 100%; transition: width .45s cubic-bezier(.4,0,.2,1); }
+  .progress-note {
+    margin-top: 10px; font-size: 12px; font-weight: 600; text-align: center;
+    padding: 9px 12px; border-radius: 10px; background: var(--surface-2); color: var(--text-dim);
+  }
+  .progress-note.warn { background: var(--warn-soft); color: var(--warn); }
+
+  .divider { height: 1px; background: var(--line); margin: 22px -20px; }
+
+  /* ── Tier strip ── */
+  .tier-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+  .tier-item {
+    background: var(--surface-2); border-radius: 10px; padding: 9px 5px; text-align: center;
+    border: 1.5px solid transparent; transition: all .28s;
+  }
+  .tier-item.active { border-color: currentColor; background: var(--surface); box-shadow: var(--shadow-sm); }
+  .tier-item.t1 { color: var(--t1); } .tier-item.t2 { color: var(--t2); }
+  .tier-item.t3 { color: var(--t3); } .tier-item.t4 { color: var(--t4); }
+  .tier-item .tl { font-size: 9.5px; font-weight: 600; opacity: .75; margin-bottom: 2px; display: block; }
+  .tier-item .tp { font-size: 14px; font-weight: 800; }
+  .tier-item .tr { font-size: 8.5px; margin-top: 2px; display: block; color: var(--text-dim); }
+
+  /* ── Breakdown ── */
+  .breakdown { display: none; flex-direction: column; gap: 7px; }
+  .breakdown.show { display: flex; }
+  .section-title {
+    font-size: 11px; font-weight: 700; color: var(--text-dim); letter-spacing: .8px; margin-bottom: 4px;
+  }
+  .br-row {
+    display: flex; align-items: center; gap: 10px; background: var(--surface-2);
+    border-radius: 10px; padding: 10px 13px; opacity: 0; transform: translateX(8px);
+    animation: slideIn .28s ease forwards;
+  }
+  .br-row .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .br-row .desc { flex: 1; font-size: 11.5px; color: var(--text-dim); }
+  .br-row .desc strong { color: var(--text); font-weight: 700; }
+  .br-row .amt { font-size: 12.5px; font-weight: 700; direction: ltr; white-space: nowrap; }
+
+  /* ── Result ── */
+  .result-box {
+    background: linear-gradient(135deg, var(--brand-soft) 0%, transparent 100%), var(--panel-2);
+    border: 1px solid var(--brand-ring); border-radius: 14px; padding: 18px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    flex-wrap: wrap; margin-top: 18px;
+  }
+  .result-box .rl { font-size: 12.5px; font-weight: 600; color: var(--text-dim); }
+  .result-amount { font-size: clamp(22px, 6.2vw, 28px); font-weight: 900; color: var(--gold-deep); direction: ltr; }
+  .result-amount .cur { font-size: 12.5px; font-weight: 700; color: var(--gold); margin-right: 4px; }
+  .result-amount.pulse { animation: pulse .38s ease; }
+  .empty-hint { font-size: 13px; color: var(--text-dim); font-weight: 300; }
+
+  .sub-stats { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .sub-stats.show { display: grid; }
+  .stat { background: var(--surface-2); border-radius: 11px; padding: 11px 13px; text-align: center; }
+  .stat .sv { font-size: 15px; font-weight: 800; color: var(--text); direction: ltr; }
+  .stat .sl { font-size: 10.5px; color: var(--text-dim); font-weight: 600; margin-top: 2px; }
+
+  /* ── Share ── */
+  .share { margin-top: 18px; display: none; }
+  .share.show { display: block; }
+  .share-btns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .share-btn {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--text-dim);
+    font-family: inherit; font-size: 12px; font-weight: 700; padding: 11px 6px;
+    border-radius: 11px; cursor: pointer; transition: all .18s; text-decoration: none;
+  }
+  .share-btn:active, .share-btn:hover { background: var(--gold-soft); color: var(--gold); border-color: var(--gold); }
+  .share-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  /* ── Accordion ── */
+  details.info {
+    margin-top: 14px; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; overflow: hidden; animation: fadeUp .5s ease .16s both;
+  }
+  details.info summary {
+    padding: 15px 20px; font-size: 13.5px; font-weight: 700; cursor: pointer;
+    list-style: none; display: flex; align-items: center; justify-content: space-between;
+  }
+  details.info summary::-webkit-details-marker { display: none; }
+  details.info summary::after { content: '+'; color: var(--gold); font-size: 20px; font-weight: 400; line-height: 1; }
+  details.info[open] summary::after { content: '−'; }
+  .info-body { padding: 0 20px 18px; font-size: 12.5px; line-height: 1.85; color: var(--text-dim); }
+  .info-body strong { color: var(--text); }
+
+  table.tariff { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px; }
+  table.tariff th, table.tariff td { padding: 9px 8px; text-align: right; border-bottom: 1px solid var(--line); }
+  table.tariff th { color: var(--gold); font-weight: 700; font-size: 11px; }
+  table.tariff td { color: var(--text); }
+  table.tariff td:last-child { font-weight: 700; direction: ltr; text-align: left; }
+  table.tariff tr:last-child td { border-bottom: none; }
+
+  .example { background: var(--surface-2); border-radius: 10px; padding: 12px 14px; margin-top: 10px; font-size: 12px; line-height: 1.9; }
+  .example b { color: var(--gold-deep); }
+
+  /* ── Footer ── */
+  .footer { text-align: center; margin-top: 20px; font-size: 11px; line-height: 1.9; color: var(--ink-4); animation: fadeUp .5s ease .24s both; }
+  .footer a { color: var(--gold); text-decoration: none; font-weight: 700; }
+  .footer .disclaimer { display: block; margin-bottom: 7px; opacity: .8; }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: var(--text); color: var(--bg); font-size: 13px; font-weight: 600;
+    padding: 11px 22px; border-radius: 30px; z-index: 99; opacity: 0;
+    transition: all .3s cubic-bezier(.4,0,.2,1); pointer-events: none;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  @keyframes fadeDown { from { opacity:0; transform: translateY(-14px);} to {opacity:1; transform:none;} }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(14px);} to {opacity:1; transform:none;} }
+  @keyframes slideIn { to { opacity:1; transform:none; } }
+  @keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
+
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 14h6l-1.5 8L20 10h-6.5z"/></svg></span>
+      <span class="brand-name">طاقة العراق</span>
+    </a>
+    <div class="nav-tabs">
+      <a class="nav-tab" href="/bill">الفاتورة</a>
+      <a class="nav-tab" href="/solar">الطاقة الشمسية</a>
+    </div>
+    <div class="nav-tools">
+      <button class="nav-btn icon" data-dk-toggle onclick="toggleDk()" aria-label="التبديل إلى الوضع الليلي">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <header class="header">
+    <span class="ministry-tag">وفق تعرفة وزارة الكهرباء العراقية</span>
+    <h1>حاسبة <span>فاتورة</span> الكهرباء</h1>
+    <p>الصنف المنزلي · نظام الشرائح التصاعدية</p>
+  </header>
+
+  <main class="card">
+    <div class="card-body">
+
+      <div class="mode-toggle" role="tablist">
+        <button class="mode-btn active" id="modeUnits" onclick="setMode('units')">عدد الوحدات</button>
+        <button class="mode-btn" id="modeMeter" onclick="setMode('meter')">قراءة العداد</button>
+      </div>
+
+      <!-- Units mode -->
+      <div class="field units-field" id="unitsField">
+        <label class="field-label" for="units">عدد الوحدات المستهلكة خلال الشهر</label>
+        <div class="input-wrapper">
+          <input type="text" id="units" inputmode="numeric" placeholder="0" oninput="onUnitsInput()">
+          <span class="input-unit">كيلوواط/ساعة</span>
+        </div>
+        <div class="quick">
+          <button class="quick-btn" onclick="setUnits(1000)">1,000</button>
+          <button class="quick-btn" onclick="setUnits(1500)">1,500</button>
+          <button class="quick-btn" onclick="setUnits(2500)">2,500</button>
+          <button class="quick-btn" onclick="setUnits(4000)">4,000</button>
+          <button class="quick-btn" onclick="setUnits(6000)">6,000</button>
+        </div>
+      </div>
+
+      <!-- Meter mode -->
+      <div class="meter-fields" id="meterFields">
+        <div class="field">
+          <label class="field-label" for="prev">القراءة السابقة للعداد</label>
+          <div class="input-wrapper">
+            <input type="text" id="prev" inputmode="numeric" placeholder="0" oninput="onMeterInput()">
+            <span class="input-unit">وحدة</span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="curr">القراءة الحالية للعداد</label>
+          <div class="input-wrapper">
+            <input type="text" id="curr" inputmode="numeric" placeholder="0" oninput="onMeterInput()">
+            <span class="input-unit">وحدة</span>
+          </div>
+        </div>
+        <div class="meter-result" id="meterResult"></div>
+      </div>
+
+      <!-- Tier progress -->
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-track" id="progressTrack"></div>
+        <div class="progress-note" id="progressNote"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- الشرائح تُبنى من tariff.js -->
+      <div class="tier-strip" id="tierStrip"></div>
+
+      <div class="divider"></div>
+
+      <div class="breakdown" id="breakdown"></div>
+
+      <div class="result-box">
+        <span class="rl">إجمالي الفاتورة الشهرية</span>
+        <span class="result-amount" id="result"><span class="empty-hint">أدخل الوحدات</span></span>
+      </div>
+
+      <div class="sub-stats" id="subStats">
+        <div class="stat"><div class="sv" id="statAvg">—</div><div class="sl">معدل سعر الوحدة</div></div>
+        <div class="stat"><div class="sv" id="statDay">—</div><div class="sl">التكلفة اليومية تقريباً</div></div>
+      </div>
+
+      <div class="share" id="share">
+        <div class="section-title">شارك النتيجة</div>
+        <div class="share-btns">
+          <button class="share-btn" onclick="shareWhatsApp()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1s-.5-.1-.7.1-.7 1-.9 1.2-.4.2-.7 0a8.1 8.1 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.9-2.2c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4A3.4 3.4 0 0 0 5.9 9c0 1.5 1.1 3 1.2 3.2s2.1 3.3 5.2 4.6a17 17 0 0 0 1.7.6 4.1 4.1 0 0 0 1.9.1 3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.3a8.3 8.3 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
+            واتساب
+          </button>
+          <button class="share-btn" onclick="shareTelegram()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 6.9-1.5 7.3c-.1.5-.4.6-.9.4l-2.4-1.8-1.2 1.1c-.1.1-.2.3-.5.3l.2-2.5 4.5-4.1c.2-.2 0-.3-.3-.1l-5.5 3.5-2.4-.8c-.5-.2-.5-.5.1-.8l9.4-3.6c.4-.1.8.1.5 1.1z"/></svg>
+            تيليگرام
+          </button>
+          <button class="share-btn" onclick="copyResult()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            نسخ
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <a class="handoff" id="toSolar" href="/solar" style="display:none">
+    <div class="handoff-top">
+      <span class="handoff-ico">☀️</span>
+      <span class="handoff-title">وهل تستحق الطاقة الشمسية؟</span>
+    </div>
+    <div class="handoff-body" id="toSolarBody"></div>
+    <span class="handoff-go">افتح حاسبة الطاقة الشمسية <span class="arw">←</span></span>
+  </a>
+
+  <details class="info">
+    <summary>كيف يتم احتساب الفاتورة؟</summary>
+    <div class="info-body">
+      الاحتساب <strong>تصاعدي تراكمي</strong> وليس بسعر واحد. كل شريحة تُحسب بسعرها الخاص،
+      ولا يُطبّق سعر الشريحة الأعلى على كامل الاستهلاك.
+      <table class="tariff" id="tariffTable"></table>
+      <div class="example" id="tariffExample"></div>
+    </div>
+  </details>
+
+  <details class="info">
+    <summary>كيف أقرأ عدادي؟</summary>
+    <div class="info-body">
+      سجّل رقم العداد في بداية الشهر ثم في نهايته، والفرق بينهما هو استهلاكك بالوحدات.
+      يمكنك استخدام وضع <strong>«قراءة العداد»</strong> أعلاه وإدخال الرقمين مباشرة.
+      <br><br>
+      الوحدة الواحدة = <strong>كيلوواط/ساعة واحد</strong>، أي تشغيل جهاز بقدرة 1000 واط لمدة ساعة كاملة.
+    </div>
+  </details>
+
+  <footer class="footer">
+    <span class="disclaimer">
+      الأسعار مبنية على تعرفة الصنف المنزلي المعتمدة من مجلس الوزراء (2018) والمعمول بها حالياً.
+      هذه الحاسبة أداة استرشادية غير رسمية — القيمة النهائية تعتمد على قائمة الجباية الرسمية،
+      وقد تشمل رسوم خدمة أو فروقات محاسبية.
+    </span>
+    <span class="foot-links">
+      <a href="/solar">حاسبة الطاقة الشمسية</a>
+      <a href="/">الرئيسية</a>
+    </span>
+    <span style="display:block;margin-top:9px">صُنعت بواسطة منو</span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* الشرائح والحساب يأتيان من tariff.js — لا نسخة ثانية للأسعار هنا */
+const T = window.Tariff;
+const TIERS = T.TIERS;
+const fmt = T.fmt;
+
+let mode = 'units';
+let lastUnits = 0, lastTotal = 0;
+
+const $ = id => document.getElementById(id);
+
+/* بناء الشرائح والجدول والمثال من الملف المشترك */
+$('tierStrip').innerHTML   = T.tierStripHTML();
+$('tariffTable').innerHTML = T.tariffTableHTML();
+$('tariffExample').innerHTML = T.exampleHTML(3500);
+
+function setMode(m) {
+  mode = m;
+  $('modeUnits').classList.toggle('active', m === 'units');
+  $('modeMeter').classList.toggle('active', m === 'meter');
+  $('unitsField').classList.toggle('hide', m !== 'units');
+  $('meterFields').classList.toggle('show', m === 'meter');
+  m === 'units' ? onUnitsInput() : onMeterInput();
+}
+
+function cleanNum(el) {
+  const digits = el.value.replace(/[^\d]/g, '');
+  const n = digits === '' ? null : parseInt(digits, 10);
+  el.value = n === null ? '' : n.toLocaleString('en-US');
+  return n;
+}
+
+function onUnitsInput() { calculate(cleanNum($('units'))); }
+
+function setUnits(v) {
+  setMode('units');
+  $('units').value = v.toLocaleString('en-US');
+  calculate(v);
+}
+
+function onMeterInput() {
+  const p = cleanNum($('prev'));
+  const c = cleanNum($('curr'));
+  const box = $('meterResult');
+
+  if (p === null || c === null) { box.classList.remove('show'); return calculate(null); }
+
+  if (c < p) {
+    box.className = 'meter-result show error';
+    box.textContent = 'القراءة الحالية يجب أن تكون أكبر من السابقة';
+    return calculate(null);
+  }
+  const diff = c - p;
+  box.className = 'meter-result show';
+  box.textContent = 'الاستهلاك = ' + fmt(diff) + ' وحدة';
+  calculate(diff);
+}
+
+function calculate(units) {
+  const bd = $('breakdown'), res = $('result'), pw = $('progressWrap');
+  TIERS.forEach(t => $(t.id).classList.remove('active'));
+
+  if (!units || units <= 0) {
+    bd.classList.remove('show');
+    pw.classList.remove('show');
+    $('subStats').classList.remove('show');
+    $('share').classList.remove('show');
+    $('toSolar').style.display = 'none';
+    res.innerHTML = '<span class="empty-hint">أدخل الوحدات</span>';
+    lastUnits = 0; lastTotal = 0;
+    return;
+  }
+
+  const { total, rows } = T.bill(units);
+  rows.forEach(r => $(r.id).classList.add('active'));
+
+  lastUnits = units; lastTotal = total;
+
+  // Breakdown
+  bd.innerHTML = '<div class="section-title">تفصيل الحساب</div>';
+  bd.classList.add('show');
+  rows.forEach((r, i) => {
+    const div = document.createElement('div');
+    div.className = 'br-row';
+    div.style.animationDelay = (i * 70) + 'ms';
+    div.innerHTML =
+      '<span class="dot" style="background:var(--' + r.id + ')"></span>' +
+      '<span class="desc"><strong>' + fmt(r.used) + ' وحدة</strong> × ' + r.rate +
+      ' دينار <span style="opacity:.55">(' + r.name + ')</span></span>' +
+      '<span class="amt" style="color:var(--' + r.id + ')">' + fmt(r.cost) + '</span>';
+    bd.appendChild(div);
+  });
+
+  // Result
+  res.classList.remove('pulse'); void res.offsetWidth;
+  res.innerHTML = '<span class="cur">د.ع</span>' + fmt(total);
+  res.classList.add('pulse');
+
+  // Sub stats
+  $('statAvg').textContent = fmt(T.averageRate(units)) + ' د';
+  $('statDay').textContent = fmt(total / 30) + ' د';
+  $('subStats').classList.add('show');
+  $('share').classList.add('show');
+
+  renderProgress(rows, units);
+  renderHandoff(units, total);
+}
+
+function renderProgress(rows, units) {
+  const track = $('progressTrack'), note = $('progressNote'), wrap = $('progressWrap');
+  const topBound = T.bounds()[T.bounds().length - 1];
+  const scaleMax = Math.max(units, topBound);
+  track.innerHTML = '';
+  rows.forEach(r => {
+    const seg = document.createElement('div');
+    seg.className = 'progress-seg';
+    seg.style.background = 'var(--' + r.id + ')';
+    seg.style.width = (r.used / scaleMax * 100) + '%';
+    track.appendChild(seg);
+  });
+  if (units < scaleMax) {
+    const rest = document.createElement('div');
+    rest.className = 'progress-seg';
+    rest.style.background = 'transparent';
+    rest.style.width = ((scaleMax - units) / scaleMax * 100) + '%';
+    track.appendChild(rest);
+  }
+
+  const next = T.nextBoundary(units);
+  if (next) {
+    note.className = 'progress-note' + (next.gap <= 200 ? ' warn' : '');
+    note.textContent = next.gap <= 200
+      ? 'تنبيه: تبقّى ' + fmt(next.gap) + ' وحدة فقط قبل الانتقال إلى سعر ' + next.nextRate + ' دينار للوحدة'
+      : 'أمامك ' + fmt(next.gap) + ' وحدة قبل الانتقال إلى سعر ' + next.nextRate + ' دينار للوحدة';
+  } else {
+    note.className = 'progress-note warn';
+    note.textContent = 'استهلاكك ضمن أعلى شريحة (' + TIERS[TIERS.length - 1].rate + ' دينار للوحدة)';
+  }
+  wrap.classList.add('show');
+}
+
+/* ── الجسر إلى حاسبة الطاقة الشمسية ── */
+function renderHandoff(units, total) {
+  const a = $('toSolar');
+  a.href = Site.toSolar(units);
+  $('toSolarBody').innerHTML =
+    'باستهلاك <b>' + fmt(units) + ' وحدة</b> شهرياً تدفع <b>' + fmt(total) +
+    ' دينار</b> للدولة وحدها — قبل المولّدة. شوف حجم المنظومة الشمسية التي تغطّي هذا الاستهلاك، ' +
+    'وكم تُوفّر منه فعلياً في سنة.';
+  a.style.display = 'block';
+}
+
+/* ── Sharing ── */
+function shareText() {
+  return 'استهلاك ' + fmt(lastUnits) + ' وحدة = ' + fmt(lastTotal) +
+         ' دينار\nاحسب فاتورتك: ' + location.href;
+}
+function shareWhatsApp() {
+  window.open('https://wa.me/?text=' + encodeURIComponent(shareText()), '_blank');
+}
+function shareTelegram() {
+  window.open('https://t.me/share/url?url=' + encodeURIComponent(location.href) +
+              '&text=' + encodeURIComponent('استهلاك ' + fmt(lastUnits) + ' وحدة = ' + fmt(lastTotal) + ' دينار'), '_blank');
+}
+function copyResult() {
+  navigator.clipboard.writeText(shareText())
+    .then(() => toast('تم نسخ النتيجة'))
+    .catch(() => toast('تعذّر النسخ'));
+}
+let toastTimer;
+function toast(msg) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+/* ── Deep link: ?u=2500 ── */
+(function () {
+  const u = parseInt(new URLSearchParams(location.search).get('u'), 10);
+  if (u > 0) setUnits(u);
+})();
+</script>
+
+</body>
+</html>

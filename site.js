@@ -54,12 +54,26 @@
     return '/solar' + (monthlyKwh > 0 ? '?kwh=' + Math.round(monthlyKwh) : '');
   }
   function toBill(monthlyKwh) {
-    return '/' + (monthlyKwh > 0 ? '?u=' + Math.round(monthlyKwh) : '');
+    return '/bill' + (monthlyKwh > 0 ? '?u=' + Math.round(monthlyKwh) : '');
+  }
+
+  /* ── الصفحة الحالية في شريط التنقّل ──
+     الشريط نفسه مكتوب حرفياً في الصفحات الثلاث حتى يظهر فوراً بلا انتظار،
+     وهذه الدالة وحدها تقرّر أي تبويب هو النشط. */
+  function markCurrentTab() {
+    var path = location.pathname.replace(/\/index\.html$|\.html$/, '') || '/';
+    var tabs = document.querySelectorAll('.site-nav .nav-tab');
+    for (var i = 0; i < tabs.length; i++) {
+      var href = tabs[i].getAttribute('href');
+      if (href === path) tabs[i].setAttribute('aria-current', 'page');
+      else tabs[i].removeAttribute('aria-current');
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     syncDkButtons();
     applyTierColors();
+    markCurrentTab();
   });
 
   /* لو لم يختر الزائر وضعاً صراحةً، تابع تغيّر إعداد الجهاز */
@@ -81,7 +95,8 @@
     applyTierColors: applyTierColors,
     param: param,
     toSolar: toSolar,
-    toBill: toBill
+    toBill: toBill,
+    markCurrentTab: markCurrentTab
   };
   /* اسم مختصر تستعمله أزرار onclick في الصفحتين */
   root.toggleDk = toggleDk;
