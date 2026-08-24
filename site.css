@@ -152,8 +152,11 @@ html.dk {
 .blob-c { fill: var(--info); opacity: .09; }
 .blob-d { fill: var(--good); opacity: .10; }
 
-/* أيقونات سطرية — تأخذ حجمها من النص المحيط وترث لونه */
+/* أيقونات سطرية — تأخذ حجمها من النص المحيط وترث لونه.
+   ملاحظة: كل أيقونة تحمل أيضاً width/height في الوسم نفسه، فلا يعتمد
+   حجمها على تحميل هذا الملف (تفادياً لتضخّمها لو تأخّر أو فشل تحميل CSS). */
 .i { width: 1.15em; height: 1.15em; display: inline-block; vertical-align: -.2em; flex-shrink: 0; }
+.pill svg, .atab svg, .foot-mail svg, .btn svg { width: 1.15em; height: 1.15em; flex-shrink: 0; }
 
 /* ══ 3. الأزرار ══ */
 .btn {
