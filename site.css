@@ -187,6 +187,32 @@ html.dk {
   padding: 7px 16px; border-radius: var(--r-pill);
 }
 
+/* أيقونة «معلومات إضافية» ونافذتها المنبثقة.
+   بالنقر لا بالمرور، حتى تعمل على اللمس. */
+.infob {
+  display: inline-grid; place-items: center; flex-shrink: 0;
+  width: 20px; height: 20px; padding: 0; margin-inline-start: 2px;
+  border: 1px solid var(--hair-2); border-radius: 50%;
+  background: var(--panel-2); color: var(--ink-3);
+  cursor: pointer; vertical-align: -.25em;
+  transition: background .18s, color .18s, border-color .18s;
+}
+.infob:hover { background: var(--brand-soft); color: var(--brand); border-color: var(--brand-line); }
+.infob:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.infob[aria-expanded="true"] { background: var(--brand); color: var(--on-solid); border-color: var(--brand); }
+.infob svg { display: block; }
+
+.infop {
+  position: absolute; z-index: 9999; display: none;
+  max-width: min(280px, calc(100vw - 24px));
+  background: var(--panel); color: var(--ink-2);
+  border: 1px solid var(--hair-2); border-radius: var(--r-sm);
+  box-shadow: var(--shadow-2); padding: 11px 14px;
+  font-family: var(--font-body); font-size: 12.5px; line-height: 1.85;
+  text-align: start;
+}
+.infop.on { display: block; }
+
 /* ══ 4. شريط التنقّل ══ */
 .site-nav {
   position: sticky; top: 0; z-index: 9000;
@@ -398,6 +424,20 @@ html.dk {
 .cta-band .btn-primary { background: #FFFFFF; color: var(--brand); box-shadow: 0 8px 22px rgba(0,0,0,.16); position: relative; z-index: 1; }
 .cta-band .btn-primary:hover { background: #F1EFFF; color: var(--brand-deep); }
 .cta-band .blobs svg { opacity: .16; fill: #FFFFFF; }
+
+/* رابط متقاطع قصير بين الأداتين — سطر واحد بنمط الحبّة */
+.xlink {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 12.5px; font-weight: 700;
+  color: var(--brand); background: var(--brand-soft);
+  border: 1px solid var(--brand-line); border-radius: var(--r-pill);
+  padding: 9px 16px; text-decoration: none; margin-top: 12px;
+  transition: background .2s, border-color .2s;
+}
+.xlink:hover { background: var(--panel); border-color: var(--brand-ring); }
+.xlink svg { flex-shrink: 0; }
+.xlink .arw { transition: transform .2s; }
+.xlink:hover .arw { transform: translateX(-4px); }
 
 /* ══ 11. بطاقة العبور بين الأداتين ══ */
 .handoff {

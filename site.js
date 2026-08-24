@@ -70,10 +70,78 @@
     }
   }
 
+  /* ── أيقونة «معلومات إضافية» ──
+     نافذة واحدة مشتركة تنتقل إلى الأيقونة المضغوطة. بالنقر لا بالمرور،
+     وتُغلق بالنقر خارجها أو بالضغط عليها ثانيةً أو بمفتاح Esc. */
+  var tipBox = null, tipBtn = null;
+
+  function tipEnsure() {
+    if (tipBox) return tipBox;
+    tipBox = document.createElement('div');
+    tipBox.className = 'infop';
+    tipBox.id = 'infop';
+    tipBox.setAttribute('role', 'tooltip');
+    document.body.appendChild(tipBox);
+    return tipBox;
+  }
+
+  function tipClose() {
+    if (!tipBtn) return;
+    tipBtn.setAttribute('aria-expanded', 'false');
+    tipBtn.removeAttribute('aria-describedby');
+    tipBtn = null;
+    if (tipBox) tipBox.classList.remove('on');
+  }
+
+  function tipPlace(btn) {
+    var r = btn.getBoundingClientRect();
+    tipBox.style.left = '0px';
+    tipBox.style.top = '0px';
+    var w = tipBox.offsetWidth, h = tipBox.offsetHeight;
+    var left = r.left + r.width / 2 - w / 2;
+    left = Math.max(10, Math.min(left, document.documentElement.clientWidth - w - 10));
+    var top = r.bottom + 8;
+    if (top + h > window.innerHeight - 8) top = Math.max(8, r.top - h - 8);
+    tipBox.style.left = (left + window.pageXOffset) + 'px';
+    tipBox.style.top = (top + window.pageYOffset) + 'px';
+  }
+
+  function tipOpen(btn) {
+    var box = tipEnsure();
+    box.textContent = btn.getAttribute('data-tip') || '';
+    box.classList.add('on');
+    tipBtn = btn;
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-describedby', box.id);
+    tipPlace(btn);
+  }
+
+  function initInfoTips() {
+    /* مرحلة الالتقاط: البطاقات حولها onclick خاص بها، فنمنع وصول النقرة إليه */
+    document.addEventListener('click', function (e) {
+      var t = e.target, btn = null;
+      if (t && t.closest) btn = t.closest('[data-tip]');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (tipBtn === btn) tipClose(); else tipOpen(btn);
+        return;
+      }
+      if (tipBtn && (!tipBox || !tipBox.contains(t))) tipClose();
+    }, true);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.keyCode === 27) tipClose();
+    });
+    window.addEventListener('resize', tipClose);
+    window.addEventListener('scroll', tipClose, true);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     syncDkButtons();
     applyTierColors();
     markCurrentTab();
+    initInfoTips();
   });
 
   /* لو لم يختر الزائر وضعاً صراحةً، تابع تغيّر إعداد الجهاز */
@@ -96,7 +164,8 @@
     param: param,
     toSolar: toSolar,
     toBill: toBill,
-    markCurrentTab: markCurrentTab
+    markCurrentTab: markCurrentTab,
+    closeInfoTip: tipClose
   };
   /* اسم مختصر تستعمله أزرار onclick في الصفحتين */
   root.toggleDk = toggleDk;
