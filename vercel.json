@@ -9,7 +9,7 @@
       ]
     },
     {
-      "source": "/og-(home|image|solar).png",
+      "source": "/og-(home|image|solar).v2.png",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
