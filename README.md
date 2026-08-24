@@ -44,6 +44,7 @@ bill.html       حاسبة الفاتورة        →  /bill
 solar.html      حاسبة الطاقة الشمسية  →  /solar
 tariff.js       ★ الشرائح والحساب — المصدر الوحيد للأسعار
 site.js         الوضع الليلي · ألوان الشرائح · التبويب النشط · الربط بين الأداتين
+analytics.js    قياس استخدام مجهول (بلا كوكيز وبلا أي بيانات شخصية)
 site.css        ★ رموز التصميم (ألوان/حواف/ظلال/خطوط) + المكوّنات المشتركة
 og-home.v2.png  معاينة الواجهة        (1200×630)
 og-image.v2.png معاينة صفحة الفاتورة  (1200×630)
@@ -94,6 +95,17 @@ robots.txt
   لتفادي الوميض.
 - **حالة صفحة الشمسي** محفوظة كاملةً في `localStorage` تحت `irqSol3`.
 - **اللغة:** الموقع عربي بالكامل، `dir="rtl"` في كل صفحة. لا يوجد تبديل لغة.
+- **القياس المجهول:** [`analytics.js`](analytics.js) يرسل أحداث الاستخدام إلى
+  Google Apps Script (صفّ لكل حدث في Google Sheet). لا كوكيز ولا `localStorage`:
+  معرّف الجلسة رقم عشوائي من `crypto` يُحفظ في `sessionStorage` تحت `irq_sid`
+  وينتهي بإغلاق التبويب. **لا تُرسل الإحداثيات إطلاقاً** — اسم المدينة فقط بعد
+  حذف القوس الذي يحوي خط العرض. الإرسال عبر `sendBeacon` ويفشل بصمت، فلا يؤثر
+  على الحاسبات إن كان المنفذ معطّلاً.
+  الأحداث: `page_view` · `bill_calculated` · `bill_share_clicked` ·
+  `solar_step_reached` · `solar_calculated` · `solar_abandoned` ·
+  `solar_share_clicked` · `solar_print_clicked`.
+  عند تغيير المنفذ عدّل `ENDPOINT` في أعلى الملف — ويجب أن يكون النشر على
+  Apps Script بصلاحية «Anyone» وإلا رُدّت الطلبات بـ 401.
 - **التحليلات:** Vercel Web Analytics عبر
   `‎<script defer src="/_vercel/insights/script.js">‎` في الصفحات الثلاث.
   يتطلّب تفعيل Web Analytics من لوحة تحكّم المشروع على Vercel.

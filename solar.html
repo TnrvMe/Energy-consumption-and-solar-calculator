@@ -40,6 +40,7 @@
 <!-- الشرائح الرسمية — نفس المصدر الذي تستعمله صفحة الفاتورة -->
 <script src="/tariff.js"></script>
 <script src="/site.js"></script>
+<script src="/analytics.js"></script>
 <link rel="stylesheet" href="/site.css">
 
 <!-- Vercel Web Analytics -->
@@ -587,7 +588,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   </div>
   <div class="shrow">
     <button class="shbtn bwa" onclick="shareWA()">📲 واتساب</button>
-    <button class="shbtn bpr" onclick="window.print()">🖨️ طباعة</button>
+    <button class="shbtn bpr" onclick="window.track&&track('solar_print_clicked');window.print()">🖨️ طباعة</button>
   </div>
   <div class="atabs">
     <button class="atab on" onclick="showAx('cur')"><svg class="i" width="14" height="14" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bolt"/></svg> وضعك الحالي</button>
@@ -864,6 +865,12 @@ let srcs={},roles={},solarMode='hybrid',loadPro='light',seasMode='s';
 let lastRes=null;
 // Appliance state
 let lcItems=[],lcCat='all';
+/* ── قياس مجهول ── يقرأ الحالة الموجودة فقط، ولا يضيف أي حقل ولا يغيّر أي حساب.
+   لا تُرسل الإحداثيات إطلاقاً — اسم المدينة فقط بعد حذف أي قوس يحوي أرقاماً. */
+let _maxStep=1,_calcDone=false;
+function _cityLabel(n){try{return String(n||'').replace(/\s*\([^)]*\)\s*$/,'')}catch(e){return''}}
+function _sourceMix(){try{return Object.keys(srcs).join('+')}catch(e){return''}}
+function _appliances(){try{return lcItems.map(function(a){return a.nm}).join(', ')}catch(e){return''}}
 
 // ═══ DARK ═══
 
@@ -871,6 +878,7 @@ let lcItems=[],lcCat='all';
 function goStep(n){
   if(n===2&&!hasLoc()){alert('⚠️ الرجاء تحديد موقعك');return}
   if(n===3&&!hasKwh()){alert('⚠️ الرجاء إدخال الاستهلاك');return}
+  if(n>_maxStep){_maxStep=n;window.track&&track('solar_step_reached',{step:n})}
   [1,2,3,4].forEach(i=>{
     document.getElementById('sec'+i).classList.toggle('act',i===n);
     const p=document.getElementById('ps'+i);
@@ -1019,6 +1027,18 @@ function calc(){
   const pb=totSavAnn>0?(sysCost/totSavAnn).toFixed(1):'—';
   const roi10=totSavAnn>0?Math.round(((totSavAnn*10-sysCost)/sysCost)*100):0;
   lastRes={cname,reqR,nPan,panW,totKw,invKw,sn,bv,bkwh,annGen,tilt,sysCost,totSavAnn,totSavMo,pb,batT,solarMode,amps};
+  _calcDone=true;
+  window.track&&track('solar_calculated',{
+    city:_cityLabel(cname),
+    consumption_kwh:Math.round(annKwh/12),
+    appliances:_appliances(),
+    system_size:reqR,
+    source_mix:_sourceMix(),
+    extra:{annual_kwh:Math.round(annKwh),panels:nPan,panel_w:panW,total_kw:+totKw.toFixed(2),
+      inverter_kw:invKw,batteries:sn,battery_type:batT,system_mode:solarMode,load_profile:loadPro,
+      payback_years:pb,system_cost_iqd:sysCost,saving_year_iqd:totSavAnn,
+      current_cost_month_iqd:totCurrMo,max_temp_c:maxT,peak_sun_hours:+avgPSH.toFixed(2)}
+  });
   const f=n=>n.toLocaleString('ar-IQ');
   // render loc
   document.getElementById('resloc').textContent=`📍 ${cname} — ذروة: ${avgPSH.toFixed(1)} kWh/m²/day | حرارة: ${maxT}°C`;
@@ -1092,7 +1112,7 @@ function setBAH(pct){pct=Math.max(5,Math.min(95,pct));const h=document.getElemen
 function baStart(e){baDrag=true;const mv=(e)=>{if(!baDrag)return;const r=document.getElementById('bac').getBoundingClientRect();const cx=e.touches?e.touches[0].clientX:e.clientX;setBAH(100-((cx-r.left)/r.width)*100)};const up=()=>{baDrag=false;document.removeEventListener('mousemove',mv);document.removeEventListener('touchmove',mv);document.removeEventListener('mouseup',up);document.removeEventListener('touchend',up)};document.addEventListener('mousemove',mv);document.addEventListener('touchmove',mv,{passive:true});document.addEventListener('mouseup',up);document.addEventListener('touchend',up);mv(e)}
 
 // ═══ WHATSAPP ═══
-function shareWA(){if(!lastRes)return;const f=n=>n.toLocaleString('ar-IQ');const r=lastRes;const msg=`🌞 *نتائج حاسبة الطاقة الشمسية — العراق*\n\n📍 ${r.cname}\n⚡ حجم النظام: ${r.reqR} kW\n🔆 الألواح: ${r.nPan} لوح (${r.panW}W)\n📐 زاوية الميلان: ${r.tilt}°\n⚡ بالأمبير: ${r.amps} أمبير\n🔋 البطاريات: ${r.sn} × ${r.bv}V\n🔄 الإنفرتر: ${r.invKw} kW\n💡 التوليد: ${f(r.annGen)} kWh/سنة\n💰 التوفير السنوي: ${f(r.totSavAnn)} دينار\n💵 التوفير الشهري: ${f(r.totSavMo)} دينار\n📅 فترة الاسترداد: ${r.pb} سنة\n💸 تكلفة النظام: ${f(r.sysCost)} دينار`;window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank','noopener')}
+function shareWA(){if(!lastRes)return;window.track&&track('solar_share_clicked',{extra:{method:'whatsapp'}});const f=n=>n.toLocaleString('ar-IQ');const r=lastRes;const msg=`🌞 *نتائج حاسبة الطاقة الشمسية — العراق*\n\n📍 ${r.cname}\n⚡ حجم النظام: ${r.reqR} kW\n🔆 الألواح: ${r.nPan} لوح (${r.panW}W)\n📐 زاوية الميلان: ${r.tilt}°\n⚡ بالأمبير: ${r.amps} أمبير\n🔋 البطاريات: ${r.sn} × ${r.bv}V\n🔄 الإنفرتر: ${r.invKw} kW\n💡 التوليد: ${f(r.annGen)} kWh/سنة\n💰 التوفير السنوي: ${f(r.totSavAnn)} دينار\n💵 التوفير الشهري: ${f(r.totSavMo)} دينار\n📅 فترة الاسترداد: ${r.pb} سنة\n💸 تكلفة النظام: ${f(r.sysCost)} دينار`;window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank','noopener')}
 
 // ═══ APPLIANCE CALCULATOR ═══
 function openLC(){document.getElementById('lcmod').classList.add('op');document.body.style.overflow='hidden';renderCat(lcCat);renderAdded();updLCSumm()}
@@ -1163,6 +1183,11 @@ function handoffIn(){
   document.getElementById('fromBill').style.display='flex';
   save();
 }
+
+/* مغادرة قبل الحصول على نتيجة — عبر pagehide/visibilitychange لا beforeunload */
+window.Analytics&&Analytics.onHidden(function(){
+  if(!_calcDone)track('solar_abandoned',{step:_maxStep});
+});
 
 window.onload=()=>{
   fillProvs();

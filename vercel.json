@@ -15,7 +15,7 @@
       ]
     },
     {
-      "source": "/(tariff|site).js",
+      "source": "/(tariff|site|analytics).js",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
       ]

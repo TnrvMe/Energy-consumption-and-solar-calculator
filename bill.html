@@ -40,6 +40,7 @@
 <!-- الشرائح الرسمية — مصدر واحد مشترك مع صفحة الطاقة الشمسية -->
 <script src="/tariff.js"></script>
 <script src="/site.js"></script>
+<script src="/analytics.js"></script>
 <link rel="stylesheet" href="/site.css">
 
 <!-- Vercel Web Analytics -->
@@ -553,6 +554,12 @@ function calculate(units) {
 
   lastUnits = units; lastTotal = total;
 
+  /* قياس مجهول — قراءة للحالة القائمة فقط، ولا يؤثر على الحساب */
+  window.Analytics && Analytics.trackDebounced('bill', 1500, 'bill_calculated', {
+    consumption_kwh: units,
+    extra: { total_iqd: total, tiers: rows.length, input_mode: mode }
+  });
+
   // Breakdown
   bd.innerHTML = '<div class="section-title">تفصيل الحساب</div>';
   bd.classList.add('show');
@@ -636,13 +643,16 @@ function shareText() {
          ' دينار\nاحسب فاتورتك: ' + shareLink();
 }
 function shareWhatsApp() {
+  window.track && track('bill_share_clicked', { extra: { method: 'whatsapp' } });
   window.open('https://wa.me/?text=' + encodeURIComponent(shareText()), '_blank', 'noopener');
 }
 function shareTelegram() {
+  window.track && track('bill_share_clicked', { extra: { method: 'telegram' } });
   window.open('https://t.me/share/url?url=' + encodeURIComponent(shareLink()) +
               '&text=' + encodeURIComponent('استهلاك ' + fmt(lastUnits) + ' وحدة = ' + fmt(lastTotal) + ' دينار'), '_blank', 'noopener');
 }
 function copyResult() {
+  window.track && track('bill_share_clicked', { extra: { method: 'copy' } });
   if (!navigator.clipboard || !navigator.clipboard.writeText) { toast('تعذّر النسخ'); return; }
   navigator.clipboard.writeText(shareText())
     .then(() => toast('تم نسخ النتيجة'))
