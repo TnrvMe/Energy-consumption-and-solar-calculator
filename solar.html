@@ -9,7 +9,7 @@
 <meta name="description" content="احسب حجم المنظومة الشمسية المناسبة لبيتك في العراق: عدد الألواح والبطاريات والإنفرتر حسب مدينتك وساعات الشمس وحرارة الصيف، مع مقارنة تكلفتك الحالية (كهرباء الدولة والمولّدة) بتوفيرك بعد التحول.">
 <meta name="keywords" content="حاسبة الطاقة الشمسية, الطاقة الشمسية العراق, منظومة شمسية, ألواح شمسية بغداد, بطاريات ليثيوم, إنفرتر هايبرد, توفير الكهرباء">
 
-<!-- ═══ ضع رابط موقعك هنا بعد الرفع ═══ -->
+<!-- ═══ الرابط المطلق مطلوب هنا وفي وسوم og — حدّثه عند تغيير النطاق ═══ -->
 <link rel="canonical" href="https://iraqelec.vercel.app/solar">
 
 <!-- Open Graph — معاينة رابط مستقلة عن صفحة الفاتورة -->
@@ -224,7 +224,7 @@ html[dir=rtl] .sv{text-align:right}
 .bwrap{display:flex;gap:3px;height:85px;align-items:flex-end;margin-bottom:4px}
 .bw{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end}
 .bb{width:100%;border-radius:3px 3px 0 0;transition:height .8s ease;min-height:2px;position:relative;cursor:pointer}
-.bb:active::after,.bb:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100%+4px);left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg2);padding:3px 6px;border-radius:5px;font-size:10px;white-space:nowrap;font-weight:600;z-index:10;pointer-events:none}
+.bb:active::after,.bb:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg2);padding:3px 6px;border-radius:5px;font-size:10px;white-space:nowrap;font-weight:600;z-index:10;pointer-events:none}
 .bl{font-size:9px;color:var(--tx4);margin-top:2px;text-align:center}
 /* tier table */
 .tt{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
@@ -335,7 +335,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   .card{box-shadow:none!important;border:1px solid #ccc!important;break-inside:avoid;margin-bottom:8px!important;padding:10px!important}
   .rhero,.sbanner,.gcost{background:#f8f8f8!important;border:1px solid #ccc!important;box-shadow:none!important;break-inside:avoid}
   .advtog,.advbody,.disc,.acc2{display:none!important}
-  #axsolar{page-break-before:always}
+  #axsol{page-break-before:always}
   #axsav{page-break-before:always}
   .bb{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   .tt{width:100%;border-collapse:collapse}
@@ -459,7 +459,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   <!-- INV -->
   <div class="sdet" id="detinv">
     <div class="ct"><div class="ico ig">🔋</div>العاكسة</div>
-    <div class="ib ibl">🔌 يتحول تلقائياً للبطاريات عند انقطاع الكهرباء</div>
+    <div class="ib ibl">🔌 يتحوّل تلقائياً إلى البطاريات عند انقطاع الكهرباء</div>
     <div class="g2">
       <div class="fg"><label>عدد البطاريات</label><input type="number" id="invbats" placeholder="2" value="2" min="1"></div>
       <div class="fg"><label>التكلفة الشهرية (دينار)</label><input type="number" id="invcost" placeholder="20000"></div>
@@ -508,7 +508,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   </div>
   <div class="disc" id="ogdisc" style="display:none">
     <div class="dt">⚠️ Grid-Tie — تنبيه مهم</div>
-    <p>في العراق حالياً <strong>لا توجد آلية بيع طاقة زائدة</strong> للشبكة. النظام يقلل فاتورتك لكن لا يدفع لك نقوداً.</p>
+    <p>في العراق حالياً <strong>لا توجد آلية بيع طاقة زائدة</strong> للشبكة. النظام يقلل فاتورتك لكنّه لا يدفع لك نقوداً.</p>
   </div>
   <!-- LOAD PROFILE -->
   <div class="card">
@@ -538,7 +538,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
         <div style="margin-top:5px"><span id="ov" class="svp">100%</span>
         <input type="range" id="off" min="50" max="120" value="100" oninput="document.getElementById('ov').textContent=this.value+'%'"></div></div>
     </div>
-    <div id="batwarn" class="wbox" style="display:none">🌡️ <div><strong>تحذير AGM في حرارة العراق:</strong> بطاريات AGM تفقد 30–50% طاقتها عند 50°C وعمرها أقل من سنتين بدون تبريد. LiFePO4 أفضل بكثير للمناخ العراقي.</div></div>
+    <div id="batwarn" class="wbox" style="display:none">🌡️ <div><strong>تحذير AGM في حرارة العراق:</strong> بطاريات AGM تفقد 30–50% من طاقتها عند 50°C وعمرها أقل من سنتين بدون تبريد. LiFePO4 أفضل بكثير للمناخ العراقي.</div></div>
     <div class="advtog" id="advtog" onclick="togAdv()">▸ إعدادات متقدمة</div>
     <div class="advbody" id="advbody">
       <div class="g2">
@@ -645,9 +645,9 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
       <div class="bgrid">
         <div class="bcard"><div class="bi">🇨🇳</div><div class="bn">Pylontech</div><div class="bt">LiFePO4</div><div class="bb2 bg">✅ الأفضل للعراق</div></div>
         <div class="bcard"><div class="bi">🇨🇳</div><div class="bn">BYD Battery-Box</div><div class="bt">LiFePO4</div><div class="bb2 bg">✅ موثوق</div></div>
-        <div class="bcard"><div class="bi">⚠️</div><div class="bn">AGM محلي</div><div class="bt">Lead-Acid</div><div class="bb2 bam">⚠️ تحتاج تبريد</div></div>
+        <div class="bcard"><div class="bi">⚠️</div><div class="bn">AGM محلي</div><div class="bt">Lead-Acid</div><div class="bb2 bam">⚠️ تحتاج تبريداً</div></div>
       </div>
-      <div class="ib ibr" style="margin-top:8px">🚨 <strong>كيف تكتشف اللوح المغشوش:</strong> تحقق من السيريال على الموقع الرسمي — سعر أقل 25%+ من السوق = تحقق من المصدر — اطلب ضمان مختوم</div>
+      <div class="ib ibr" style="margin-top:8px">🚨 <strong>كيف تكتشف اللوح المغشوش:</strong> تحقق من السيريال على الموقع الرسمي — سعر أقل بنسبة 25% أو أكثر من سعر السوق = تحقّق من المصدر — اطلب ضماناً مختوماً</div>
     </div>
   </div>
   <!-- AX3: SAVINGS -->
@@ -744,7 +744,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
         <button onclick="addCustom()" style="flex:1;padding:8px 14px;background:var(--acc);color:var(--on-solid);border:none;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif">➕ إضافة</button>
       </div>
     </div>
-    <div class="ib iba">💡 1 طن تبريد ≈ 1.4 kW | مكيف 1.5 طن ≈ 2.1 kW | مكيف 2 طن ≈ 2.8 kW<br>السخان والغسالة استهلاكهم عالٍ — ضع ساعات تشغيل واقعية</div>
+    <div class="ib iba">💡 1 طن تبريد ≈ 1.4 kW | مكيف 1.5 طن ≈ 2.1 kW | مكيف 2 طن ≈ 2.8 kW<br>السخان والغسالة استهلاكهما عالٍ — ضع ساعات تشغيل واقعية</div>
     <button class="lcapply" id="lcapply" onclick="applyLC()" style="opacity:.45;pointer-events:none">✅ استخدم هذا الاستهلاك في الحاسبة</button>
   </div>
 </div>
@@ -760,15 +760,15 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
     <a href="/bill">حاسبة فاتورة الكهرباء</a>
     <a href="/">الرئيسية</a>
   </span>
-  <span style="display:block;margin-top:9px">صُنعت بواسطة منو</span>
+  <span style="display:block;margin-top:9px">صُنعت بواسطة محمد الطائي</span>
 </footer>
 
 <script>
 // ═══ DB ═══
-const DB={mosul:[36.33,43.12,"الموصل","Mosul",[2.8,3.5,4.6,5.8,6.8,7.5,7.8,7.4,6.2,4.8,3.2,2.6],45],duhok:[36.87,42.99,"دهوك","Duhok",[2.7,3.4,4.5,5.7,6.6,7.4,7.6,7.2,6.0,4.6,3.1,2.5],43],zakho:[37.14,42.68,"زاخو","Zakho",[2.6,3.3,4.4,5.6,6.5,7.3,7.5,7.1,5.9,4.5,3.0,2.4],42],suly:[35.56,45.44,"السليمانية","Sulaymaniyah",[2.9,3.6,4.7,5.9,6.9,7.6,7.9,7.5,6.3,4.9,3.3,2.7],44],halabja:[35.18,45.99,"حلبجة","Halabja",[3.0,3.7,4.8,6.0,7.0,7.7,8.0,7.6,6.4,5.0,3.4,2.8],43],erbil:[36.19,44.01,"أربيل","Erbil",[3.0,3.8,4.9,6.1,7.1,7.8,8.0,7.6,6.4,5.0,3.4,2.8],45],shaqlawa:[36.41,44.32,"شقلاوة","Shaqlawa",[3.1,3.9,5.0,6.2,7.2,7.9,8.1,7.7,6.5,5.1,3.5,2.9],38],kirkuk:[35.47,44.39,"كركوك","Kirkuk",[3.3,4.1,5.2,6.4,7.3,8.0,8.3,7.9,6.7,5.3,3.7,3.1],47],hawija:[35.36,43.77,"الحويجة","Hawija",[3.3,4.1,5.2,6.4,7.3,8.0,8.3,7.9,6.7,5.3,3.7,3.1],47],tikrit:[34.59,43.69,"تكريت","Tikrit",[3.5,4.3,5.4,6.6,7.5,8.2,8.5,8.1,6.9,5.5,3.9,3.3],48],samarra:[34.20,43.87,"سامراء","Samarra",[3.5,4.3,5.4,6.6,7.5,8.2,8.5,8.1,6.9,5.5,3.9,3.3],48],baiji:[34.93,43.49,"بيجي","Baiji",[3.4,4.2,5.3,6.5,7.4,8.1,8.4,8.0,6.8,5.4,3.8,3.2],48],baqubah:[33.75,44.66,"بعقوبة","Baqubah",[3.6,4.4,5.5,6.7,7.6,8.3,8.6,8.2,7.0,5.6,4.0,3.4],48],miqdad:[33.97,44.93,"المقدادية","Miqdadiyah",[3.6,4.4,5.5,6.7,7.6,8.3,8.6,8.2,7.0,5.6,4.0,3.4],48],khanaqin:[34.34,45.38,"خانقين","Khanaqin",[3.7,4.5,5.6,6.8,7.7,8.4,8.7,8.3,7.1,5.7,4.1,3.5],47],baghdad:[33.32,44.37,"بغداد","Baghdad",[3.7,4.5,5.7,6.9,7.8,8.5,8.8,8.4,7.2,5.8,4.1,3.5],49],abuGhraib:[33.30,44.07,"أبو غريب","Abu Ghraib",[3.7,4.5,5.7,6.9,7.8,8.5,8.8,8.4,7.2,5.8,4.1,3.5],49],mahmud:[33.05,44.35,"المحمودية","Mahmudiyah",[3.8,4.6,5.8,7.0,7.9,8.6,8.9,8.5,7.3,5.9,4.2,3.6],49],ramadi:[33.42,43.30,"الرمادي","Ramadi",[3.9,4.7,5.9,7.1,8.0,8.7,9.0,8.6,7.4,6.0,4.3,3.7],50],fallujah:[33.35,43.78,"الفلوجة","Fallujah",[3.8,4.6,5.8,7.0,7.9,8.6,8.9,8.5,7.3,5.9,4.2,3.6],50],hit:[33.64,42.83,"هيت","Hit",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],haditha:[34.11,42.37,"حديثة","Haditha",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],anah:[34.37,41.99,"عنه","Anah",[4.1,4.9,6.1,7.3,8.2,8.9,9.2,8.8,7.6,6.2,4.5,3.9],50],qaim:[34.36,41.12,"القائم","Al-Qa'im",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],rutba:[33.04,40.29,"روتبا","Rutba",[4.5,5.3,6.5,7.7,8.6,9.3,9.6,9.2,8.0,6.6,4.9,4.3],50],baghdadi:[33.85,42.59,"البغدادي","Baghdadi",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],hilla:[32.47,44.43,"الحلة","Hilla",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],musayyib:[32.78,44.29,"المسيب","Al-Musayyib",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],hashimiya:[32.46,44.64,"الهاشمية","Al-Hashimiyah",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],mahawil:[32.67,44.45,"المحاويل","Al-Mahawil",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],karbala:[32.62,44.02,"كربلاء","Karbala",[4.1,4.9,6.1,7.3,8.2,8.9,9.2,8.8,7.6,6.2,4.5,3.9],50],ainTamur:[32.34,43.30,"عين التمر","Ain Tamur",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],najaf:[31.99,44.33,"النجف","Najaf",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],kufa:[32.04,44.40,"الكوفة","Kufa",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],mishkhab:[31.73,44.58,"المشخاب","Mishkhab",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],diwaniya:[31.99,44.92,"الديوانية","Diwaniyah",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],shamiya:[31.89,45.22,"الشامية","Shamiya",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],kut:[32.49,45.84,"الكوت","Kut",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],numaniya:[32.53,45.30,"النعمانية","Nu'maniyah",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],amara:[31.84,47.15,"العمارة","Amara",[4.1,4.9,6.1,7.3,8.2,8.9,9.2,8.8,7.6,6.2,4.5,3.9],51],qalSalih:[31.52,47.28,"قلعة صالح","Qal'at Salih",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],nasiriya:[31.04,46.26,"الناصرية","Nasiriyah",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],shatrah:[31.41,46.17,"الشطرة","Al-Shatrah",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],suqS:[30.92,46.44,"سوق الشيوخ","Suq Al-Shuyukh",[4.4,5.2,6.4,7.6,8.5,9.2,9.5,9.1,7.9,6.5,4.8,4.2],51],samawa:[31.32,45.28,"السماوة","Samawah",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],rumaitha:[31.51,45.21,"الرميثة","Rumaitha",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],basra:[30.51,47.78,"البصرة","Basra",[4.5,5.3,6.5,7.7,8.6,9.3,9.6,9.2,8.0,6.6,4.9,4.3],52],zubair:[30.39,47.71,"الزبير","Zubair",[4.6,5.4,6.6,7.8,8.7,9.4,9.7,9.3,8.1,6.7,5.0,4.4],52],abuKhasib:[30.43,47.97,"أبو الخصيب","Abu Al-Khasib",[4.6,5.4,6.6,7.8,8.7,9.4,9.7,9.3,8.1,6.7,5.0,4.4],52],qurna:[31.00,47.43,"القرنة","Qurna",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],faw:[29.98,48.47,"الفاو","Al-Faw",[4.7,5.5,6.7,7.9,8.8,9.5,9.8,9.4,8.2,6.8,5.1,4.5],53]};
-const PROVS={"نينوى|Nineveh":["mosul","duhok","zakho"],"دهوك|Duhok":["duhok","zakho"],"أربيل|Erbil":["erbil","shaqlawa"],"السليمانية|Sulaymaniyah":["suly","halabja"],"كركوك|Kirkuk":["kirkuk","hawija"],"صلاح الدين|Saladin":["tikrit","samarra","baiji"],"ديالى|Diyala":["baqubah","miqdad","khanaqin"],"الأنبار|Anbar":["ramadi","fallujah","hit","haditha","anah","qaim","rutba","baghdadi"],"بغداد|Baghdad":["baghdad","abuGhraib","mahmud"],"بابل|Babylon":["hilla","musayyib","hashimiya","mahawil"],"كربلاء|Karbala":["karbala","ainTamur"],"النجف|Najaf":["najaf","kufa","mishkhab"],"القادسية|Qadisiyyah":["diwaniya","shamiya"],"واسط|Wasit":["kut","numaniya"],"ميسان|Maysan":["amara","qalSalih"],"المثنى|Muthanna":["samawa","rumaitha"],"ذي قار|Dhi Qar":["nasiriya","shatrah","suqS"],"البصرة|Basra":["basra","zubair","abuKhasib","qurna","faw"]};
+const DB={mosul:[36.33,43.12,"الموصل","Mosul",[2.8,3.5,4.6,5.8,6.8,7.5,7.8,7.4,6.2,4.8,3.2,2.6],45],duhok:[36.87,42.99,"دهوك","Duhok",[2.7,3.4,4.5,5.7,6.6,7.4,7.6,7.2,6.0,4.6,3.1,2.5],43],zakho:[37.14,42.68,"زاخو","Zakho",[2.6,3.3,4.4,5.6,6.5,7.3,7.5,7.1,5.9,4.5,3.0,2.4],42],suly:[35.56,45.44,"السليمانية","Sulaymaniyah",[2.9,3.6,4.7,5.9,6.9,7.6,7.9,7.5,6.3,4.9,3.3,2.7],44],halabja:[35.18,45.99,"حلبجة","Halabja",[3.0,3.7,4.8,6.0,7.0,7.7,8.0,7.6,6.4,5.0,3.4,2.8],43],erbil:[36.19,44.01,"أربيل","Erbil",[3.0,3.8,4.9,6.1,7.1,7.8,8.0,7.6,6.4,5.0,3.4,2.8],45],shaqlawa:[36.41,44.32,"شقلاوة","Shaqlawa",[3.1,3.9,5.0,6.2,7.2,7.9,8.1,7.7,6.5,5.1,3.5,2.9],38],kirkuk:[35.47,44.39,"كركوك","Kirkuk",[3.3,4.1,5.2,6.4,7.3,8.0,8.3,7.9,6.7,5.3,3.7,3.1],47],hawija:[35.36,43.77,"الحويجة","Hawija",[3.3,4.1,5.2,6.4,7.3,8.0,8.3,7.9,6.7,5.3,3.7,3.1],47],tikrit:[34.59,43.69,"تكريت","Tikrit",[3.5,4.3,5.4,6.6,7.5,8.2,8.5,8.1,6.9,5.5,3.9,3.3],48],samarra:[34.20,43.87,"سامراء","Samarra",[3.5,4.3,5.4,6.6,7.5,8.2,8.5,8.1,6.9,5.5,3.9,3.3],48],baiji:[34.93,43.49,"بيجي","Baiji",[3.4,4.2,5.3,6.5,7.4,8.1,8.4,8.0,6.8,5.4,3.8,3.2],48],baqubah:[33.75,44.66,"بعقوبة","Baqubah",[3.6,4.4,5.5,6.7,7.6,8.3,8.6,8.2,7.0,5.6,4.0,3.4],48],miqdad:[33.97,44.93,"المقدادية","Miqdadiyah",[3.6,4.4,5.5,6.7,7.6,8.3,8.6,8.2,7.0,5.6,4.0,3.4],48],khanaqin:[34.34,45.38,"خانقين","Khanaqin",[3.7,4.5,5.6,6.8,7.7,8.4,8.7,8.3,7.1,5.7,4.1,3.5],47],baghdad:[33.32,44.37,"بغداد","Baghdad",[3.7,4.5,5.7,6.9,7.8,8.5,8.8,8.4,7.2,5.8,4.1,3.5],49],abuGhraib:[33.30,44.07,"أبو غريب","Abu Ghraib",[3.7,4.5,5.7,6.9,7.8,8.5,8.8,8.4,7.2,5.8,4.1,3.5],49],mahmud:[33.05,44.35,"المحمودية","Mahmudiyah",[3.8,4.6,5.8,7.0,7.9,8.6,8.9,8.5,7.3,5.9,4.2,3.6],49],ramadi:[33.42,43.30,"الرمادي","Ramadi",[3.9,4.7,5.9,7.1,8.0,8.7,9.0,8.6,7.4,6.0,4.3,3.7],50],fallujah:[33.35,43.78,"الفلوجة","Fallujah",[3.8,4.6,5.8,7.0,7.9,8.6,8.9,8.5,7.3,5.9,4.2,3.6],50],hit:[33.64,42.83,"هيت","Hit",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],haditha:[34.11,42.37,"حديثة","Haditha",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],anah:[34.37,41.99,"عانة","Anah",[4.1,4.9,6.1,7.3,8.2,8.9,9.2,8.8,7.6,6.2,4.5,3.9],50],qaim:[34.36,41.12,"القائم","Al-Qa'im",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],rutba:[33.04,40.29,"الرطبة","Rutba",[4.5,5.3,6.5,7.7,8.6,9.3,9.6,9.2,8.0,6.6,4.9,4.3],50],baghdadi:[33.85,42.59,"البغدادي","Baghdadi",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],hilla:[32.47,44.43,"الحلة","Hilla",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],musayyib:[32.78,44.29,"المسيب","Al-Musayyib",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],hashimiya:[32.46,44.64,"الهاشمية","Al-Hashimiyah",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],mahawil:[32.67,44.45,"المحاويل","Al-Mahawil",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],karbala:[32.62,44.02,"كربلاء","Karbala",[4.1,4.9,6.1,7.3,8.2,8.9,9.2,8.8,7.6,6.2,4.5,3.9],50],ainTamur:[32.34,43.30,"عين التمر","Ain Tamur",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],najaf:[31.99,44.33,"النجف","Najaf",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],kufa:[32.04,44.40,"الكوفة","Kufa",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],mishkhab:[31.73,44.58,"المشخاب","Mishkhab",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],diwaniya:[31.99,44.92,"الديوانية","Diwaniyah",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],shamiya:[31.89,45.22,"الشامية","Shamiya",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],kut:[32.49,45.84,"الكوت","Kut",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],numaniya:[32.53,45.30,"النعمانية","Nu'maniyah",[4.0,4.8,6.0,7.2,8.1,8.8,9.1,8.7,7.5,6.1,4.4,3.8],50],amara:[31.84,47.15,"العمارة","Amara",[4.1,4.9,6.1,7.3,8.2,8.9,9.2,8.8,7.6,6.2,4.5,3.9],51],qalSalih:[31.52,47.28,"قلعة صالح","Qal'at Salih",[4.2,5.0,6.2,7.4,8.3,9.0,9.3,8.9,7.7,6.3,4.6,4.0],51],nasiriya:[31.04,46.26,"الناصرية","Nasiriyah",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],shatrah:[31.41,46.17,"الشطرة","Al-Shatrah",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],suqS:[30.92,46.44,"سوق الشيوخ","Suq Al-Shuyukh",[4.4,5.2,6.4,7.6,8.5,9.2,9.5,9.1,7.9,6.5,4.8,4.2],51],samawa:[31.32,45.28,"السماوة","Samawah",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],rumaitha:[31.51,45.21,"الرميثة","Rumaitha",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],basra:[30.51,47.78,"البصرة","Basra",[4.5,5.3,6.5,7.7,8.6,9.3,9.6,9.2,8.0,6.6,4.9,4.3],52],zubair:[30.39,47.71,"الزبير","Zubair",[4.6,5.4,6.6,7.8,8.7,9.4,9.7,9.3,8.1,6.7,5.0,4.4],52],abuKhasib:[30.43,47.97,"أبو الخصيب","Abu Al-Khasib",[4.6,5.4,6.6,7.8,8.7,9.4,9.7,9.3,8.1,6.7,5.0,4.4],52],qurna:[31.00,47.43,"القرنة","Qurna",[4.3,5.1,6.3,7.5,8.4,9.1,9.4,9.0,7.8,6.4,4.7,4.1],51],faw:[29.98,48.47,"الفاو","Al-Faw",[4.7,5.5,6.7,7.9,8.8,9.5,9.8,9.4,8.2,6.8,5.1,4.5],53]};
+const PROVS={"نينوى|Nineveh":["mosul"],"دهوك|Duhok":["duhok","zakho"],"أربيل|Erbil":["erbil","shaqlawa"],"السليمانية|Sulaymaniyah":["suly","halabja"],"كركوك|Kirkuk":["kirkuk","hawija"],"صلاح الدين|Saladin":["tikrit","samarra","baiji"],"ديالى|Diyala":["baqubah","miqdad","khanaqin"],"الأنبار|Anbar":["ramadi","fallujah","hit","haditha","anah","qaim","rutba","baghdadi"],"بغداد|Baghdad":["baghdad","abuGhraib","mahmud"],"بابل|Babylon":["hilla","musayyib","hashimiya","mahawil"],"كربلاء|Karbala":["karbala","ainTamur"],"النجف|Najaf":["najaf","kufa","mishkhab"],"القادسية|Qadisiyyah":["diwaniya","shamiya"],"واسط|Wasit":["kut","numaniya"],"ميسان|Maysan":["amara","qalSalih"],"المثنى|Muthanna":["samawa","rumaitha"],"ذي قار|Dhi Qar":["nasiriya","shatrah","suqS"],"البصرة|Basra":["basra","zubair","abuKhasib","qurna","faw"]};
 const MAR=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
-const LOADS={light:{n:"إضاءة+مراوح",pkw:.8,dkwh:4},basic:{n:"ثلاجة+تلفاز",pkw:1.8,dkwh:8},ac1:{n:"مكيف 1 طن",pkw:2.5,dkwh:14},ac2:{n:"مكيفان 1.5طن",pkw:5,dkwh:28},ac3:{n:"3+ مكيفات",pkw:9,dkwh:50},full:{n:"بيت كامل",pkw:12,dkwh:60}};
+const LOADS={light:{n:"إضاءة+مراوح",pkw:.8,dkwh:4},basic:{n:"ثلاجة+تلفاز",pkw:1.8,dkwh:8},ac1:{n:"مكيف 1 طن",pkw:2.5,dkwh:14},ac2:{n:"مكيفان 1.5 طن",pkw:5,dkwh:28},ac3:{n:"3+ مكيفات",pkw:9,dkwh:50},full:{n:"بيت كامل",pkw:12,dkwh:60}};
 /* الشرائح تأتي من tariff.js — نفس المصدر الذي تستعمله صفحة الفاتورة */
 const T=window.Tariff;
 // appliance catalog [ar,en,watts,hrs,cat,icon,tip]
@@ -831,7 +831,7 @@ function goStep(n){
   save();
 }
 function editSystem(){goStep(3)}
-function newSystem(){if(confirm('هل تريد البدء من جديد؟ ستُمسح كل البيانات.')){clearState();goStep(1)}}
+function newSystem(){if(confirm('هل تريد البدء من جديد؟ ستُمسح كل البيانات.')){clearState();location.replace(location.pathname)}}
 
 // ═══ LOCATION ═══
 function stab(t,btn){
@@ -849,7 +849,7 @@ function doGPS(){
     slat=+p.coords.latitude.toFixed(4);slng=+p.coords.longitude.toFixed(4);cityKey=null;
     s.innerHTML=`<span style="color:var(--grn);font-weight:700">✅ ${slat}°N, ${slng}°E</span>`;
     chk1();save();
-  },()=>{s.innerHTML='<span style="color:var(--red)">❌ تعذر — اختر مدينتك</span>'});
+  },()=>{s.innerHTML='<span style="color:var(--red)">❌ تعذّر التحديد — اختر مدينتك</span>'});
 }
 function fillProvs(){
   const s=document.getElementById('selprov'),cur=s.value;
@@ -869,10 +869,11 @@ function pickCity(){cityKey=document.getElementById('selcity').value;if(cityKey&
 
 // ═══ VALIDATION ═══
 function hasLoc(){
-  if(slat&&slng)return true;
   const la=parseFloat(document.getElementById('mlat').value),lo=parseFloat(document.getElementById('mlng').value);
-  if(!isNaN(la)&&!isNaN(lo)&&la>=29&&la<=38&&lo>=38&&lo<=49){slat=la;slng=lo;return true}
-  return false;
+  const manOK=!isNaN(la)&&!isNaN(lo)&&la>=29&&la<=38&&lo>=38&&lo<=49;
+  const manOn=document.getElementById('pman').classList.contains('on');
+  if(manOK&&(manOn||!(slat&&slng))){slat=la;slng=lo;if(manOn)cityKey=null;return true}
+  return !!(slat&&slng);
 }
 function hasKwh(){
   if(seasMode==='w'){const s=parseFloat(document.getElementById('monsum').value),w=parseFloat(document.getElementById('monwin').value);return(!isNaN(s)&&s>0)&&(!isNaN(w)&&w>0)}
@@ -956,7 +957,7 @@ function calc(){
   const totCurrMo=govtMo+genMo+homeMo+invMo;
   const totCurrAnn=totCurrMo*12;
   // savings
-  const annESav=Math.round(annGen*tmo/Math.max(annKwh/12,1));
+  const annESav=srcs.govt?Math.min(Math.round(annGen*tmo/Math.max(annKwh/12,1)),govtMo*12):0;
   const sd=Math.min(avgPSH*1.7,12);
   const genOv=Math.min(.92,Math.min(getGenHrs(),sd)/24);
   const homeH=parseFloat(document.getElementById('homehrs').value||6);
@@ -978,7 +979,7 @@ function calc(){
   am('💡',f(totCurrMo),'IQD/شهر','إجمالي التكاليف');am('📅',f(totCurrAnn),'IQD/سنة','سنوياً');am('⚡',Math.round(annKwh/12),'kWh/شهر','استهلاكك');am('💰',f(tmo),'IQD/شهر','فاتورة الدولة المتدرجة');
   const cd=document.getElementById('curdet');cd.innerHTML='';
   const SI={govt:{i:'🏛️',n:'كهرباء الدولة',c:f(govtMo)},gen:{i:'⚡',n:'مولدة أهلية',c:f(genMo)},home:{i:'🛢️',n:'مولدة منزلية',c:f(homeMo)},inv:{i:'🔋',n:'عاكسة',c:f(invMo)}};
-  for(const id in srcs){const s=SI[id],r=roles[id]||'p';cd.innerHTML+=`<div class="card" style="margin-bottom:8px"><div class="ct"><div class="ico in">${s.i}</div>${s.n}<span style="flex:1"></span><span style="font-size:10px;padding:2px 8px;border-radius:50px;background:${r==='p'?'var(--sunl)':'var(--card2)'};color:${r==='p'?'var(--sun)':'var(--tx3)'};border:1px solid ${r==='p'?'var(--sunm)':'var(--bo2)'};font-weight:700">${r==='p'?'⭐ أساسي':'🔒 احتياطي'}</span></div><div class="srow"><span class="sk">التكلفة الشهرية</span><span class="sv">${s.c} دينار</span></div></div>`}
+  for(const id in srcs){const s=SI[id];if(!s)continue;const r=roles[id]||'p';cd.innerHTML+=`<div class="card" style="margin-bottom:8px"><div class="ct"><div class="ico in">${s.i}</div>${s.n}<span style="flex:1"></span><span style="font-size:10px;padding:2px 8px;border-radius:50px;background:${r==='p'?'var(--sunl)':'var(--card2)'};color:${r==='p'?'var(--sun)':'var(--tx3)'};border:1px solid ${r==='p'?'var(--sunm)':'var(--bo2)'};font-weight:700">${r==='p'?'⭐ أساسي':'🔒 احتياطي'}</span></div><div class="srow"><span class="sk">التكلفة الشهرية</span><span class="sv">${s.c} دينار</span></div></div>`}
   if(!Object.keys(srcs).length)cd.innerHTML='<div class="ib iba">لم تحدد أي مصدر طاقة</div>';
   // axis2
   $('rkw',reqR.toFixed(1));$('ragen',f(annGen)+' kWh');$('rdgen',(annGen/365).toFixed(1)+' kWh');$('rco2',co2+' t');
@@ -994,11 +995,11 @@ function calc(){
   document.getElementById('batcard').style.display=solarMode!=='ongrid'?'block':'none';
   if(solarMode!=='ongrid'){
     $('rbn',sn+' × '+bv+'V 200Ah');$('rbcap',(sn*bkwh).toFixed(1)+' kWh');
-    const bl=batT==='lithium'?'LiFePO4 — الأفضل للحرارة':'AGM/Gel ⚠️ يحتاج تبريد';
+    const bl=batT==='lithium'?'LiFePO4 — الأفضل للحرارة':'AGM/Gel ⚠️ يحتاج تبريداً';
     $('rbt',bl);$('rbv',bv+'V DC');$('rdod',(dod*100).toFixed(0)+'%');
     $('rbl',batT==='lithium'?'10–15 سنة':'2–4 سنوات (في حرارة العراق)');
     const bh=document.getElementById('bathw');
-    if(batT==='agm'&&maxT>44){bh.innerHTML=`⚠️ AGM في ${maxT}°C تفقد 30–50% طاقتها — فكّر جدياً في LiFePO4`;bh.style.display='flex'}else bh.style.display='none';
+    if(batT==='agm'&&maxT>44){bh.innerHTML=`⚠️ AGM في ${maxT}°C تفقد 30–50% من طاقتها — فكّر جدياً في LiFePO4`;bh.style.display='flex'}else bh.style.display='none';
   }
   $('rma',mpptA+'A');$('rmc',Math.ceil(mpptA/60)+' × 60A MPPT');
   // axis3
@@ -1014,17 +1015,17 @@ function calc(){
   const tb=document.getElementById('toBill');
   tb.href=Site.toBill(moKwh);
   document.getElementById('toBillBody').innerHTML=
-    `افتح نفس الاستهلاك (<b>${f(moKwh)} kWh/شهر</b>) في حاسبة الفاتورة لترى توزيعه على الشرائح `+
+    `افتح الاستهلاك نفسه (<b>${f(moKwh)} kWh/شهر</b>) في حاسبة الفاتورة لترى توزيعه على الشرائح `+
     `وكم وحدة تفصلك عن الشريحة الأعلى.`;
   const cc=document.getElementById('covcard'),cb=document.getElementById('covbars');cb.innerHTML='';
   if(srcs.gen||srcs.home){cc.style.display='block';if(srcs.gen)addCBar(cb,`مولدة أهلية — ${Math.round(genOv*100)}% تغطية`,Math.round(genOv*100),'linear-gradient(90deg,var(--grn),var(--acc))',f(genSav));if(srcs.home)addCBar(cb,`مولدة منزلية — ${Math.round(homeOv*100)}% تغطية`,Math.round(homeOv*100),'linear-gradient(90deg,var(--acc),var(--sun))',f(homeSav));if(srcs.inv)addCBar(cb,'عاكسة — 70% تغطية',70,'linear-gradient(90deg,var(--grn),var(--grnm))',f(invSav))}else cc.style.display='none';
   $('rtotsav',f(totSavAnn));
   const ss=document.getElementById('savsplit');ss.innerHTML='';
-  ss.innerHTML+=sp(f(annESav),'كهرباء الدولة');
+  if(annESav>0)ss.innerHTML+=sp(f(annESav),'كهرباء الدولة');
   if(genSav>0)ss.innerHTML+=sp(f(genSav),'مولدة أهلية');
   if(homeSav>0)ss.innerHTML+=sp(f(homeSav),'مولدة منزلية');
   if(invSav>0)ss.innerHTML+=sp(f(invSav),'عاكسة');
-  $('rsc',f(sysCost)+' IQD');$('rms',f(totSavMo)+' IQD/شهر');$('rpb',pb+' سنة');$('rroi',roi10>0?roi10+'%':'—');$('r25yr',f(totSavAnn*25)+' IQD');
+  $('rsc',f(sysCost)+' IQD');$('rms',f(totSavMo)+' IQD/شهر');$('rpb',pb==='—'?'—':pb+' سنة');$('rroi',roi10>0?roi10+'%':'—');$('r25yr',f(totSavAnn*25)+' IQD');
   // BA slider
   if(totCurrMo>0){document.getElementById('bacard').style.display='block';initBA(totCurrMo,Math.max(0,totCurrMo-totSavMo))}else document.getElementById('bacard').style.display='none';
   drawChart(mGen);
@@ -1042,7 +1043,7 @@ function setBAH(pct){pct=Math.max(5,Math.min(95,pct));const h=document.getElemen
 function baStart(e){baDrag=true;const mv=(e)=>{if(!baDrag)return;const r=document.getElementById('bac').getBoundingClientRect();const cx=e.touches?e.touches[0].clientX:e.clientX;setBAH(100-((cx-r.left)/r.width)*100)};const up=()=>{baDrag=false;document.removeEventListener('mousemove',mv);document.removeEventListener('touchmove',mv);document.removeEventListener('mouseup',up);document.removeEventListener('touchend',up)};document.addEventListener('mousemove',mv);document.addEventListener('touchmove',mv,{passive:true});document.addEventListener('mouseup',up);document.addEventListener('touchend',up);mv(e)}
 
 // ═══ WHATSAPP ═══
-function shareWA(){if(!lastRes)return;const f=n=>n.toLocaleString('ar-IQ');const r=lastRes;const msg=`🌞 *نتائج حاسبة الطاقة الشمسية — العراق*\n\n📍 ${r.cname}\n⚡ حجم النظام: ${r.reqR} kW\n🔆 الألواح: ${r.nPan} لوح (${r.panW}W)\n📐 زاوية الميلان: ${r.tilt}°\n⚡ بالأمبير: ${r.amps} أمبير\n🔋 البطاريات: ${r.sn} × ${r.bv}V\n🔄 الإنفرتر: ${r.invKw} kW\n💡 التوليد: ${f(r.annGen)} kWh/سنة\n💰 التوفير السنوي: ${f(r.totSavAnn)} دينار\n💵 التوفير الشهري: ${f(r.totSavMo)} دينار\n📅 فترة الاسترداد: ${r.pb} سنة\n💸 تكلفة النظام: ${f(r.sysCost)} دينار`;window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank')}
+function shareWA(){if(!lastRes)return;const f=n=>n.toLocaleString('ar-IQ');const r=lastRes;const msg=`🌞 *نتائج حاسبة الطاقة الشمسية — العراق*\n\n📍 ${r.cname}\n⚡ حجم النظام: ${r.reqR} kW\n🔆 الألواح: ${r.nPan} لوح (${r.panW}W)\n📐 زاوية الميلان: ${r.tilt}°\n⚡ بالأمبير: ${r.amps} أمبير\n🔋 البطاريات: ${r.sn} × ${r.bv}V\n🔄 الإنفرتر: ${r.invKw} kW\n💡 التوليد: ${f(r.annGen)} kWh/سنة\n💰 التوفير السنوي: ${f(r.totSavAnn)} دينار\n💵 التوفير الشهري: ${f(r.totSavMo)} دينار\n📅 فترة الاسترداد: ${r.pb} سنة\n💸 تكلفة النظام: ${f(r.sysCost)} دينار`;window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank','noopener')}
 
 // ═══ APPLIANCE CALCULATOR ═══
 function openLC(){document.getElementById('lcmod').classList.add('op');document.body.style.overflow='hidden';renderCat(lcCat);renderAdded();updLCSumm()}
@@ -1071,9 +1072,10 @@ function renderCat(cat){
 function prvw(gi){const q=parseFloat(document.getElementById('q'+gi)?.value)||1;const h=parseFloat(document.getElementById('h'+gi)?.value)||APPDB[gi][3];const e=document.getElementById('k'+gi);if(e)e.textContent=(APPDB[gi][2]*h*q/1000).toFixed(2)+' kWh'}
 function addAp(gi){const a=APPDB[gi];const q=parseFloat(document.getElementById('q'+gi)?.value)||1;const h=parseFloat(document.getElementById('h'+gi)?.value)||a[3];lcItems.push({key:'a'+gi+'_'+Date.now(),nm:a[0],w:a[2],h,q,kwh:a[2]*h*q/1000,ic:a[5]});updLCSumm();renderAdded();renderCat(lcCat)}
 function addCustom(){const nm=(document.getElementById('cname').value||'جهاز مخصص').trim();const pr=parseFloat(document.getElementById('cpower').value)||100;const un=document.getElementById('cunit').value;const w=un==='A'?pr*220:pr;const h=parseFloat(document.getElementById('chrs').value)||4;const q=parseInt(document.getElementById('cqty').value)||1;lcItems.push({key:'c'+Date.now(),nm,w,h,q,kwh:w*h*q/1000,ic:'🔌'});['cname','cpower','chrs'].forEach(id=>document.getElementById(id).value='');document.getElementById('cqty').value='1';updLCSumm();renderAdded()}
+function esc(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function remAp(key){lcItems=lcItems.filter(a=>a.key!==key);updLCSumm();renderAdded();renderCat(lcCat)}
 function clearAll(){lcItems=[];updLCSumm();renderAdded();renderCat(lcCat)}
-function renderAdded(){const wrap=document.getElementById('addedrows'),bar=document.getElementById('addedbar');if(!lcItems.length){bar.style.display='none';return}bar.style.display='block';wrap.innerHTML=lcItems.map(a=>`<div class="aprow" style="background:var(--grnl);border-color:var(--grnm)"><div class="apico">${a.ic}</div><div class="apinfo"><div class="apname">${a.nm}</div><div class="apw">${a.w}W × ${a.q} × ${a.h}h = <strong style="color:var(--grn)">${a.kwh.toFixed(2)} kWh/يوم</strong></div></div><button class="apdel" onclick="remAp('${a.key}')">✕</button></div>`).join('')}
+function renderAdded(){const wrap=document.getElementById('addedrows'),bar=document.getElementById('addedbar');if(!lcItems.length){bar.style.display='none';return}bar.style.display='block';wrap.innerHTML=lcItems.map(a=>`<div class="aprow" style="background:var(--grnl);border-color:var(--grnm)"><div class="apico">${a.ic}</div><div class="apinfo"><div class="apname">${esc(a.nm)}</div><div class="apw">${a.w}W × ${a.q} × ${a.h}h = <strong style="color:var(--grn)">${a.kwh.toFixed(2)} kWh/يوم</strong></div></div><button class="apdel" onclick="remAp('${a.key}')">✕</button></div>`).join('')}
 function updLCSumm(){const totK=lcItems.reduce((s,a)=>s+a.kwh,0);const totW=lcItems.reduce((s,a)=>s+a.w*a.q,0);const mo=Math.round(totK*30);document.getElementById('ltKw').textContent=(totW/1000).toFixed(2);document.getElementById('ltKwh').textContent=totK.toFixed(1);document.getElementById('ltAmp').textContent=(totW/220).toFixed(1);document.getElementById('ltMo').textContent=mo;const btn=document.getElementById('lcapply');if(lcItems.length){btn.style.opacity='1';btn.style.pointerEvents='all';btn.textContent=`✅ استخدم ${mo} kWh/شهر في الحاسبة`}else{btn.style.opacity='.45';btn.style.pointerEvents='none';btn.textContent='✅ استخدم هذا الاستهلاك في الحاسبة'};const bdg=document.getElementById('fabbdg');bdg.style.display=lcItems.length?'inline':'none';bdg.textContent=lcItems.length}
 function applyLC(){const tot=lcItems.reduce((s,a)=>s+a.kwh,0);if(!tot){alert('أضف أجهزة أولاً');return}const mo=Math.round(tot*30),ann=Math.round(tot*365);document.getElementById('mon').value=mo;document.getElementById('ann').value=ann;setSeason('s');chk2();closeLC();toast(`✅ تم: ${mo} kWh/شهر`)}
 function toast(msg){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--grn);color:#fff;padding:9px 18px;border-radius:50px;font-size:13px;font-weight:700;z-index:99999;box-shadow:0 4px 14px rgba(0,0,0,.2);white-space:nowrap;font-family:Cairo,sans-serif;pointer-events:none;transition:opacity .4s';document.body.appendChild(t)}t.textContent=msg;t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',2800)}
@@ -1088,7 +1090,8 @@ function loadS(){
   slat=s.slat;slng=s.slng;cityKey=s.cityKey;srcs=s.srcs||{};roles=s.roles||{};solarMode=s.solarMode||'hybrid';loadPro=s.loadPro||'light';seasMode=s.seasMode||'s';lcItems=s.lc||[];
   sv('mon',s.mon);sv('ann',s.ann);sv('monsum',s.ms);sv('monwin',s.mw);sv('monmid',s.mm);sv('genamps',s.ga);sv('genap',s.gp);sv('genex',s.ge);sv('genmt',s.gm);sv('govthrs',s.gh);sv('govtbill',s.gb);sv('btype',s.btype);sv('pw',s.pw);sv('shr',s.shr);sv('off',s.off);sv('cpw',s.cpw);sv('homecost',s.hc);sv('homehrs',s.hh);sv('invcost',s.ic);
   if(s.gt){sv('gentype',s.gt);updGenHrs()}
-  for(const id in srcs){const c=document.getElementById('src'+id);const d=document.getElementById('det'+id);if(c){c.classList.add('sel');d.style.display='block';d.classList.add('op')}}
+  if(cityKey&&DB[cityKey]){const ck=cityKey;for(const pk in PROVS){if(PROVS[pk].indexOf(ck)>-1){sv('selprov',pk);fillCities();sv('selcity',ck);pickCity();stab('city',document.getElementById('tcity'));break}}}
+  for(const id in srcs){const c=document.getElementById('src'+id);const d=document.getElementById('det'+id);if(c&&d){c.classList.add('sel');d.style.display='block';d.classList.add('op')}}
   for(const id in roles)setRole(id,roles[id]);
   setMode(solarMode);setLoad(loadPro);setSeason(seasMode);
   if(s.off)document.getElementById('ov').textContent=s.off+'%';
@@ -1114,7 +1117,6 @@ function handoffIn(){
 
 window.onload=()=>{
   fillProvs();
-  document.getElementById('ann').addEventListener('input',()=>{sync('a');chk2()});
   ['mon','ann','genamps','genap','genex','genmt','homecost','homehrs','invcost','cpw','off'].forEach(id=>{const e=document.getElementById(id);if(e)e.addEventListener('change',save)});
   loadS();
   handoffIn();

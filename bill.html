@@ -9,7 +9,7 @@
 <meta name="description" content="احسب فاتورة الكهرباء الشهرية في العراق بدقة حسب نظام الشرائح المعتمد من وزارة الكهرباء. أدخل عدد الوحدات أو قراءة العداد واحصل على التكلفة فوراً مع تفصيل كل شريحة.">
 <meta name="keywords" content="حاسبة الكهرباء, فاتورة الكهرباء العراق, شرائح الكهرباء, وزارة الكهرباء العراقية, حساب استهلاك الكهرباء, تعرفة الكهرباء">
 
-<!-- ═══ ضع رابط موقعك هنا بعد الرفع ═══ -->
+<!-- ═══ الرابط المطلق مطلوب هنا وفي وسوم og — حدّثه عند تغيير النطاق ═══ -->
 <link rel="canonical" href="https://iraqelec.vercel.app/bill">
 
 <!-- Open Graph — معاينة الرابط في فيسبوك وواتساب -->
@@ -328,12 +328,12 @@
     <div class="card-body">
 
       <div class="mode-toggle" role="tablist">
-        <button class="mode-btn active" id="modeUnits" onclick="setMode('units')">عدد الوحدات</button>
-        <button class="mode-btn" id="modeMeter" onclick="setMode('meter')">قراءة العداد</button>
+        <button class="mode-btn active" id="modeUnits" role="tab" aria-selected="true" aria-controls="unitsField" onclick="setMode('units')">عدد الوحدات</button>
+        <button class="mode-btn" id="modeMeter" role="tab" aria-selected="false" aria-controls="meterFields" onclick="setMode('meter')">قراءة العداد</button>
       </div>
 
       <!-- Units mode -->
-      <div class="field units-field" id="unitsField">
+      <div class="field units-field" id="unitsField" role="tabpanel" aria-labelledby="modeUnits">
         <label class="field-label" for="units">عدد الوحدات المستهلكة خلال الشهر</label>
         <div class="input-wrapper">
           <input type="text" id="units" inputmode="numeric" placeholder="0" oninput="onUnitsInput()">
@@ -349,7 +349,7 @@
       </div>
 
       <!-- Meter mode -->
-      <div class="meter-fields" id="meterFields">
+      <div class="meter-fields" id="meterFields" role="tabpanel" aria-labelledby="modeMeter">
         <div class="field">
           <label class="field-label" for="prev">القراءة السابقة للعداد</label>
           <div class="input-wrapper">
@@ -444,7 +444,7 @@
 
   <footer class="footer">
     <span class="disclaimer">
-      الأسعار مبنية على تعرفة الصنف المنزلي المعتمدة من مجلس الوزراء (2018) والمعمول بها حالياً.
+      الأسعار مبنية على <span id="tariffSource"></span>.
       هذه الحاسبة أداة استرشادية غير رسمية — القيمة النهائية تعتمد على قائمة الجباية الرسمية،
       وقد تشمل رسوم خدمة أو فروقات محاسبية.
     </span>
@@ -452,7 +452,7 @@
       <a href="/solar">حاسبة الطاقة الشمسية</a>
       <a href="/">الرئيسية</a>
     </span>
-    <span style="display:block;margin-top:9px">صُنعت بواسطة منو</span>
+    <span style="display:block;margin-top:9px">صُنعت بواسطة محمد الطائي</span>
   </footer>
 
 </div>
@@ -474,11 +474,14 @@ const $ = id => document.getElementById(id);
 $('tierStrip').innerHTML   = T.tierStripHTML();
 $('tariffTable').innerHTML = T.tariffTableHTML();
 $('tariffExample').innerHTML = T.exampleHTML(3500);
+$('tariffSource').textContent = T.META.source;
 
 function setMode(m) {
   mode = m;
   $('modeUnits').classList.toggle('active', m === 'units');
   $('modeMeter').classList.toggle('active', m === 'meter');
+  $('modeUnits').setAttribute('aria-selected', m === 'units' ? 'true' : 'false');
+  $('modeMeter').setAttribute('aria-selected', m === 'meter' ? 'true' : 'false');
   $('unitsField').classList.toggle('hide', m !== 'units');
   $('meterFields').classList.toggle('show', m === 'meter');
   m === 'units' ? onUnitsInput() : onMeterInput();
@@ -508,7 +511,7 @@ function onMeterInput() {
 
   if (c < p) {
     box.className = 'meter-result show error';
-    box.textContent = 'القراءة الحالية يجب أن تكون أكبر من السابقة';
+    box.textContent = 'القراءة الحالية يجب ألّا تكون أقل من السابقة';
     return calculate(null);
   }
   const diff = c - p;
@@ -607,23 +610,27 @@ function renderHandoff(units, total) {
   $('toSolarBody').innerHTML =
     'باستهلاك <b>' + fmt(units) + ' وحدة</b> شهرياً تدفع <b>' + fmt(total) +
     ' دينار</b> للدولة وحدها — قبل المولّدة. شوف حجم المنظومة الشمسية التي تغطّي هذا الاستهلاك، ' +
-    'وكم تُوفّر منه فعلياً في سنة.';
+    'وكم تُوفّر منه فعلياً في السنة.';
   a.style.display = 'block';
 }
 
 /* ── Sharing ── */
+function shareLink() {
+  return location.origin + location.pathname + (lastUnits > 0 ? '?u=' + lastUnits : '');
+}
 function shareText() {
   return 'استهلاك ' + fmt(lastUnits) + ' وحدة = ' + fmt(lastTotal) +
-         ' دينار\nاحسب فاتورتك: ' + location.href;
+         ' دينار\nاحسب فاتورتك: ' + shareLink();
 }
 function shareWhatsApp() {
-  window.open('https://wa.me/?text=' + encodeURIComponent(shareText()), '_blank');
+  window.open('https://wa.me/?text=' + encodeURIComponent(shareText()), '_blank', 'noopener');
 }
 function shareTelegram() {
-  window.open('https://t.me/share/url?url=' + encodeURIComponent(location.href) +
-              '&text=' + encodeURIComponent('استهلاك ' + fmt(lastUnits) + ' وحدة = ' + fmt(lastTotal) + ' دينار'), '_blank');
+  window.open('https://t.me/share/url?url=' + encodeURIComponent(shareLink()) +
+              '&text=' + encodeURIComponent('استهلاك ' + fmt(lastUnits) + ' وحدة = ' + fmt(lastTotal) + ' دينار'), '_blank', 'noopener');
 }
 function copyResult() {
+  if (!navigator.clipboard || !navigator.clipboard.writeText) { toast('تعذّر النسخ'); return; }
   navigator.clipboard.writeText(shareText())
     .then(() => toast('تم نسخ النتيجة'))
     .catch(() => toast('تعذّر النسخ'));

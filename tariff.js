@@ -2,7 +2,7 @@
    tariff.js — المصدر الوحيد لتعرفة الكهرباء المنزلية في العراق
    ───────────────────────────────────────────────────────────────
    ▸ هذا الملف هو المكان الوحيد الذي تُعدَّل فيه الأسعار.
-     صفحة الفاتورة (/) وصفحة الطاقة الشمسية (/solar) تقرآن منه معاً،
+     صفحة الفاتورة (/bill) وصفحة الطاقة الشمسية (/solar) تقرآن منه معاً،
      ولا توجد أي نسخة ثانية من الشرائح في أي ملف آخر.
 
    ▸ عند تغيير وزارة الكهرباء للتعرفة: عدّل مصفوفة TIERS أدناه فقط،
@@ -23,7 +23,7 @@
     { upTo: Infinity, rate: 120, name: 'الشريحة الرابعة', nameEn: 'Tier 4', short: 'الشريحة ٤', color: '#B03030', colorDark: '#E85F5F', id: 't4' }
   ];
 
-  /* بيانات تعريفية تظهر في تذييل الصفحتين */
+  /* بيانات تعريفية تظهر في تذييل صفحة الفاتورة */
   var META = {
     updated: '2018',
     category: 'الصنف المنزلي',
@@ -155,7 +155,7 @@
     r.rows.forEach(function (row) {
       var isLast = row.index === r.rows.length - 1;
       html += '<tr' + (isLast ? ' class="thl"' : '') + '><td>' + (row.index + 1) + '</td><td>' +
-              fmt(floorOf(row.index)) + '–' + (row.upTo === Infinity ? '+∞' : fmt(row.upTo)) +
+              rangeLabel(row.index, { en: true }) +
               ' (' + fmt(row.used) + ' مُستخدم)' + '</td><td>' + row.rate + '</td><td>' +
               money(Math.round(row.cost)) + '</td></tr>';
     });
