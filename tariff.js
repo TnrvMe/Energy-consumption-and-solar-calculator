@@ -17,10 +17,10 @@
   'use strict';
 
   var TIERS = [
-    { upTo: 1500,     rate: 10,  name: 'الشريحة الأولى',  nameEn: 'Tier 1', short: 'الشريحة ١', color: '#1E8A5A', colorDark: '#43C48D', id: 't1' },
-    { upTo: 3000,     rate: 35,  name: 'الشريحة الثانية', nameEn: 'Tier 2', short: 'الشريحة ٢', color: '#1A7AAE', colorDark: '#5AAEE0', id: 't2' },
-    { upTo: 4000,     rate: 80,  name: 'الشريحة الثالثة', nameEn: 'Tier 3', short: 'الشريحة ٣', color: '#C06820', colorDark: '#E8974A', id: 't3' },
-    { upTo: Infinity, rate: 120, name: 'الشريحة الرابعة', nameEn: 'Tier 4', short: 'الشريحة ٤', color: '#B03030', colorDark: '#E85F5F', id: 't4' }
+    { upTo: 1500,     rate: 10,  name: 'الشريحة الأولى',  nameEn: 'Tier 1', short: 'الشريحة ١', color: '#12B886', colorDark: '#34D9A8', id: 't1' },
+    { upTo: 3000,     rate: 35,  name: 'الشريحة الثانية', nameEn: 'Tier 2', short: 'الشريحة ٢', color: '#3B82F6', colorDark: '#6BA6FF', id: 't2' },
+    { upTo: 4000,     rate: 80,  name: 'الشريحة الثالثة', nameEn: 'Tier 3', short: 'الشريحة ٣', color: '#FFA51F', colorDark: '#FFBB55', id: 't3' },
+    { upTo: Infinity, rate: 120, name: 'الشريحة الرابعة', nameEn: 'Tier 4', short: 'الشريحة ٤', color: '#F43F5E', colorDark: '#FF7A90', id: 't4' }
   ];
 
   /* بيانات تعريفية تظهر في تذييل صفحة الفاتورة */

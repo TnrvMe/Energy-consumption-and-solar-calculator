@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#F4F1EC">
+<meta name="theme-color" content="#F3F5FE">
 
 <!-- ═══ تحويل الروابط القديمة ═══
      كانت حاسبة الفاتورة على "/" وكانت روابطها المُشارَكة تحمل ?u=<عدد>.
@@ -43,12 +43,12 @@
 <meta name="twitter:description" content="أداتان مجانيتان للبيت العراقي: فاتورتك بنظام الشرائح، ومنظومتك الشمسية.">
 <meta name="twitter:image" content="https://iraqelec.vercel.app/og-home.png">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23B07D1A'/><path d='M56 12 L28 56 h18 l-6 32 l30-46 H52 z' fill='%23F4F1EC'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='26' fill='%235B4BFF'/><path d='M56 12 L28 56 h18 l-6 32 l30-46 H52 z' fill='%23FFFFFF'/></svg>">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="طاقة العراق">
 
 <!-- الوضع الليلي يُطبَّق قبل الرسم لتفادي وميض الصفحة -->
-<script>try{var d=localStorage.getItem('irq_dk');if(d==null?matchMedia('(prefers-color-scheme:dark)').matches:d==='1'){document.documentElement.classList.add('dk');document.querySelector('meta[name=theme-color]').content='#14110B'}}catch(e){}</script>
+<script>try{var d=localStorage.getItem('irq_dk');if(d==null?matchMedia('(prefers-color-scheme:dark)').matches:d==='1'){document.documentElement.classList.add('dk');document.querySelector('meta[name=theme-color]').content='#0E0F1F'}}catch(e){}</script>
 
 <script src="/tariff.js"></script>
 <script src="/site.js"></script>
@@ -59,7 +59,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -74,26 +74,20 @@
 
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
   body {
     background: var(--page); color: var(--ink);
-    font-family: 'Cairo', system-ui, sans-serif;
-    min-height: 100dvh; position: relative; overflow-x: hidden;
+    font-family: var(--font-body);
+    min-height: 100dvh; overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
     transition: background .3s, color .3s;
   }
-  body::before {
-    content: ''; position: fixed; inset: -50%;
-    background:
-      radial-gradient(ellipse at 28% 10%, var(--brand-glow) 0%, transparent 46%),
-      radial-gradient(ellipse at 76% 88%, var(--brand-glow) 0%, transparent 40%);
-    pointer-events: none; z-index: 0;
-  }
-  .home-hero { animation: fadeDown .5s ease both; }
-  .tools     { animation: fadeUp .5s ease .08s both; }
-  .home-link-note { animation: fadeUp .5s ease .16s both; }
-  .site-foot { animation: fadeUp .5s ease .22s both; }
-  @keyframes fadeDown { from { opacity:0; transform: translateY(-14px);} to {opacity:1; transform:none;} }
-  @keyframes fadeUp   { from { opacity:0; transform: translateY(14px);} to {opacity:1; transform:none;} }
+  /* الأقسام المرتبطة بروابط داخلية تحتاج مساحة تحت الشريط اللاصق */
+  [id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
+
+  .hero-inner   { animation: fadeUp .55s ease both; }
+  .stats        { animation: fadeUp .55s ease .1s both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
@@ -106,92 +100,287 @@
       <span class="brand-name">طاقة العراق</span>
     </a>
     <div class="nav-tabs">
-      <a class="nav-tab" href="/bill">الفاتورة</a>
-      <a class="nav-tab" href="/solar">الطاقة الشمسية</a>
+      <a class="nav-tab" href="#how">كيف تعمل</a>
+      <a class="nav-tab" href="#tools">الأدوات</a>
+      <a class="nav-tab" href="#about">عن الموقع</a>
     </div>
     <div class="nav-tools">
       <button class="nav-btn icon" data-dk-toggle onclick="toggleDk()" aria-label="التبديل إلى الوضع الليلي">🌙</button>
+      <a class="btn btn-primary btn-sm" href="/bill">احسب فاتورتك</a>
     </div>
   </div>
 </nav>
 
-<main class="home">
+<main>
 
-  <header class="home-hero">
-    <span class="home-tag">وفق تعرفة وزارة الكهرباء العراقية</span>
-    <h1>الكهرباء، <span>محسوبة بدقّة</span></h1>
-    <p>
-      أداتان مجانيتان للبيت العراقي: احسب فاتورة الكهرباء بنظام الشرائح الرسمي،
-      ثم اعرف حجم المنظومة الشمسية التي تغطّي استهلاكك وكم توفّر فعلياً.
-    </p>
-  </header>
+  <!-- ══ الغلاف ══ -->
+  <section class="hero">
+    <div class="blobs" aria-hidden="true">
+      <svg class="blob-a" viewBox="0 0 100 100" width="440" height="440" style="top:-160px;inset-inline-start:-130px"><path d="M50 6 C74 6 94 24 92 48 C90 72 70 94 46 92 C22 90 6 70 8 46 C10 22 26 6 50 6 Z"/></svg>
+      <svg class="blob-b" viewBox="0 0 100 100" width="300" height="300" style="bottom:-120px;inset-inline-end:-90px"><path d="M56 8 C80 12 96 34 90 56 C84 78 60 94 38 88 C16 82 4 58 10 36 C16 14 32 4 56 8 Z"/></svg>
+    </div>
 
-  <div class="tools">
+    <!-- عنقود الرسوم حول العنوان (شاشات عريضة فقط) -->
+    <div class="hero-art" aria-hidden="true">
+      <div class="chip chip-sun">
+        <svg viewBox="0 0 64 64" width="46" height="46">
+          <circle cx="32" cy="32" r="12" fill="var(--amber)"/>
+          <g stroke="var(--amber)" stroke-width="4.5" stroke-linecap="round">
+            <path d="M32 5v6M32 53v6M5 32h6M53 32h6M12.7 12.7l4.2 4.2M47.1 47.1l4.2 4.2M51.3 12.7l-4.2 4.2M16.9 47.1l-4.2 4.2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="chip chip-bolt">
+        <svg viewBox="0 0 24 24" width="30" height="30"><path d="M13.5 2 4 14h6l-1.5 8L20 10h-6.5z" fill="var(--brand)"/></svg>
+      </div>
+      <div class="chip chip-house">
+        <svg viewBox="0 0 64 64" width="46" height="46">
+          <path d="M32 9 57 30a3 3 0 0 1-2 5h-3v17a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4V35H9a3 3 0 0 1-2-5Z" fill="var(--info)" opacity=".22"/>
+          <path d="M32 13 52 30v22a1 1 0 0 1-1 1H13a1 1 0 0 1-1-1V30Z" fill="none" stroke="var(--info)" stroke-width="3.4" stroke-linejoin="round"/>
+          <rect x="26" y="38" width="12" height="15" rx="3" fill="var(--info)"/>
+        </svg>
+      </div>
+      <div class="chip chip-panel">
+        <svg viewBox="0 0 64 64" width="40" height="40">
+          <rect x="7" y="17" width="50" height="30" rx="7" fill="var(--good)" opacity=".18"/>
+          <rect x="7" y="17" width="50" height="30" rx="7" fill="none" stroke="var(--good)" stroke-width="3.4"/>
+          <path d="M7 32h50M24 17v30M40 17v30" stroke="var(--good)" stroke-width="2.8"/>
+        </svg>
+      </div>
+    </div>
 
-    <a class="tool tool-bill" href="/bill">
-      <div class="tool-head">
-        <span class="tool-ico">🧾</span>
-        <div>
-          <div class="tool-title">حاسبة فاتورة الكهرباء</div>
-          <div class="tool-kicker">الصنف المنزلي · الشرائح التصاعدية</div>
+    <div class="wrap">
+      <div class="hero-inner">
+        <span class="pill"><svg class="i" viewBox="0 0 64 64" aria-hidden="true"><path d="M36 5 10 37h16l-4 22 27-32H36z" fill="currentColor"/></svg> وفق تعرفة وزارة الكهرباء العراقية</span>
+        <h1>الكهرباء،<br><span class="hl">محسوبة بدقّة</span></h1>
+        <p class="lede">
+          أداتان مجانيتان للبيت العراقي: احسب فاتورة الكهرباء بنظام الشرائح الرسمي،
+          ثم اعرف حجم المنظومة الشمسية التي تغطّي استهلاكك وكم توفّر فعلياً.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="/bill">احسب فاتورتك <span class="arw">←</span></a>
+          <a class="btn btn-ghost btn-lg" href="/solar">حاسبة الطاقة الشمسية</a>
+        </div>
+
+        <!-- البديل على الشاشات الضيّقة -->
+        <div class="hero-art-mobile" aria-hidden="true">
+          <div class="chip">
+            <svg viewBox="0 0 64 64" width="32" height="32">
+              <circle cx="32" cy="32" r="12" fill="var(--amber)"/>
+              <g stroke="var(--amber)" stroke-width="4.5" stroke-linecap="round">
+                <path d="M32 5v6M32 53v6M5 32h6M53 32h6M12.7 12.7l4.2 4.2M47.1 47.1l4.2 4.2M51.3 12.7l-4.2 4.2M16.9 47.1l-4.2 4.2"/>
+              </g>
+            </svg>
+          </div>
+          <div class="chip">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M13.5 2 4 14h6l-1.5 8L20 10h-6.5z" fill="var(--brand)"/></svg>
+          </div>
+          <div class="chip">
+            <svg viewBox="0 0 64 64" width="32" height="32">
+              <path d="M32 13 52 30v22a1 1 0 0 1-1 1H13a1 1 0 0 1-1-1V30Z" fill="none" stroke="var(--info)" stroke-width="3.4" stroke-linejoin="round"/>
+              <rect x="26" y="38" width="12" height="15" rx="3" fill="var(--info)"/>
+            </svg>
+          </div>
         </div>
       </div>
-      <p class="tool-desc">
-        أدخل عدد الوحدات أو قراءتَي العداد، وتظهر لك قيمة الفاتورة فوراً
-        مع تفصيل ما يقع في كل شريحة وسعرها.
-      </p>
-      <ul class="tool-points">
-        <li>تفصيل كل شريحة</li>
-        <li>وضع قراءة العداد</li>
-        <li>تنبيه قبل الشريحة الأغلى</li>
-      </ul>
-      <span class="tool-cta">احسب فاتورتي <span class="arw">←</span></span>
-    </a>
-
-    <a class="tool tool-solar" href="/solar">
-      <div class="tool-head">
-        <span class="tool-ico">☀️</span>
-        <div>
-          <div class="tool-title">حاسبة الطاقة الشمسية</div>
-          <div class="tool-kicker">حسب مدينتك وحرارة صيفها</div>
-        </div>
-      </div>
-      <p class="tool-desc">
-        من استهلاكك وموقعك نحسب حجم المنظومة المناسبة ومكوّناتها،
-        ونقارن ما تدفعه اليوم للدولة والمولّدة بما ستدفعه بعد التحوّل.
-      </p>
-      <ul class="tool-points">
-        <li>عدد الألواح والبطاريات</li>
-        <li>حجم الإنفرتر</li>
-        <li>فترة استرداد رأس المال</li>
-      </ul>
-      <span class="tool-cta">احسب منظومتي <span class="arw">←</span></span>
-    </a>
-
-  </div>
-
-  <section class="home-link-note">
-    <h2>⚡ الأداتان تعملان معاً</h2>
-    <p>
-      ابدأ بحاسبة الفاتورة لتعرف رقمك الحقيقي، ثم انتقل إلى حاسبة الطاقة الشمسية
-      <b>بضغطة واحدة — استهلاكك ينتقل معك</b> دون إعادة كتابته. كلتاهما تحسبان
-      فاتورة الدولة بشرائح وزارة الكهرباء نفسها، فالأرقام متطابقة بين الأداتين.
-    </p>
+    </div>
   </section>
 
-  <footer class="site-foot">
+  <!-- ══ شريط الأرقام ══ -->
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat-cell">
+        <div class="stat-num" id="statTiers">4</div>
+        <div class="stat-lbl">شرائح تصاعدية في التعرفة الرسمية</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">51</div>
+        <div class="stat-lbl">مدينة عراقية ببيانات شمس ودرجات حرارة</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">0</div>
+        <div class="stat-lbl">دينار — مجاناً وبدون تسجيل</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ كيف تعمل ══ -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pill">خطوات بسيطة</span>
+        <h2>ثلاث خطوات وتعرف رقمك</h2>
+        <p>الأداتان تشتغلان بالمنطق نفسه: تدخل استهلاكك مرّة واحدة، وتخرج بتقدير واضح.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">١</div>
+          <h3>أدخل استهلاكك</h3>
+          <p>اكتب عدد الوحدات أو قراءتَي العداد، أو احسب استهلاكك جهازاً جهازاً من حاسبة الأجهزة.</p>
+        </div>
+
+        <div class="step-arrow" aria-hidden="true">
+          <svg viewBox="0 0 42 16"><path d="M41 8H3M11 1 3 8l8 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="step">
+          <div class="step-n">٢</div>
+          <h3>اختر مصادر طاقتك</h3>
+          <p>كهرباء الدولة، المولّدة الأهلية أو المنزلية، العاكسة — حدّد ما ينطبق على بيتك فعلاً.</p>
+        </div>
+
+        <div class="step-arrow" aria-hidden="true">
+          <svg viewBox="0 0 42 16"><path d="M41 8H3M11 1 3 8l8 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="step">
+          <div class="step-n">٣</div>
+          <h3>احصل على تقديرك الفوري</h3>
+          <p>فاتورة مفصّلة على الشرائح، أو حجم منظومة شمسية كامل مع توفيرها وفترة استردادها.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ الأداتان ══ -->
+  <section class="section" id="tools">
+    <div class="blobs" aria-hidden="true">
+      <svg class="blob-c" viewBox="0 0 100 100" width="340" height="340" style="top:40px;inset-inline-end:-150px"><path d="M50 6 C74 6 94 24 92 48 C90 72 70 94 46 92 C22 90 6 70 8 46 C10 22 26 6 50 6 Z"/></svg>
+      <svg class="blob-d" viewBox="0 0 100 100" width="260" height="260" style="bottom:-80px;inset-inline-start:-110px"><path d="M56 8 C80 12 96 34 90 56 C84 78 60 94 38 88 C16 82 4 58 10 36 C16 14 32 4 56 8 Z"/></svg>
+    </div>
+
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pill">الأدوات</span>
+        <h2>أداتان تكمّل إحداهما الأخرى</h2>
+        <p>ابدأ بالفاتورة لتعرف كلفتك الحقيقية، ثم انتقل إلى الشمسي — استهلاكك ينتقل معك.</p>
+      </div>
+
+      <div class="tools">
+        <a class="tool tool-bill" href="/bill">
+          <div class="tool-head">
+            <span class="tool-ico">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M14 8h30a4 4 0 0 1 4 4v44l-7-5-7 5-7-5-7 5V12a4 4 0 0 1 4-4Z" fill="none" stroke="var(--brand)" stroke-width="3.6" stroke-linejoin="round"/>
+                <path d="M22 22h18M22 32h18M22 42h10" stroke="var(--brand)" stroke-width="3.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <div>
+              <div class="tool-title">حاسبة فاتورة الكهرباء</div>
+              <div class="tool-kicker">الصنف المنزلي · الشرائح التصاعدية</div>
+            </div>
+          </div>
+          <p class="tool-desc">
+            أدخل عدد الوحدات أو قراءتَي العداد، وتظهر لك قيمة الفاتورة فوراً
+            مع تفصيل ما يقع في كل شريحة وسعرها.
+          </p>
+          <ul class="tool-points">
+            <li>تفصيل كل شريحة</li>
+            <li>وضع قراءة العداد</li>
+            <li>تنبيه قبل الشريحة الأغلى</li>
+          </ul>
+          <span class="tool-cta">ابدأ الآن <span class="arw">←</span></span>
+        </a>
+
+        <a class="tool tool-solar" href="/solar">
+          <div class="tool-head">
+            <span class="tool-ico">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="32" cy="30" r="11" fill="none" stroke="var(--amber)" stroke-width="3.6"/>
+                <g stroke="var(--amber)" stroke-width="3.6" stroke-linecap="round">
+                  <path d="M32 6v6M32 48v6M6 30h6M52 30h6M13.5 11.5l4.2 4.2M46.3 44.3l4.2 4.2M50.5 11.5l-4.2 4.2M17.7 44.3l-4.2 4.2"/>
+                </g>
+              </svg>
+            </span>
+            <div>
+              <div class="tool-title">حاسبة الطاقة الشمسية</div>
+              <div class="tool-kicker">حسب مدينتك وحرارة صيفها</div>
+            </div>
+          </div>
+          <p class="tool-desc">
+            من استهلاكك وموقعك نحسب حجم المنظومة المناسبة ومكوّناتها،
+            ونقارن ما تدفعه اليوم للدولة والمولّدة بما ستدفعه بعد التحوّل.
+          </p>
+          <ul class="tool-points">
+            <li>عدد الألواح والبطاريات</li>
+            <li>حجم الإنفرتر</li>
+            <li>فترة استرداد رأس المال</li>
+          </ul>
+          <span class="tool-cta">ابدأ الآن <span class="arw">←</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ الدعوة الختامية ══ -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="cta-band">
+        <div class="blobs" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="320" height="320" style="top:-120px;inset-inline-start:-70px"><path d="M50 6 C74 6 94 24 92 48 C90 72 70 94 46 92 C22 90 6 70 8 46 C10 22 26 6 50 6 Z"/></svg>
+          <svg viewBox="0 0 100 100" width="240" height="240" style="bottom:-110px;inset-inline-end:-60px"><path d="M56 8 C80 12 96 34 90 56 C84 78 60 94 38 88 C16 82 4 58 10 36 C16 14 32 4 56 8 Z"/></svg>
+        </div>
+        <h2>جاهز تعرف رقمك الحقيقي؟</h2>
+        <p>
+          كلتا الأداتين تحسبان فاتورة الدولة بشرائح وزارة الكهرباء نفسها،
+          فالأرقام متطابقة بينهما. ابدأ من حيث تحب.
+        </p>
+        <a class="btn btn-primary btn-lg" href="/bill">احسب فاتورتي الآن <span class="arw">←</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div>
+      <a class="brand" href="/">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 14h6l-1.5 8L20 10h-6.5z"/></svg></span>
+        <span class="brand-name">طاقة العراق</span>
+      </a>
+      <p class="foot-about">
+        أدوات استرشادية مجانية للبيت العراقي، مبنية على تعرفة الصنف المنزلي الرسمية
+        وبيانات شمس محلية. بدون تسجيل وبدون إعلانات.
+      </p>
+    </div>
+
+    <div class="foot-col">
+      <h3>الأدوات</h3>
+      <a href="/bill">حاسبة فاتورة الكهرباء</a>
+      <a href="/solar">حاسبة الطاقة الشمسية</a>
+    </div>
+
+    <div class="foot-col">
+      <h3>الموقع</h3>
+      <a href="/">الرئيسية</a>
+      <a href="#how">كيف تعمل</a>
+      <a href="#tools">الأدوات</a>
+      <a class="foot-mail" href="mailto:mesezo2076@gmail.com">
+        <svg class="i" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="14" width="50" height="36" rx="8"/><path d="m9 20 23 16 23-16"/></g></svg>mesezo2076@gmail.com
+      </a>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
     <span class="disclaimer">
       أدوات استرشادية غير رسمية — القيمة النهائية للفاتورة تعتمد على قائمة الجباية الرسمية،
       وأحجام المنظومات الشمسية وأسعارها تقديرية.
     </span>
-    <span class="foot-links">
-      <a href="/bill">حاسبة الفاتورة</a>
-      <a href="/solar">حاسبة الطاقة الشمسية</a>
-    </span>
-    <span style="display:block;margin-top:9px">صُنعت بواسطة محمد الطائي</span>
-  </footer>
+    <span>صُنعت بواسطة محمد الطائي</span>
+  </div>
+</footer>
 
-</main>
+<script>
+/* عدد الشرائح يأتي من tariff.js حتى يبقى مصدر الأسعار واحداً */
+(function () {
+  try {
+    var el = document.getElementById('statTiers');
+    if (el && window.Tariff) el.textContent = window.Tariff.TIERS.length;
+  } catch (e) {}
+})();
+</script>
 
 </body>
 </html>

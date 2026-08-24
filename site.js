@@ -22,7 +22,7 @@
       btns[i].setAttribute('aria-label', dark ? 'التبديل إلى الوضع النهاري' : 'التبديل إلى الوضع الليلي');
     }
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', dark ? '#14110B' : '#F4F1EC');
+    if (meta) meta.setAttribute('content', dark ? '#0E0F1F' : '#F3F5FE');
   }
 
   function setDark(on) {

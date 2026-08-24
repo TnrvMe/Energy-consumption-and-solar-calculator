@@ -44,7 +44,7 @@ bill.html       حاسبة الفاتورة        →  /bill
 solar.html      حاسبة الطاقة الشمسية  →  /solar
 tariff.js       ★ الشرائح والحساب — المصدر الوحيد للأسعار
 site.js         الوضع الليلي · ألوان الشرائح · التبويب النشط · الربط بين الأداتين
-site.css        الرموز اللونية + شريط التنقّل + بطاقات الواجهة والعبور
+site.css        ★ رموز التصميم (ألوان/حواف/ظلال/خطوط) + المكوّنات المشتركة
 og-home.png     معاينة الواجهة        (1200×630)
 og-image.png    معاينة صفحة الفاتورة  (1200×630)
 og-solar.png    معاينة صفحة الشمسي    (1200×630)
@@ -52,6 +52,32 @@ vercel.json     cleanUrls + رؤوس الأمان والتخزين المؤقت
 sitemap.xml     الصفحات الثلاث
 robots.txt
 ```
+
+## الهوية البصرية
+
+كل قيم التصميم في `:root` أعلى [`site.css`](site.css)، ونسختها الليلية في `html.dk`.
+الصفحات الثلاث لا تكتب لوناً واحداً مباشرة — بل تشير إلى هذه الرموز:
+
+| المجموعة | الرموز |
+| --- | --- |
+| التمييز | `--brand` `--brand-deep` `--brand-soft` `--brand-line` `--brand-ring` |
+| دافئ (رسوم الشمس فقط) | `--amber` `--amber-soft` `--amber-line` |
+| الأسطح | `--page` `--panel` `--panel-2` `--panel-3` |
+| النصوص | `--ink` `--ink-2` `--ink-3` `--ink-4` |
+| دلالية | `--info` `--good` `--warn` `--bad` (+ `-soft` و`-line`) |
+| الشرائح | `--t1`…`--t4` — تُحقن من `tariff.js` عند التحميل |
+| الحواف | `--r-xs` `--r-sm` `--r` `--r-lg` `--r-xl` `--r-pill` |
+| الظلال | `--shadow` `--shadow-2` `--shadow-sm` `--shadow-cta` |
+| الخطوط | `--font-display` (Baloo Bhaijaan 2) · `--font-body` (Cairo) |
+
+المكوّنات المشتركة في نفس الملف: `.btn` `.pill` `.site-nav` `.hero` `.stats`
+`.steps` `.tool` `.cta-band` `.handoff` `.tool-hero` `.site-foot` و`.blobs`
+(طبقة أشكال SVG عضوية زخرفية، `aria-hidden` دائماً).
+
+**عند تغيير الهوية:** عدّل `:root` و`html.dk` في `site.css` فقط — الصفحتان
+`bill.html` و`solar.html` تعيدان تسمية هذه الرموز محلياً (`--gold`، `--sun`…)
+فتتبعان التغيير تلقائياً. لون `theme-color` مكتوب أيضاً في `<head>` كل صفحة
+وفي `site.js`، فحدّثه معها.
 
 ## ملاحظات
 

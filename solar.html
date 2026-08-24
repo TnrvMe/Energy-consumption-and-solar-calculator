@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#F4F1EC">
+<meta name="theme-color" content="#F3F5FE">
 
 <title>حاسبة الطاقة الشمسية في العراق | احسب حجم منظومتك وتوفيرك</title>
 <meta name="description" content="احسب حجم المنظومة الشمسية المناسبة لبيتك في العراق: عدد الألواح والبطاريات والإنفرتر حسب مدينتك وساعات الشمس وحرارة الصيف، مع مقارنة تكلفتك الحالية (كهرباء الدولة والمولّدة) بتوفيرك بعد التحول.">
@@ -30,12 +30,12 @@
 <meta name="twitter:image" content="https://iraqelec.vercel.app/og-solar.png">
 
 <!-- أيقونة الصفحة — شمس على نفس خلفية هوية الموقع -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23B07D1A'/><circle cx='50' cy='50' r='18' fill='%23F4F1EC'/><g stroke='%23F4F1EC' stroke-width='7' stroke-linecap='round'><path d='M50 14v-6M50 92v-6M14 50h-6M92 50h-6M24 24l-4-4M80 80l-4-4M76 24l4-4M20 80l4-4'/></g></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='26' fill='%235B4BFF'/><circle cx='50' cy='50' r='18' fill='%23FFFFFF'/><g stroke='%23FFFFFF' stroke-width='7' stroke-linecap='round'><path d='M50 14v-6M50 92v-6M14 50h-6M92 50h-6M24 24l-4-4M80 80l-4-4M76 24l4-4M20 80l4-4'/></g></svg>">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="حاسبة الشمسية">
 
 <!-- الوضع الليلي يُطبَّق قبل الرسم لتفادي وميض الصفحة -->
-<script>try{var d=localStorage.getItem('irq_dk');if(d==null?matchMedia('(prefers-color-scheme:dark)').matches:d==='1'){document.documentElement.classList.add('dk');document.querySelector('meta[name=theme-color]').content='#14110B'}}catch(e){}</script>
+<script>try{var d=localStorage.getItem('irq_dk');if(d==null?matchMedia('(prefers-color-scheme:dark)').matches:d==='1'){document.documentElement.classList.add('dk');document.querySelector('meta[name=theme-color]').content='#0E0F1F'}}catch(e){}</script>
 
 <!-- الشرائح الرسمية — نفس المصدر الذي تستعمله صفحة الفاتورة -->
 <script src="/tariff.js"></script>
@@ -47,7 +47,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -72,14 +72,14 @@
   --red:var(--bad);--redl:var(--bad-soft);--redm:var(--bad-line);
   --ora:var(--warn);--oral:var(--warn-soft);
   --tx:var(--ink);--tx2:var(--ink-2);--tx3:var(--ink-3);--tx4:var(--ink-4);
-  --r:14px;--rs:10px;
+  --r:20px;--rs:14px;
   --sh:var(--shadow-sm);
   --sh2:var(--shadow-2);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{background:var(--bg);color:var(--tx);font-family:'Cairo',sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.6;transition:background .3s,color .3s}
+body{background:var(--bg);color:var(--tx);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;line-height:1.6;transition:background .3s,color .3s}
 /* app shell */
-#app{min-height:calc(100vh - var(--nav-h));padding-bottom:100px}
+#app{padding-bottom:100px}
 .pbar{position:sticky;top:var(--nav-h);z-index:100;background:var(--bg2);border-bottom:1px solid var(--bo);padding:9px 12px;display:flex;align-items:center;gap:8px}
 .psteps{display:flex;gap:4px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .psteps::-webkit-scrollbar{display:none}
@@ -90,7 +90,7 @@ body{background:var(--bg);color:var(--tx);font-family:'Cairo',sans-serif;min-hei
 .ps.act .pn{background:var(--sun)}
 .ps.dn .pn{background:var(--grn)}
 @media(max-width:430px){.ps>span:not(.pn){display:none}.ps.act>span:not(.pn){display:inline}}
-.bbtn{background:var(--card2);border:1px solid var(--bo);border-radius:50px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;color:var(--tx3);font-family:'Cairo',sans-serif;white-space:nowrap;flex-shrink:0;text-decoration:none;display:inline-flex;align-items:center}
+.bbtn{background:var(--card2);border:1px solid var(--bo);border-radius:50px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;color:var(--tx3);font-family:var(--font-body);white-space:nowrap;flex-shrink:0;text-decoration:none;display:inline-flex;align-items:center}
 /* sections */
 .sec{display:none;max-width:740px;margin:0 auto;padding:22px 14px 0}
 .sec.act{display:block;animation:fup .3s ease}
@@ -98,17 +98,20 @@ body{background:var(--bg);color:var(--tx);font-family:'Cairo',sans-serif;min-hei
 .sh{margin-bottom:18px}
 .sl{font-size:11px;font-weight:700;color:var(--acc);letter-spacing:.4px;margin-bottom:4px;display:flex;align-items:center;gap:5px}
 .sl::before{content:'';width:14px;height:2px;background:var(--acc);border-radius:1px}
-.stl{font-size:clamp(17px,4vw,22px);font-weight:900;color:var(--tx);margin-bottom:5px}
+.stl{font-family:var(--font-display);font-size:clamp(18px,4vw,24px);font-weight:800;color:var(--tx);margin-bottom:5px}
 .sd{font-size:13px;color:var(--tx3);line-height:1.5}
 /* cards */
 .card{background:var(--card);border:1px solid var(--bo);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
 .ct{font-size:13px;font-weight:700;color:var(--tx);margin-bottom:12px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.ico{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-.is{background:var(--sunl)}.ia{background:var(--accl)}.ig{background:var(--grnl)}.ir{background:var(--redl)}.io{background:var(--oral)}.in{background:var(--card2)}
+.ico{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.ico svg{width:16px;height:16px;display:block}
+.is{background:var(--sunl);color:var(--sun)}.ia{background:var(--accl);color:var(--acc)}
+.ig{background:var(--grnl);color:var(--grn)}.ir{background:var(--redl);color:var(--red)}
+.io{background:var(--oral);color:var(--ora)}.in{background:var(--card2);color:var(--tx3)}
 /* forms */
 .fg{margin-bottom:12px}
 label{display:block;font-size:12px;font-weight:600;color:var(--tx2);margin-bottom:5px;line-height:1.4}
-input[type=number],input[type=text],select,textarea{width:100%;padding:10px 12px;background:var(--bg);border:1.5px solid var(--bo2);border-radius:var(--rs);color:var(--tx);font-size:15px;font-family:'Cairo',sans-serif;outline:none;-webkit-appearance:none;transition:border-color .2s,box-shadow .2s}
+input[type=number],input[type=text],select,textarea{width:100%;padding:10px 12px;background:var(--bg);border:1.5px solid var(--bo2);border-radius:var(--rs);color:var(--tx);font-size:15px;font-family:var(--font-body);outline:none;-webkit-appearance:none;transition:border-color .2s,box-shadow .2s}
 input:focus,select:focus,textarea:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--info-soft)}
 select option{background:var(--bg2);color:var(--tx)}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
@@ -117,10 +120,10 @@ select option{background:var(--bg2);color:var(--tx)}
 .hint{font-size:11px;color:var(--tx4);margin-top:3px;line-height:1.4}
 /* loc tabs */
 .ltabs{display:flex;background:var(--card2);border-radius:var(--rs);padding:3px;margin-bottom:12px;overflow-x:auto}
-.ltb{flex:1;min-width:75px;padding:7px 5px;border:none;border-radius:7px;cursor:pointer;font-size:11px;font-weight:700;font-family:'Cairo',sans-serif;background:transparent;color:var(--tx3);transition:all .2s;white-space:nowrap;touch-action:manipulation}
-.ltb.on{background:var(--acc);color:var(--on-solid);box-shadow:0 2px 6px rgba(37,99,235,.25)}
+.ltb{flex:1;min-width:75px;padding:7px 5px;border:none;border-radius:7px;cursor:pointer;font-size:11px;font-weight:700;font-family:var(--font-body);background:transparent;color:var(--tx3);transition:all .2s;white-space:nowrap;touch-action:manipulation}
+.ltb.on{background:var(--acc);color:var(--on-solid);box-shadow:0 2px 8px var(--brand-ring)}
 .lpnl{display:none}.lpnl.on{display:block;animation:fup .2s ease}
-.gpsbtn{width:100%;padding:13px;background:var(--accl);border:1.5px solid var(--accm);border-radius:var(--rs);color:var(--acc);font-size:13px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;touch-action:manipulation}
+.gpsbtn{width:100%;padding:13px;background:var(--accl);border:1.5px solid var(--accm);border-radius:var(--rs);color:var(--acc);font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-body);display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;touch-action:manipulation}
 .gpsbtn:active{background:var(--accm)}
 /* src cards */
 .sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
@@ -131,6 +134,9 @@ select option{background:var(--bg2);color:var(--tx)}
 .sc .ck{position:absolute;top:6px;right:6px;width:16px;height:16px;border-radius:50%;background:var(--acc);color:var(--on-solid);display:none;align-items:center;justify-content:center;font-size:9px;font-weight:700}
 .sc.sel .ck{display:flex}
 .sc .si{font-size:26px;margin-bottom:5px}
+.sc .si svg{width:30px;height:30px;display:block;margin:0 auto}
+#srcgovt .si{color:var(--acc)}#srcgen .si{color:var(--ora)}
+#srchome .si{color:var(--red)}#srcinv .si{color:var(--grn)}
 .sc .sn{font-size:11px;font-weight:700;color:var(--tx);line-height:1.3}
 .sdet{background:var(--card2);border:1px solid var(--bo);border-radius:var(--r);padding:14px;margin-top:8px;display:none}
 .sdet.op{display:block;animation:fup .2s ease}
@@ -152,7 +158,7 @@ select option{background:var(--bg2);color:var(--tx)}
 .mc .md{font-size:10px;color:var(--tx3);line-height:1.4}
 /* season toggle */
 .segtog{display:flex;background:var(--card2);border-radius:var(--rs);padding:3px;margin-bottom:12px}
-.segb{flex:1;padding:7px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;font-family:'Cairo',sans-serif;background:transparent;color:var(--tx3);transition:all .2s}
+.segb{flex:1;padding:7px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;font-family:var(--font-body);background:transparent;color:var(--tx3);transition:all .2s}
 .segb.on{background:var(--sun);color:var(--on-solid)}
 /* slider */
 input[type=range]{-webkit-appearance:auto;padding:0;cursor:pointer;accent-color:var(--sun);height:5px;margin-top:6px;width:100%}
@@ -170,24 +176,24 @@ input[type=range]{-webkit-appearance:auto;padding:0;cursor:pointer;accent-color:
 .advbody{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--bo)}
 /* nav */
 .navrow{display:flex;gap:8px;margin-top:18px;padding-bottom:12px}
-.bnext{flex:1;padding:14px 16px;border:none;border-radius:50px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;transition:all .3s;touch-action:manipulation}
+.bnext{flex:1;padding:14px 16px;border:none;border-radius:50px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--font-body);transition:all .3s;touch-action:manipulation}
 .bnext.rdy{background:var(--sun);color:var(--on-solid);box-shadow:0 4px 14px var(--brand-ring)}
 .bnext.rdy:active{transform:scale(.98)}
 .bnext.wt{background:var(--bo2);color:var(--tx4);cursor:not-allowed}
-.bcalc{flex:1;padding:14px 16px;background:var(--acc);color:var(--on-solid);border:none;border-radius:50px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;box-shadow:0 4px 14px rgba(37,99,235,.28);transition:all .3s;touch-action:manipulation}
+.bcalc{flex:1;padding:14px 16px;background:var(--acc);color:var(--on-solid);border:none;border-radius:50px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--font-body);box-shadow:var(--shadow-cta);transition:all .3s;touch-action:manipulation}
 .bcalc:active{transform:scale(.98)}
-.bprev{padding:14px 14px;background:var(--card);color:var(--tx3);border:1.5px solid var(--bo2);border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;transition:all .2s;touch-action:manipulation}
+.bprev{padding:14px 14px;background:var(--card);color:var(--tx3);border:1.5px solid var(--bo2);border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:all .2s;touch-action:manipulation}
 .bprev:active{background:var(--card2)}
 /* axis tabs */
 .atabs{display:flex;border:1.5px solid var(--bo2);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
-.atab{flex:1;padding:11px 4px;border:none;background:transparent;cursor:pointer;font-size:11px;font-weight:700;color:var(--tx3);font-family:'Cairo',sans-serif;transition:all .2s;text-align:center;touch-action:manipulation;line-height:1.3}
+.atab{flex:1;padding:11px 4px;border:none;background:transparent;cursor:pointer;font-size:11px;font-weight:700;color:var(--tx3);font-family:var(--font-body);transition:all .2s;text-align:center;touch-action:manipulation;line-height:1.3}
 .atab+.atab{border-right:1px solid var(--bo2)}
 html[dir=rtl] .atab+.atab{border-right:none;border-left:1px solid var(--bo2)}
 .atab.on{background:var(--acc);color:var(--on-solid)}
 .apnl{display:none}.apnl.on{display:block;animation:fup .3s ease}
 /* results */
 .rhero{background:linear-gradient(135deg,var(--sunl),var(--accl));border:1.5px solid var(--sunm);border-radius:var(--r);padding:20px;text-align:center;margin-bottom:12px;box-shadow:var(--sh2)}
-.rbig{font-size:clamp(42px,10vw,64px);font-weight:900;color:var(--sun);line-height:1}
+.rbig{font-family:var(--font-display);font-size:clamp(42px,10vw,64px);font-weight:800;color:var(--sun);line-height:1}
 .runit{font-size:13px;color:var(--tx3);margin-top:3px}
 .rpills{display:flex;justify-content:center;gap:7px;margin-top:12px;flex-wrap:wrap}
 .rpill{background:var(--bg2);border:1px solid var(--bo);border-radius:50px;padding:6px 11px;text-align:center}
@@ -196,8 +202,9 @@ html[dir=rtl] .atab+.atab{border-right:none;border-left:1px solid var(--bo2)}
 .mrow{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
 @media(min-width:460px){.mrow{grid-template-columns:repeat(4,1fr)}}
 .met{background:var(--card);border:1px solid var(--bo);border-radius:var(--r);padding:13px;text-align:center;box-shadow:var(--sh)}
-.met .mi{font-size:20px;margin-bottom:4px}
-.met .mv{font-size:17px;font-weight:800;color:var(--acc)}
+.met .mi{font-size:20px;margin-bottom:4px;color:var(--acc)}
+.met .mi svg{width:22px;height:22px;display:block;margin:0 auto}
+.met .mv{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--acc)}
 .met .mu{font-size:10px;color:var(--tx4)}
 .met .ml{font-size:11px;color:var(--tx3);margin-top:2px;line-height:1.3}
 .srow{display:flex;justify-content:space-between;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--bo);gap:8px}
@@ -208,14 +215,14 @@ html[dir=rtl] .sv{text-align:right}
 .shl{background:var(--sunl);border-radius:var(--rs);padding:9px 11px;margin:3px 0}
 .shg{background:var(--grnl);border-radius:var(--rs);padding:9px 11px;margin:3px 0}
 .sbanner{background:linear-gradient(135deg,var(--grnl),var(--accl));border:1.5px solid var(--grnm);border-radius:var(--r);padding:18px;text-align:center;margin-bottom:12px;box-shadow:var(--sh2)}
-.sbig{font-size:clamp(28px,8vw,44px);font-weight:900;color:var(--grn);line-height:1;margin:5px 0}
+.sbig{font-family:var(--font-display);font-size:clamp(28px,8vw,44px);font-weight:800;color:var(--grn);line-height:1;margin:5px 0}
 .ssub{font-size:11px;color:var(--tx3)}
 .ssplit{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap;justify-content:center}
 .ssp{flex:1;min-width:90px;background:var(--bg2);border:1px solid var(--bo);border-radius:10px;padding:9px;text-align:center}
 .ssp .ssv{font-size:13px;font-weight:800;color:var(--acc)}
 .ssp .ssl{font-size:10px;color:var(--tx4);margin-top:2px;line-height:1.3}
 .gcost{background:var(--redl);border:1.5px solid var(--redm);border-radius:var(--r);padding:18px;text-align:center;margin-bottom:12px}
-.gbig{font-size:clamp(26px,7vw,40px);font-weight:900;color:var(--red);margin:4px 0}
+.gbig{font-family:var(--font-display);font-size:clamp(26px,7vw,40px);font-weight:800;color:var(--red);margin:4px 0}
 .cbar{margin:8px 0}
 .cbh{display:flex;justify-content:space-between;font-size:11px;color:var(--tx3);margin-bottom:3px;font-weight:600;flex-wrap:wrap;gap:3px}
 .cbt{height:8px;background:var(--card2);border-radius:4px;overflow:hidden;border:1px solid var(--bo)}
@@ -243,7 +250,7 @@ html[dir=rtl] .sv{text-align:right}
 .bg{background:var(--grnl);color:var(--grn)}.ba{background:var(--accl);color:var(--acc)}.bam{background:var(--sunl);color:var(--sun)}
 /* share */
 .shrow{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.shbtn{flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 14px;border:none;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;transition:all .2s;touch-action:manipulation}
+.shbtn{flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 14px;border:none;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:all .2s;touch-action:manipulation}
 .bwa{background:#25D366;color:#fff;box-shadow:0 3px 10px rgba(37,211,102,.3)}
 .bwa:active{transform:scale(.97)}
 .bpr{background:var(--accl);color:var(--acc);border:1.5px solid var(--accm)}
@@ -264,8 +271,8 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 .bau{font-size:10px;opacity:.7}
 .bab .bav{color:var(--red)}.bab .bal{color:var(--red)}
 .baa .bav{color:var(--grn)}.baa .bal{color:var(--grn)}
-.bah{position:absolute;top:0;bottom:0;width:3px;background:#fff;z-index:10;cursor:col-resize;box-shadow:0 0 8px rgba(0,0,0,.3)}
-.bahc{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font-size:13px;pointer-events:none}
+.bah{position:absolute;top:0;bottom:0;width:3px;background:var(--panel);z-index:10;cursor:col-resize;box-shadow:0 0 8px rgba(0,0,0,.3)}
+.bahc{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;background:var(--panel);color:var(--ink);border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font-size:13px;pointer-events:none}
 /* ac check */
 .acc2{background:linear-gradient(135deg,var(--redl),var(--oral));border:1.5px solid var(--redm);border-radius:var(--r);padding:12px;margin-top:8px}
 .acct{font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px}
@@ -283,7 +290,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 .lc2 .lcn{font-size:11px;font-weight:700;color:var(--tx);line-height:1.3}
 .lc2 .lcw{font-size:10px;color:var(--tx3);margin-top:2px}
 /* ═══ APPLIANCE CALCULATOR MODAL ═══ */
-#lcfab{position:fixed;bottom:20px;left:20px;z-index:8000;background:var(--grn);color:var(--on-solid);border:none;border-radius:50px;padding:11px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;box-shadow:0 4px 18px rgba(5,150,105,.4);display:flex;align-items:center;gap:7px;touch-action:manipulation;transition:all .25s}
+#lcfab{position:fixed;bottom:20px;left:20px;z-index:8000;background:var(--grn);color:var(--on-solid);border:none;border-radius:50px;padding:11px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:var(--font-body);box-shadow:var(--shadow-2);display:flex;align-items:center;gap:7px;touch-action:manipulation;transition:all .25s}
 #lcfab:active{transform:scale(.96)}
 #lcfab .fbb{background:rgba(255,255,255,.25);border-radius:50px;padding:1px 7px;font-size:11px}
 #lcmod{position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px)}
@@ -294,16 +301,16 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 @media(min-width:600px){#lcsh{border-radius:20px;max-height:88vh}}
 @keyframes su{from{transform:translateY(60px);opacity:.5}to{transform:translateY(0);opacity:1}}
 .lchdr{padding:14px 16px 10px;border-bottom:1px solid var(--bo);display:flex;align-items:center;gap:9px;flex-shrink:0}
-.lchdr h3{font-size:14px;font-weight:900;color:var(--tx);flex:1}
+.lchdr h3{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--tx);flex:1}
 .lcx{background:var(--card2);border:none;border-radius:50%;width:28px;height:28px;font-size:13px;cursor:pointer;color:var(--tx3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .lcbody{flex:1;overflow-y:auto;padding:12px 14px;-webkit-overflow-scrolling:touch}
 .lcsum{background:var(--grnl);border:1.5px solid var(--grnm);border-radius:var(--r);padding:10px 12px;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:10}
 .lsmi{text-align:center;flex:1;min-width:60px}
-.lsmi .lv{font-size:16px;font-weight:900;color:var(--grn)}
+.lsmi .lv{font-family:var(--font-display);font-size:16px;font-weight:800;color:var(--grn)}
 .lsmi .ll{font-size:10px;color:var(--tx3);margin-top:1px}
 .lccats{display:flex;gap:5px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .lccats::-webkit-scrollbar{display:none}
-.lccat{flex-shrink:0;padding:5px 12px;border:1.5px solid var(--bo);border-radius:50px;background:var(--card);font-size:11px;font-weight:700;cursor:pointer;color:var(--tx3);font-family:'Cairo',sans-serif;transition:all .2s;white-space:nowrap;touch-action:manipulation}
+.lccat{flex-shrink:0;padding:5px 12px;border:1.5px solid var(--bo);border-radius:50px;background:var(--card);font-size:11px;font-weight:700;cursor:pointer;color:var(--tx3);font-family:var(--font-body);transition:all .2s;white-space:nowrap;touch-action:manipulation}
 .lccat.on{background:var(--acc);color:var(--on-solid);border-color:var(--acc)}
 .aprow{background:var(--card);border:1px solid var(--bo);border-radius:var(--rs);padding:9px 11px;margin-bottom:7px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
 .apico{font-size:22px;flex-shrink:0;width:30px;text-align:center}
@@ -313,17 +320,17 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 .apctrls{display:flex;align-items:center;gap:6px;flex-shrink:0;flex-wrap:wrap}
 .apfw{display:flex;flex-direction:column;align-items:center;gap:2px}
 .aflbl{font-size:9px;color:var(--tx4);font-weight:600;white-space:nowrap}
-.apn{width:50px;padding:6px 4px;text-align:center;font-size:13px;font-weight:700;background:var(--bg);border:1.5px solid var(--bo2);border-radius:var(--rsm,7px);color:var(--tx);font-family:'Cairo',sans-serif}
+.apn{width:50px;padding:6px 4px;text-align:center;font-size:13px;font-weight:700;background:var(--bg);border:1.5px solid var(--bo2);border-radius:var(--rsm,7px);color:var(--tx);font-family:var(--font-body)}
 .apn:focus{border-color:var(--acc);outline:none}
 .apkwh{font-size:11px;font-weight:700;color:var(--acc);min-width:52px;text-align:center}
 .apdel{background:var(--redl);border:none;border-radius:50%;width:24px;height:24px;color:var(--red);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;touch-action:manipulation}
-.addap-btn{background:var(--accl);border:1.5px solid var(--accm);color:var(--acc);border-radius:50px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;white-space:nowrap;touch-action:manipulation}
+.addap-btn{background:var(--accl);border:1.5px solid var(--accm);color:var(--acc);border-radius:50px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font-body);white-space:nowrap;touch-action:manipulation}
 .cfm{background:var(--card2);border:1.5px dashed var(--bo2);border-radius:var(--r);padding:11px;margin-bottom:10px}
-.lcapply{width:100%;padding:13px;background:var(--grn);color:var(--on-solid);border:none;border-radius:50px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;box-shadow:0 4px 12px rgba(5,150,105,.3);margin-top:12px;touch-action:manipulation}
+.lcapply{width:100%;padding:13px;background:var(--grn);color:var(--on-solid);border:none;border-radius:50px;font-size:13px;font-weight:800;cursor:pointer;font-family:var(--font-body);box-shadow:var(--shadow-sm);margin-top:12px;touch-action:manipulation}
 .lcapply:active{transform:scale(.98)}
 .addedbar{margin-bottom:12px}
 .adbar-hd{font-size:12px;font-weight:700;color:var(--tx3);margin-bottom:7px;display:flex;justify-content:space-between;align-items:center}
-.clrall{background:none;border:none;color:var(--red);font-size:11px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif}
+.clrall{background:none;border:none;color:var(--red);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font-body)}
 /* print */
 @media print{
   .site-nav,#app>.pbar,#sec1,#sec2,#sec3,.navrow,.shrow,.atabs,.bbtn,#lcfab,.handoff,.from-tool,.site-foot{display:none!important}
@@ -344,6 +351,9 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 </style>
 </head>
 <body>
+<!-- شعيرة الأيقونات: تُعرَّف مرّة وتُستدعى بـ <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-bank" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 27 32 13l25 14M10 52h44M16 31v17M26 31v17M38 31v17M48 31v17"/></g></symbol><symbol id="i-battery" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="19" width="40" height="26" rx="7"/><path d="M54 27v10M19 28v8M29 28v8"/></g></symbol><symbol id="i-bolt" viewBox="0 0 64 64"><path d="M36 5 10 37h16l-4 22 27-32H36z" fill="currentColor"/></symbol><symbol id="i-bulb" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8a15 15 0 0 0-9 27v5h18v-5a15 15 0 0 0-9-27Z"/><path d="M26 48h12M28 55h8"/></g></symbol><symbol id="i-calendar" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="16" width="44" height="38" rx="7"/><path d="M10 29h44M22 10v9M42 10v9"/></g></symbol><symbol id="i-chart" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"><path d="M13 52V33M27 52V17M41 52V25M55 52V13"/></g></symbol><symbol id="i-convert" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 25h34l-8-8M52 39H18l8 8"/></g></symbol><symbol id="i-drum" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="10" width="30" height="44" rx="7"/><path d="M17 24h30M17 40h30"/></g></symbol><symbol id="i-house" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 12 53 30v21a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V30Z"/><path d="M26 53V40h12v13"/></g></symbol><symbol id="i-money" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="18" width="48" height="28" rx="7"/><circle cx="32" cy="32" r="7"/></g></symbol><symbol id="i-panel" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="17" width="50" height="30" rx="7"/><path d="M7 32h50M24 17v30M40 17v30"/></g></symbol><symbol id="i-pin" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 56s16-14 16-26a16 16 0 1 0-32 0c0 12 16 26 16 26Z"/><circle cx="32" cy="29" r="6"/></g></symbol><symbol id="i-receipt" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8h32a3 3 0 0 1 3 3v45l-7-5-7 5-7-5-7 5V11a3 3 0 0 1 3-3Z"/><path d="M24 22h16M24 32h16M24 42h10"/></g></symbol><symbol id="i-sliders" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 20h38M13 32h38M13 44h38"/><circle cx="24" cy="20" r="4.5" fill="currentColor" stroke="none"/><circle cx="40" cy="32" r="4.5" fill="currentColor" stroke="none"/><circle cx="28" cy="44" r="4.5" fill="currentColor" stroke="none"/></g></symbol><symbol id="i-sun" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="11"/><path d="M32 6v5M32 53v5M6 32h5M53 32h5M14 14l3.5 3.5M46.5 46.5 50 50M50 14l-3.5 3.5M17.5 46.5 14 50"/></g></symbol><symbol id="i-tag" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M55 9H35L9 35l20 20 26-26V9Z"/><circle cx="45" cy="19" r="4"/></g></symbol></defs></svg>
+
 <!-- شريط التنقّل المشترك بين الأداتين -->
 <nav class="site-nav">
   <div class="nav-inner">
@@ -361,6 +371,20 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   </div>
 </nav>
 
+<section class="tool-hero">
+  <div class="blobs" aria-hidden="true">
+    <svg class="blob-b" viewBox="0 0 100 100" width="280" height="280" style="top:-120px;inset-inline-start:-90px"><path d="M50 6 C74 6 94 24 92 48 C90 72 70 94 46 92 C22 90 6 70 8 46 C10 22 26 6 50 6 Z"/></svg>
+    <svg class="blob-a" viewBox="0 0 100 100" width="220" height="220" style="top:-70px;inset-inline-end:-80px"><path d="M56 8 C80 12 96 34 90 56 C84 78 60 94 38 88 C16 82 4 58 10 36 C16 14 32 4 56 8 Z"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="tool-hero-inner">
+      <span class="pill"><svg class="i" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="11"/><path d="M32 6v5M32 53v5M6 32h5M53 32h5M14 14l3.5 3.5M46.5 46.5 50 50M50 14l-3.5 3.5M17.5 46.5 14 50"/></g></svg> حسب شمس مدينتك وحرارة صيفها</span>
+      <h1>حاسبة <span>الطاقة الشمسية</span></h1>
+      <p>أربع خطوات: موقعك، استهلاكك، نوع المنظومة — ثم تقدير كامل بالألواح والبطاريات والتوفير.</p>
+    </div>
+  </div>
+</section>
+
 <!-- APP -->
 <div id="app">
 <div class="pbar">
@@ -375,7 +399,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 
 <div style="max-width:740px;margin:0 auto;padding:12px 14px 0">
   <div class="from-tool" id="fromBill" style="display:none">
-    <span>⚡</span><span id="fromBillTxt"></span>
+    <span class="fi"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bolt"/></svg></span><span id="fromBillTxt"></span>
   </div>
 </div>
 
@@ -383,7 +407,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 <div class="sec act" id="sec1">
   <div class="sh"><div class="sl" id="s1step">الخطوة الأولى</div><h2 class="stl" id="s1title">أين تسكن؟</h2><p class="sd" id="s1desc">الموقع يحدد قوة الشمس ودرجات الحرارة في منطقتك</p></div>
   <div class="card">
-    <div class="ct"><div class="ico ia">📍</div>تحديد الموقع</div>
+    <div class="ct"><div class="ico ia"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-pin"/></svg></div>تحديد الموقع</div>
     <div class="ltabs">
       <button class="ltb on" id="tgps" onclick="stab('gps',this)">📡 <span id="ltgps">موقعي تلقائياً</span></button>
       <button class="ltb" id="tcity" onclick="stab('city',this)">🏙️ <span id="ltcity">اختر مدينتك</span></button>
@@ -414,14 +438,14 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 <div class="sec" id="sec2">
   <div class="sh"><div class="sl" id="s2step">الخطوة الثانية</div><h2 class="stl" id="s2title">ما مصادر الكهرباء عندك الآن؟</h2><p class="sd" id="s2desc">اختر كل ما ينطبق عليك</p></div>
   <div class="sgrid">
-    <div class="sc" id="srcgovt" onclick="togSrc('govt')"><div class="ck">✓</div><div class="si">🏛️</div><div class="sn">كهرباء الدولة</div></div>
-    <div class="sc" id="srcgen" onclick="togSrc('gen')"><div class="ck">✓</div><div class="si">⚡</div><div class="sn">مولدة أهلية</div></div>
-    <div class="sc" id="srchome" onclick="togSrc('home')"><div class="ck">✓</div><div class="si">🛢️</div><div class="sn">مولدة منزلية</div></div>
-    <div class="sc" id="srcinv" onclick="togSrc('inv')"><div class="ck">✓</div><div class="si">🔋</div><div class="sn">عاكسة</div></div>
+    <div class="sc" id="srcgovt" onclick="togSrc('govt')"><div class="ck">✓</div><div class="si"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bank"/></svg></div><div class="sn">كهرباء الدولة</div></div>
+    <div class="sc" id="srcgen" onclick="togSrc('gen')"><div class="ck">✓</div><div class="si"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bolt"/></svg></div><div class="sn">مولدة أهلية</div></div>
+    <div class="sc" id="srchome" onclick="togSrc('home')"><div class="ck">✓</div><div class="si"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-drum"/></svg></div><div class="sn">مولدة منزلية</div></div>
+    <div class="sc" id="srcinv" onclick="togSrc('inv')"><div class="ck">✓</div><div class="si"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-battery"/></svg></div><div class="sn">عاكسة</div></div>
   </div>
   <!-- GOVT -->
   <div class="sdet" id="detgovt">
-    <div class="ct"><div class="ico ia">🏛️</div>كهرباء الدولة</div>
+    <div class="ct"><div class="ico ia"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bank"/></svg></div>كهرباء الدولة</div>
     <div class="ib ibl" id="tariffLine">💡 <strong>التسعير المتدرج الرسمي:</strong> <span id="tariffLineVals"></span></div>
     <div class="g2">
       <div class="fg"><label>ساعات يومياً</label>
@@ -432,7 +456,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   </div>
   <!-- GEN -->
   <div class="sdet" id="detgen">
-    <div class="ct"><div class="ico io">⚡</div>المولدة الأهلية</div>
+    <div class="ct"><div class="ico io"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bolt"/></svg></div>المولدة الأهلية</div>
     <div class="g2">
       <div class="fg"><label>نوع الاشتراك</label>
         <select id="gentype" onchange="updGenHrs()"><option value="24">24 ساعة — يومي كامل</option><option value="20">20 ساعة</option><option value="18">18 ساعة</option><option value="16">16 ساعة</option><option value="12" selected>12 ساعة — الأكثر شيوعاً</option><option value="8">8 ساعات</option><option value="6">6 ساعات</option><option value="custom">مخصص</option></select></div>
@@ -447,7 +471,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   </div>
   <!-- HOME -->
   <div class="sdet" id="dethome">
-    <div class="ct"><div class="ico ir">🛢️</div>المولدة المنزلية</div>
+    <div class="ct"><div class="ico ir"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-drum"/></svg></div>المولدة المنزلية</div>
     <div class="g2">
       <div class="fg"><label>نوع الوقود</label><select id="homefuel"><option value="diesel">ديزل Diesel</option><option value="petrol">بنزين Petrol</option></select></div>
       <div class="fg"><label>القدرة (KVA/KW)</label><input type="number" id="homekva" placeholder="3" min="0.5" step="0.5"></div>
@@ -458,7 +482,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   </div>
   <!-- INV -->
   <div class="sdet" id="detinv">
-    <div class="ct"><div class="ico ig">🔋</div>العاكسة</div>
+    <div class="ct"><div class="ico ig"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-battery"/></svg></div>العاكسة</div>
     <div class="ib ibl">🔌 يتحوّل تلقائياً إلى البطاريات عند انقطاع الكهرباء</div>
     <div class="g2">
       <div class="fg"><label>عدد البطاريات</label><input type="number" id="invbats" placeholder="2" value="2" min="1"></div>
@@ -469,12 +493,12 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 
   <!-- CONSUMPTION -->
   <div class="card" style="margin-top:12px">
-    <div class="ct"><div class="ico is">⚡</div>استهلاكك من الكهرباء</div>
+    <div class="ct"><div class="ico is"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bolt"/></svg></div>استهلاكك من الكهرباء</div>
     <div class="ib ibl">مجموع ما تستهلكه من كل المصادر — الصيف في العراق 3–4× أكثر من الشتاء بسبب المكيفات</div>
     <!-- Appliance calc shortcut -->
     <div style="background:var(--grnl);border:1.5px solid var(--grnm);border-radius:var(--rs);padding:10px 12px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
       <div style="flex:1;min-width:140px"><div style="font-size:12px;font-weight:700;color:var(--grn)">⚡ لا تعرف كم تستهلك؟</div><div style="font-size:11px;color:var(--tx3);margin-top:2px">احسب استهلاكك جهازاً جهازاً</div></div>
-      <button onclick="openLC()" style="background:var(--grn);color:var(--on-solid);border:none;border-radius:50px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Cairo',sans-serif;touch-action:manipulation;flex-shrink:0">⚡ حاسبة الأجهزة</button>
+      <button onclick="openLC()" style="background:var(--grn);color:var(--on-solid);border:none;border-radius:50px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:var(--font-body);touch-action:manipulation;flex-shrink:0">⚡ حاسبة الأجهزة</button>
     </div>
     <div class="segtog"><button class="segb on" id="sbsingle" onclick="setSeason('s')">📊 متوسط واحد</button><button class="segb" id="sbseas" onclick="setSeason('w')">☀️❄️ صيف وشتاء</button></div>
     <div id="segsingle">
@@ -512,7 +536,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   </div>
   <!-- LOAD PROFILE -->
   <div class="card">
-    <div class="ct"><div class="ico ig">🏠</div>ماذا تريد أن يشغّل النظام؟</div>
+    <div class="ct"><div class="ico ig"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-house"/></svg></div>ماذا تريد أن يشغّل النظام؟</div>
     <div class="ib iba">⚠️ المكيفات تستهلك طاقة كبيرة جداً — هذا يساعد في تحديد توقعات واقعية</div>
     <div class="lgrid">
       <div class="lc2 sel" id="ldlight" onclick="setLoad('light')"><div class="lck">✓</div><div class="lci">💡</div><div class="lcn">إضاءة + مراوح</div><div class="lcw">~0.5–1 kW</div></div>
@@ -526,7 +550,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   </div>
   <!-- SYSTEM SETTINGS -->
   <div class="card">
-    <div class="ct"><div class="ico is">☀️</div>إعدادات النظام</div>
+    <div class="ct"><div class="ico is"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-sun"/></svg></div>إعدادات النظام</div>
     <div class="g2">
       <div class="fg"><label>حجم اللوح الواحد</label>
         <select id="pw"><option value="400">400W — قياسي</option><option value="450">450W</option><option value="500" selected>500W — الأكثر شيوعاً</option><option value="550">550W</option><option value="600">600W</option><option value="700">700W — متطور</option></select></div>
@@ -558,17 +582,17 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
   <div class="sh"><div class="sl">النتائج</div><h2 class="stl">نظامك الشمسي المقترح</h2><p class="sd" id="resloc" style="color:var(--acc);font-weight:600"></p></div>
   <!-- EDIT/NEW buttons -->
   <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
-    <button onclick="editSystem()" style="flex:1;padding:10px 14px;background:var(--accl);color:var(--acc);border:1.5px solid var(--accm);border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;touch-action:manipulation">✏️ تعديل الإعدادات</button>
-    <button onclick="newSystem()" style="flex:1;padding:10px 14px;background:var(--card2);color:var(--tx3);border:1.5px solid var(--bo2);border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;touch-action:manipulation">➕ نظام جديد</button>
+    <button onclick="editSystem()" style="flex:1;padding:10px 14px;background:var(--accl);color:var(--acc);border:1.5px solid var(--accm);border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-body);touch-action:manipulation">✏️ تعديل الإعدادات</button>
+    <button onclick="newSystem()" style="flex:1;padding:10px 14px;background:var(--card2);color:var(--tx3);border:1.5px solid var(--bo2);border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font-body);touch-action:manipulation">➕ نظام جديد</button>
   </div>
   <div class="shrow">
     <button class="shbtn bwa" onclick="shareWA()">📲 واتساب</button>
     <button class="shbtn bpr" onclick="window.print()">🖨️ طباعة</button>
   </div>
   <div class="atabs">
-    <button class="atab on" onclick="showAx('cur')">⚡ وضعك الحالي</button>
-    <button class="atab" onclick="showAx('sol')">☀️ النظام الشمسي</button>
-    <button class="atab" onclick="showAx('sav')">💰 التوفير</button>
+    <button class="atab on" onclick="showAx('cur')"><svg class="i" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bolt"/></svg> وضعك الحالي</button>
+    <button class="atab" onclick="showAx('sol')"><svg class="i" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-sun"/></svg> النظام الشمسي</button>
+    <button class="atab" onclick="showAx('sav')"><svg class="i" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-money"/></svg> التوفير</button>
   </div>
   <!-- AX1: CURRENT -->
   <div class="apnl on" id="axcur">
@@ -586,9 +610,9 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
         <div class="rpill"><div class="rv" id="rco2">--</div><div class="rl">طن CO₂/سنة</div></div>
       </div>
     </div>
-    <div class="card"><div class="ct"><div class="ico is">📊</div>التوليد الشهري (kWh)</div><div class="bwrap" id="chart"></div><div style="display:flex;gap:3px;padding:0 2px" id="clbls"></div></div>
+    <div class="card"><div class="ct"><div class="ico is"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-chart"/></svg></div>التوليد الشهري (kWh)</div><div class="bwrap" id="chart"></div><div style="display:flex;gap:3px;padding:0 2px" id="clbls"></div></div>
     <div class="card">
-      <div class="ct"><div class="ico is">🔆</div>الألواح الشمسية</div>
+      <div class="ct"><div class="ico is"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-panel"/></svg></div>الألواح الشمسية</div>
       <div class="srow shl"><span class="sk">عدد الألواح</span><span class="sv" id="rnp" style="color:var(--sun);font-size:17px;font-weight:900">--</span></div>
       <div class="srow"><span class="sk">قدرة اللوح</span><span class="sv" id="rpw2">--</span></div>
       <div class="srow"><span class="sk">إجمالي القدرة</span><span class="sv" id="rtap">--</span></div>
@@ -603,14 +627,14 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
       <div id="twarn" class="wbox" style="display:none"></div>
     </div>
     <div class="card">
-      <div class="ct"><div class="ico ia">🔄</div>جهاز التحويل (الإنفرتر)</div>
+      <div class="ct"><div class="ico ia"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-convert"/></svg></div>جهاز التحويل (الإنفرتر)</div>
       <div class="ib ibl">🔌 يحوّل كهرباء الألواح إلى تيار منزلي</div>
       <div class="srow shl"><span class="sk">الحجم المطلوب</span><span class="sv" id="rinv" style="color:var(--grn);font-weight:900">--</span></div>
       <div class="srow"><span class="sk">النوع الموصى به</span><span class="sv" id="rinvt">--</span></div>
       <div class="srow"><span class="sk">الكفاءة</span><span class="sv">96%</span></div>
     </div>
     <div class="card" id="batcard">
-      <div class="ct"><div class="ico ig">🔋</div>منظومة البطاريات</div>
+      <div class="ct"><div class="ico ig"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-battery"/></svg></div>منظومة البطاريات</div>
       <div class="srow shl"><span class="sk">عدد البطاريات</span><span class="sv" id="rbn" style="color:var(--grn);font-weight:900">--</span></div>
       <div class="srow"><span class="sk">السعة الإجمالية</span><span class="sv" id="rbcap">--</span></div>
       <div class="srow"><span class="sk">نوع البطاريات</span><span class="sv" id="rbt">--</span></div>
@@ -620,14 +644,14 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
       <div id="bathw" class="wbox" style="display:none"></div>
     </div>
     <div class="card">
-      <div class="ct"><div class="ico ia">🎛️</div>منظم الشحن MPPT</div>
+      <div class="ct"><div class="ico ia"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-sliders"/></svg></div>منظم الشحن MPPT</div>
       <div class="ib ibl">⚙️ يشحن البطاريات من الألواح بأعلى كفاءة</div>
       <div class="srow"><span class="sk">التيار المطلوب</span><span class="sv" id="rma">--</span></div>
       <div class="srow"><span class="sk">عدد وحدات MPPT (60A/وحدة)</span><span class="sv" id="rmc">--</span></div>
     </div>
     <!-- BRANDS -->
     <div class="card">
-      <div class="ct"><div class="ico is">🏷️</div>ماركات موصى بها في العراق</div>
+      <div class="ct"><div class="ico is"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-tag"/></svg></div>ماركات موصى بها في العراق</div>
       <div class="ib ibg">💡 اشتر من وكلاء معتمدين وطالب بضمان خطي</div>
       <div style="font-size:12px;font-weight:700;color:var(--tx3);margin-bottom:6px">☀️ الألواح</div>
       <div class="bgrid">
@@ -655,12 +679,12 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
     <div class="gcost"><div style="font-size:11px;color:var(--red);margin-bottom:4px">ما تدفعه الآن سنوياً</div><div class="gbig" id="rcurtot">--</div><div style="font-size:10px;color:var(--tx3)">دينار/سنة</div><div class="ssplit" id="cursplit" style="margin-top:10px"></div></div>
     <!-- Tiered breakdown -->
     <div class="card">
-      <div class="ct"><div class="ico ia">📊</div>كيف تُحسب فاتورة الدولة</div>
+      <div class="ct"><div class="ico ia"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-chart"/></svg></div>كيف تُحسب فاتورة الدولة</div>
       <table class="tt" id="ttbl"></table>
       <div class="ib ibl" style="margin-top:8px" id="tnote"></div>
       <a class="handoff" id="toBill" href="/bill">
         <div class="handoff-top">
-          <span class="handoff-ico">🧾</span>
+          <span class="handoff-ico"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-receipt"/></svg></span>
           <span class="handoff-title">راجع فاتورتك بالتفصيل</span>
         </div>
         <div class="handoff-body" id="toBillBody"></div>
@@ -668,10 +692,10 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
       </a>
     </div>
     <!-- Coverage bars -->
-    <div class="card" id="covcard" style="display:none"><div class="ct"><div class="ico is">📊</div>ماذا يغطي النظام الشمسي؟</div><div id="covbars"></div></div>
+    <div class="card" id="covcard" style="display:none"><div class="ct"><div class="ico is"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-chart"/></svg></div>ماذا يغطي النظام الشمسي؟</div><div id="covbars"></div></div>
     <!-- Before/After slider -->
     <div class="card" id="bacard" style="display:none">
-      <div class="ct"><div class="ico ig">📊</div>قبل وبعد الطاقة الشمسية</div>
+      <div class="ct"><div class="ico ig"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-chart"/></svg></div>قبل وبعد الطاقة الشمسية</div>
       <div class="bawrap">
         <div class="bac" id="bac" onmousedown="baStart(event)" ontouchstart="baStart(event)">
           <div class="bab"><div class="bal">⚡ قبل</div><div class="bav" id="babv">--</div><div class="bau">دينار/شهر</div></div>
@@ -685,7 +709,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
     <div class="sbanner"><div style="font-size:11px;color:var(--tx3);margin-bottom:4px">💰 إجمالي توفيرك السنوي</div><div class="sbig" id="rtotsav">--</div><div class="ssub">دينار عراقي/سنة</div><div class="ssplit" id="savsplit"></div></div>
     <!-- Payback -->
     <div class="card">
-      <div class="ct"><div class="ico ig">📅</div>حساب الاسترداد والعائد</div>
+      <div class="ct"><div class="ico ig"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-calendar"/></svg></div>حساب الاسترداد والعائد</div>
       <div class="srow shg"><span class="sk">فترة استرداد رأس المال</span><span class="sv" id="rpb" style="color:var(--grn);font-weight:900">--</span></div>
       <div class="srow"><span class="sk">تكلفة النظام التقريبية</span><span class="sv" id="rsc">--</span></div>
       <div class="srow"><span class="sk">التوفير الشهري المتوقع</span><span class="sv" id="rms">--</span></div>
@@ -741,7 +765,7 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
       <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
         <input type="number" id="cqty" placeholder="1" min="1" value="1" style="font-size:13px;padding:8px 10px;width:60px">
         <label style="font-size:11px;color:var(--tx3)">عدد / Qty</label>
-        <button onclick="addCustom()" style="flex:1;padding:8px 14px;background:var(--acc);color:var(--on-solid);border:none;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif">➕ إضافة</button>
+        <button onclick="addCustom()" style="flex:1;padding:8px 14px;background:var(--acc);color:var(--on-solid);border:none;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-body)">➕ إضافة</button>
       </div>
     </div>
     <div class="ib iba">💡 1 طن تبريد ≈ 1.4 kW | مكيف 1.5 طن ≈ 2.1 kW | مكيف 2 طن ≈ 2.8 kW<br>السخان والغسالة استهلاكهما عالٍ — ضع ساعات تشغيل واقعية</div>
@@ -751,16 +775,38 @@ html[dir=rtl] .baa{clip-path:inset(0 0 0 50%)}
 </div>
 
 <footer class="site-foot">
-  <span class="disclaimer">
-    نتائج استرشادية للتخطيط فقط — الأحجام والأسعار تقديرية وتتغيّر حسب المعدّات والمجهّز والتركيب.
-    حسابات فاتورة الدولة مبنية على تعرفة الصنف المنزلي نفسها المستعملة في
-    <a href="/bill">حاسبة الفاتورة</a>.
-  </span>
-  <span class="foot-links">
-    <a href="/bill">حاسبة فاتورة الكهرباء</a>
-    <a href="/">الرئيسية</a>
-  </span>
-  <span style="display:block;margin-top:9px">صُنعت بواسطة محمد الطائي</span>
+  <div class="foot-grid">
+    <div>
+      <a class="brand" href="/">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 14h6l-1.5 8L20 10h-6.5z"/></svg></span>
+        <span class="brand-name">طاقة العراق</span>
+      </a>
+      <p class="foot-about">
+        نتائج استرشادية للتخطيط فقط — الأحجام والأسعار تقديرية وتتغيّر حسب المعدّات والمجهّز والتركيب.
+        حسابات فاتورة الدولة مبنية على تعرفة الصنف المنزلي نفسها المستعملة في
+        <a href="/bill" style="color:var(--brand);font-weight:700">حاسبة الفاتورة</a>.
+      </p>
+    </div>
+
+    <div class="foot-col">
+      <h3>الأدوات</h3>
+      <a href="/bill">حاسبة فاتورة الكهرباء</a>
+      <a href="/solar">حاسبة الطاقة الشمسية</a>
+    </div>
+
+    <div class="foot-col">
+      <h3>الموقع</h3>
+      <a href="/">الرئيسية</a>
+      <a class="foot-mail" href="mailto:mesezo2076@gmail.com">
+        <svg class="i" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="14" width="50" height="36" rx="8"/><path d="m9 20 23 16 23-16"/></g></svg>mesezo2076@gmail.com
+      </a>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <span class="disclaimer">استشر مهندساً كهربائياً قبل تنفيذ أي منظومة.</span>
+    <span>صُنعت بواسطة محمد الطائي</span>
+  </div>
 </footer>
 
 <script>
@@ -808,6 +854,9 @@ const APPDB=[
 ["شاحن جوال","Phone Charger",10,4,"oth","📱",""],
 ["طابعة","Printer",80,.5,"oth","🖨️",""],
 ["UPS انتظار","UPS Standby",50,24,"oth","🔋",""]];
+
+/* أيقونات النتائج — تُستدعى من شعيرة SVG في أعلى الصفحة */
+const I=['bolt','bulb','calendar','money','bank','drum','battery'].reduce((o,k)=>(o[k]='<svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-'+k+'"/></svg>',o),{});
 
 // STATE
 let slat=null,slng=null,cityKey=null;
@@ -976,9 +1025,9 @@ function calc(){
   // axis1
   const cm=document.getElementById('curmet');cm.innerHTML='';
   const am=(i,v,u,l)=>cm.innerHTML+=`<div class="met"><div class="mi">${i}</div><div class="mv">${v}</div><div class="mu">${u}</div><div class="ml">${l}</div></div>`;
-  am('💡',f(totCurrMo),'IQD/شهر','إجمالي التكاليف');am('📅',f(totCurrAnn),'IQD/سنة','سنوياً');am('⚡',Math.round(annKwh/12),'kWh/شهر','استهلاكك');am('💰',f(tmo),'IQD/شهر','فاتورة الدولة المتدرجة');
+  am(I.bulb,f(totCurrMo),'IQD/شهر','إجمالي التكاليف');am(I.calendar,f(totCurrAnn),'IQD/سنة','سنوياً');am(I.bolt,Math.round(annKwh/12),'kWh/شهر','استهلاكك');am(I.money,f(tmo),'IQD/شهر','فاتورة الدولة المتدرجة');
   const cd=document.getElementById('curdet');cd.innerHTML='';
-  const SI={govt:{i:'🏛️',n:'كهرباء الدولة',c:f(govtMo)},gen:{i:'⚡',n:'مولدة أهلية',c:f(genMo)},home:{i:'🛢️',n:'مولدة منزلية',c:f(homeMo)},inv:{i:'🔋',n:'عاكسة',c:f(invMo)}};
+  const SI={govt:{i:I.bank,n:'كهرباء الدولة',c:f(govtMo)},gen:{i:I.bolt,n:'مولدة أهلية',c:f(genMo)},home:{i:I.drum,n:'مولدة منزلية',c:f(homeMo)},inv:{i:I.battery,n:'عاكسة',c:f(invMo)}};
   for(const id in srcs){const s=SI[id];if(!s)continue;const r=roles[id]||'p';cd.innerHTML+=`<div class="card" style="margin-bottom:8px"><div class="ct"><div class="ico in">${s.i}</div>${s.n}<span style="flex:1"></span><span style="font-size:10px;padding:2px 8px;border-radius:50px;background:${r==='p'?'var(--sunl)':'var(--card2)'};color:${r==='p'?'var(--sun)':'var(--tx3)'};border:1px solid ${r==='p'?'var(--sunm)':'var(--bo2)'};font-weight:700">${r==='p'?'⭐ أساسي':'🔒 احتياطي'}</span></div><div class="srow"><span class="sk">التكلفة الشهرية</span><span class="sv">${s.c} دينار</span></div></div>`}
   if(!Object.keys(srcs).length)cd.innerHTML='<div class="ib iba">لم تحدد أي مصدر طاقة</div>';
   // axis2
@@ -1034,7 +1083,7 @@ function calc(){
 function $(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
 function sp(v,l){return`<div class="ssp"><div class="ssv">${v}</div><div class="ssl">${l}</div></div>`}
 function addCBar(cont,label,pct,color,save){const id='cb'+Math.random().toString(36).slice(2);cont.innerHTML+=`<div class="cbar"><div class="cbh"><span>${label}</span><span>${save} IQD/سنة</span></div><div class="cbt"><div class="cbf" id="${id}" style="width:0%;background:${color}"></div></div></div>`;setTimeout(()=>{const e=document.getElementById(id);if(e)e.style.width=pct+'%'},250)}
-function drawChart(d){const max=Math.max(...d);const bw=document.getElementById('chart'),lb=document.getElementById('clbls');bw.innerHTML='';lb.innerHTML='';const M=MAR;d.forEach((v,i)=>{const pct=max>0?(v/max)*100:50;const bwrap=document.createElement('div');bwrap.className='bw';const b=document.createElement('div');b.className='bb';b.style.height='0px';b.style.background=v===max?'linear-gradient(to top,#D97706,#F59E0B)':'linear-gradient(to top,#2563EB,#60A5FA)';b.setAttribute('data-tip',v.toLocaleString()+' kWh');bwrap.appendChild(b);bw.appendChild(bwrap);const l=document.createElement('div');l.className='bl';l.style.flex='1';l.textContent=M[i].substring(0,3);lb.appendChild(l);setTimeout(()=>{b.style.height=pct+'%'},80+i*55)})}
+function drawChart(d){const max=Math.max(...d);const bw=document.getElementById('chart'),lb=document.getElementById('clbls');bw.innerHTML='';lb.innerHTML='';const M=MAR;d.forEach((v,i)=>{const pct=max>0?(v/max)*100:50;const bwrap=document.createElement('div');bwrap.className='bw';const b=document.createElement('div');b.className='bb';b.style.height='0px';b.style.background=v===max?'linear-gradient(to top,var(--amber),var(--warn))':'linear-gradient(to top,var(--brand),var(--acc))';b.setAttribute('data-tip',v.toLocaleString()+' kWh');bwrap.appendChild(b);bw.appendChild(bwrap);const l=document.createElement('div');l.className='bl';l.style.flex='1';l.textContent=M[i].substring(0,3);lb.appendChild(l);setTimeout(()=>{b.style.height=pct+'%'},80+i*55)})}
 
 // ═══ BEFORE/AFTER ═══
 let baB=0,baA=0,baDrag=false;
